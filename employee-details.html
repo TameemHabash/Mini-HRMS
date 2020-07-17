@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.12.0/css/all.css" integrity="sha384-ekOryaXPbeCpWQNxMwSWVvQ0+1VrStoPJq54shlYhR8HzQgig1v5fas6YgOqLoKz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Architects+Daughter&family=Chewy&family=Noto+Sans+SC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Open+Sans:400,800'>
+
+
+    <!-- <script>
+            function myFunction() {
+                var x = document.getElementsByClassName("hidden-att");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+        </script> -->
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- beginning of the side bar -->
+
+        <div class="main-background-color sidebar">
+            <div class="sidebar-title">
+                <br>
+                <a href="#" class="upper">EmployÈra</a>
+            </div>
+            <ul class="sidebar-list">
+                <li class="sidebar-item"><i class="fas fa-home"></i><a href="#" class="sidebar-link">Home</a></li>
+                <li class="sidebar-item active-tab"><i class="fas fa-address-card"></i><a href="#" class="sidebar-link">Employees</a></li>
+                <li class="sidebar-item"><i class="fas fa-vector-square"></i><a href="#" class="sidebar-link">Departments</a></li>
+                <li class="sidebar-item"><i class="fas fa-clipboard-list"></i><a href="#" class="sidebar-link">Absences</a></li>
+                <li class="sidebar-item"><i class="fas fa-chart-bar"></i><a href="#" class="sidebar-link">Statistics</a></li>
+            </ul>
+        </div>
+
+        <!-- end of the side bar -->
+
+        <!-- beginning of the header -->
+
+        <div class="header">
+            <div class="dropdown">
+                <img class="user-pic" src="imgs/00.PNG">
+                <div class="secondary-background-color drop-content">
+                    <div class="drop-header">
+                        <img class="user-pic" src="imgs/00.PNG">
+                        <h4 class="main-color" 2>My account</h4>
+                    </div>
+                    <h5 class="main-color">HR-name</h5>
+                    <h5 class="main-color">HR-email</h5>
+                    <a class="main-color" href="#">log out</a>
+                </div>
+            </div>
+        </div>
+        <!-- end of the header  -->
+
+        <!-- beginning of the page content  -->
+
+        <div class="page-content">
+
+            <!-- beginning of the content's header  -->
+
+            <div class="page-content-header">
+                <div class="page-content-header">
+                    <div class="title">
+                        <h3 class="main-color">Employee's Details</h3>
+                    </div>
+                    <div class="search-box">
+                        <input class="main-color search-field" type="search" placeholder="search for something...">
+                        <button class="search-btn"><i class="main-color fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+            <!-- end of the page content's header  -->
+
+            <!-- beginning of the content box  -->
+
+            <div class="details-box" style="overflow-y:scroll ;">
+
+                <!-- beginning of the content's header  -->
+
+                <div class="details-box-header">
+                    <div class="header1">
+                        <img class="employee-pic" src="imgs/00.PNG">
+                        <input style="overflow:hidden;width:400px;height:25px; margin-top:40px;border: none;" type="text" id="name" name="name" placeholder="Emp's name">
+                        <div class="btn">
+                            <button class="edit-info-btn">Edit</button>
+                        </div>
+                    </div>
+                    <div class="header2">
+                        <input type="number" class="main-color quantity" min="1" max="5">
+                        <button class="add-raise-btn">Add Raise</button>
+                    </div>
+                </div>
+
+                <!-- end of the content's header  -->
+
+                <!-- beginning of the inforamtion section -->
+                <div class="info-section">
+
+                    <!-- beginning of the all personal section  -->
+                    <div class="all-personal">
+                        <table class="main-color att-val">
+                            <tr>
+                                <th class="secondary-background-color att">ID:</th>
+                                <th class="val">
+                                    <input style="border: none;" type="text" id="id" name="id" placeholder="ID">
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color att">Dept.ID / Name:</th>
+                                <th class="val">
+                                    <select name="dept-no" style="border: none;">
+                                        <option value="1">1 / Programming</option>
+                                        <option value="2">2 / Accounting</option>
+                                        <option value="3">3 / Sales</option>
+                                        <option value="4">4 / Support</option>
+                                    </select>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color att">Sector:</th>
+                                <th class="val">
+                                    <select name="sector" style="border: none;">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color att">Citizenship:</th>
+                                <th class="val">
+                                    <select name="status" id="status" style="border: none;">
+                                            <option value="other">Other</option>
+                                            <option value="jordanian">Jordanian</option>
+                                        </select>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color att"> National_ID:</th>
+                                <th class="val">
+                                    <input style="border: none;color:#43425D" type="text" id="nat-id" name="national-id" placeholder="Nat. ID">
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color att">Gender:</th>
+                                <th class="val">
+                                    <select name="gender" style="border: none;">
+                                            <option value="Male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color att">Birth Date: </th>
+                                <th class="val">
+
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color  att">Status: </th>
+                                <th class="val">
+                                    <select name="status" style="border: none;">
+                                            <option value="single">Single</option>
+                                            <option value="married">Married</option>
+                                        </select>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color att">Address:</th>
+                                <th class="val">
+                                    <select name="address" style="border: none;">
+                                            <option value="amman">Amman</option>
+                                            <option value="zarqa">Zarqa</option>
+                                            <option value="irbid">Irbid</option>
+                                            <option value="jerash">Jerash</option>
+                                            <option value="ajloun">Ajloun</option>
+                                            <option value="madaba">Madaba</option>
+                                            <option value="mafraq">Mafraq</option>
+                                            <option value="slat">Al-Salt</option>
+                                            <option value="karak">Al-Karak</option>
+                                            <option value="ma'an">Ma'an</option>
+                                            <option value="tafilah">Tafilah</option>
+                                            <option value="aqaba">Aqaba</option>
+                                        </select>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color att">Email:</th>
+                                <th class="val">
+                                    <input style="border: none;" type="email" id="email" name="email" placeholder="e-mail">
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color att"> Phone No:</th>
+                                <th class="val">
+                                    <input style="border: none;" type="text" id="phone" name="phone-number" placeholder="phone number">
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color att">Base Pay:</th>
+                                <th class="val">
+                                    <select name="sal" style="border: none;">
+                                            <option value="400">400 JD</option>
+                                            <option value="420">420 JD</option>
+                                            <option value="440">440 JD</option>
+                                            <option value="460">460 JD</option>
+                                            <option value="480">480 JD</option>
+                                            <option value="500">500 JD</option>
+                                            <option value="520">520 JD</option>
+                                            <option value="540">540 JD</option>
+                                            <option value="560">560 JD</option>
+                                            <option value="580">580 JD</option>
+                                            <option value="600">600 JD</option>
+                                            <option value="620">620 JD</option>
+                                        </select>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color att">Employement:</th>
+                                <th class="val">
+                                    <form action="/action_page.php">
+                                        <input style="border: none;" type="date" id="birthday" name="birthday">
+                                    </form>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color att">Rating:</th>
+                                <th class="val">
+                                    <select name="rating" style="border: none;">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- end of the all personal section  -->
+
+                    <!-- beginning of the salary log section  -->
+                    <div class="salary-log">
+                        <table class="main-color month-sal">
+                            <tr>
+                                <th class="secondary-background-color month">July</th>
+                                <th class="sal">500 JD</th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color month">August</th>
+                                <th class="sal">500 JD</th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color month">September</th>
+                                <th class="sal">500 JD</th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color month">October</th>
+                                <th class="sal">500 JD</th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color month">November</th>
+                                <th class="sal">500 JD</th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color month">December</th>
+                                <th class="sal">500 JD</th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color month">January</th>
+                                <th class="sal">500 JD</th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color month">February</th>
+                                <th class="sal">500 JD</th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color month">March</th>
+                                <th class="sal">500 JD</th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color month">April</th>
+                                <th class="sal">500 JD</th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color month">May</th>
+                                <th class="sal">500 JD</th>
+                            </tr>
+                            <tr>
+                                <th class="secondary-background-color month">June</th>
+                                <th class="sal">500 JD</th>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- end of the salary log section  -->
+
+                </div>
+
+                <!-- end of the inforamtion section -->
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
