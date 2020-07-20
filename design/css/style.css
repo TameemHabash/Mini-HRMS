@@ -632,10 +632,10 @@ body {
 }
 
 .details-box .details-box-header .header2 .quantity {
-    width: 27px;
+    width: 40px;
     height: 15px;
     font-size: 13px;
-    margin-left: 650px;
+    margin-left: 665px;
     border: none;
     cursor: pointer;
 }
@@ -669,7 +669,7 @@ body {
 .details-box .info-section {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     margin-top: 10px
 }
 
@@ -705,6 +705,7 @@ body {
 }
 
 .details-box .info-section .all-personal .show-more {
+    width: 90px;
     background-color: #3B86FF;
     color: #FFF;
     padding: 5px 10px;
@@ -716,8 +717,12 @@ body {
     border: none;
     outline: none;
     font-size: 13px;
-    margin-left: 10px;
+    margin: 5px 0 5px 100px;
     cursor: pointer
+}
+
+.details-box .info-section .all-personal .show-more:hover {
+    opacity: .7
 }
 
 .details-box .info-section .att-val .att,
