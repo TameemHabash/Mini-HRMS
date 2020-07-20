@@ -21,6 +21,8 @@ import { EmployeesPageComponent } from './in-app/employees-page/employees-page.c
 import { EmployeeComponent } from './in-app/employees-page/employee/employee.component';
 import { EmployeeDetailsPageComponent } from './in-app/employees-page/employee-details-page/employee-details-page.component';
 import { StatisticsPageComponent } from './in-app/statistics-page/statistics-page.component';
+import { AddEmployeeComponent } from './in-app/employees-page/add-employee/add-employee.component';
+import { CreateDepartmentComponent } from './in-app/departments-page/create-department/create-department.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { StatisticsPageComponent } from './in-app/statistics-page/statistics-pag
     EmployeesPageComponent,
     EmployeeComponent,
     EmployeeDetailsPageComponent,
-    StatisticsPageComponent
+    StatisticsPageComponent,
+    AddEmployeeComponent,
+    CreateDepartmentComponent
   ],
   imports: [
     BrowserModule,
