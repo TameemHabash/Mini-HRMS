@@ -1,27 +1,45 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar class="navbar__title">EMPLOYÈRA</mat-toolbar>
+    <mat-nav-list class="items-list">
+      <a mat-list-item href="#" class="items-list__item"><span class="material-icons text-center items-list__icon">
+          home
+        </span>&nbsp; Home</a>
+      <a mat-list-item href="#" class="items-list__item"><span class="material-icons text-center items-list__icon">
+          supervised_user_circle
+        </span>&nbsp; Employees</a>
+      <a mat-list-item href="#" class="items-list__item"><span class="material-icons text-center items-list__icon">
+          apartment
+        </span>&nbsp; Departments</a>
+      <a mat-list-item href="#" class="items-list__item"><span class="material-icons text-center items-list__icon">
+          receipt
+        </span>&nbsp; Absences</a>
+      <a mat-list-item href="#" class="items-list__item"><i class="material-icons text-center items-list__icon">
+          bar_chart
+        </i>&nbsp; Statistics</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
+  <mat-sidenav-content class="">
+    <mat-toolbar color="" class="bg-white app-main-color d-flex justify-content-between">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Mini-HRMS</span>
+      <span *ngIf="!(isHandset$ | async)">&nbsp; </span>
+      <app-hr-details class=""></app-hr-details>
     </mat-toolbar>
     <!-- Add Content Here -->
+
+    <!-- <div class="dropdown">
+      <button class="btn btn-secondary" type="button" id="">
+        asfasf
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </div> -->
   </mat-sidenav-content>
 </mat-sidenav-container>

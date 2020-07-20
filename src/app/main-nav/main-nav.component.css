@@ -3,15 +3,53 @@
 }
 
 .sidenav {
-  width: 200px;
+  width: 273px;
+  background-color: #43425D;
 }
 
-.sidenav .mat-toolbar {
-  background: inherit;
-}
+.sidenav .mat-toolbar {}
+
 
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.navbar__title {
+  background-color: #3C3B54;
+  color: #FFF;
+  letter-spacing: 5px;
+  cursor: pointer;
+}
+
+.navbar__title:hover {
+  color: #ac99b2;
+}
+
+.items-list {
+  color: #FFFFFF;
+  letter-spacing: 2px;
+}
+
+.active-tab {
+  background-color: #3c3b54 !important;
+  border-left: 2px solid #A3A0FB !important;
+  color: #d9b9e6 !important;
+  font-weight: 500;
+}
+
+.items-list__item {
+  transition: all ease-in-out .15s;
+  color: #FFFFFF;
+
+}
+
+.items-list__icon {
+  color: #a883b3;
+}
+
+.items-list__item:hover {
+  background-color: #3C3B54;
+  border-left: 2px solid #A3A0FB;
 }

@@ -1,0 +1,12 @@
+<div class="rounded-circle hr-img">
+  <img src="../../assets/imgs/00.png" alt="HR" class="w-100 h-100" (click)="onShow($event)">
+</div>
+<div *ngIf="show" class="hr-datials shadow bg-white rounded bg-white d-felx flex-column center"
+  (click)="$event.stopPropagation()">
+  <p class="text-white w-100 text-center app-bg-main">ALi AlBanna</p>
+  <code class="app-main-color px-2">ali.banna@gmail.com</code>
+  <button class="app-secondary-color remove-button-styling w-100 d-flex center">log out &nbsp; <span
+      class="material-icons">
+      exit_to_app
+    </span></button>
+</div>

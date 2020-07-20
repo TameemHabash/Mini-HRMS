@@ -1,0 +1,42 @@
+.hr-img {
+  width: 32px;
+  height: 35px;
+  overflow: hidden;
+}
+
+.hr-datials {
+  position: fixed;
+  min-height: 131px;
+  min-width: 127px;
+  overflow: hidden;
+  top: 3.2rem;
+  right: 0.5rem;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0;
+}
+
+.hr-datials>* {
+  margin: .1rem;
+  padding: 0;
+  letter-spacing: 2px;
+  display: block;
+}
+
+.hr-datials>p {
+  border: #FFF solid 1rem;
+  border-radius: 0 1rem 0 1rem;
+}
+
+.hr-datials>button {
+  transition: ease-in-out .1s;
+  letter-spacing: 0;
+}
+
+.hr-datials>button:hover {
+  box-shadow: 0px 1px 11px 0px rgba(0, 0, 0, 0.3);
+  background-color: rgba(69, 54, 92, 0.5);
+  color: #ffffff;
+  font-weight: 500;
+
+}
