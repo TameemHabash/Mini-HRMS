@@ -23,6 +23,7 @@ import { EmployeeDetailsPageComponent } from './in-app/employees-page/employee-d
 import { StatisticsPageComponent } from './in-app/statistics-page/statistics-page.component';
 import { AddEmployeeComponent } from './in-app/employees-page/add-employee/add-employee.component';
 import { CreateDepartmentComponent } from './in-app/departments-page/create-department/create-department.component';
+import { DepartmentComponent } from './in-app/departments-page/department/department.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CreateDepartmentComponent } from './in-app/departments-page/create-depa
     EmployeeDetailsPageComponent,
     StatisticsPageComponent,
     AddEmployeeComponent,
-    CreateDepartmentComponent
+    CreateDepartmentComponent,
+    DepartmentComponent
   ],
   imports: [
     BrowserModule,
