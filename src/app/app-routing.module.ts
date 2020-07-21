@@ -14,9 +14,9 @@ import { AddEmployeeComponent } from './in-app/employees-page/add-employee/add-e
 
 
 const routes: Routes = [
-  { path: '/login', component: LoginPageComponent },
+  { path: 'login', component: LoginPageComponent },
   {
-    path: '/HR', component: MainNavComponent, children: [
+    path: 'HR', component: MainNavComponent, children: [
       { path: 'home', component: HomePageComponent },
       {
         path: 'employees', component: EmployeesPageComponent, children: [
@@ -35,7 +35,7 @@ const routes: Routes = [
       { path: './**', redirectTo: '/HR/not-found' }
     ]
   },
-  { path: '/not-found', component: PageNotFoundComponent },
+  { path: 'not-found', component: PageNotFoundComponent },
   { path: '', redirectTo: '/HR', pathMatch: 'full' },
   { path: '**', redirectTo: '/not-found' }
 
