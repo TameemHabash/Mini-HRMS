@@ -29,8 +29,10 @@
       <span *ngIf="!(isHandset$ | async)">&nbsp; </span>
       <app-hr-details class=""></app-hr-details>
     </mat-toolbar>
-    <!-- Add Content Here -->
-    <router-outlet></router-outlet>
+    <div class="page-content">
+      <app-content-header></app-content-header>
+      <router-outlet></router-outlet>
+    </div>
     <!-- <div class="dropdown">
       <button class="btn btn-secondary" type="button" id="">
         asfasf
