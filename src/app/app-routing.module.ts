@@ -32,7 +32,7 @@ const routes: Routes = [
       },
       { path: 'statistics', component: StatisticsPageComponent },
       { path: 'not-found', component: PageNotFoundComponent },
-      { path: './**', redirectTo: '/HR/not-found' }
+      { path: '**', redirectTo: 'not-found' }
     ]
   },
   { path: 'not-found', component: PageNotFoundComponent },
