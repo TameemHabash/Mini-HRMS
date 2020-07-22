@@ -24,6 +24,7 @@ import { StatisticsPageComponent } from './in-app/statistics-page/statistics-pag
 import { AddEmployeeComponent } from './in-app/employees-page/add-employee/add-employee.component';
 import { CreateDepartmentComponent } from './in-app/departments-page/create-department/create-department.component';
 import { DepartmentComponent } from './in-app/departments-page/department/department.component';
+import { ContentHeaderComponent } from './in-app/content-header/content-header.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { DepartmentComponent } from './in-app/departments-page/department/depart
     StatisticsPageComponent,
     AddEmployeeComponent,
     CreateDepartmentComponent,
-    DepartmentComponent
+    DepartmentComponent,
+    ContentHeaderComponent
   ],
   imports: [
     BrowserModule,

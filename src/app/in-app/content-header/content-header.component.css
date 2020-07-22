@@ -1,0 +1,29 @@
+.page-content-header {
+  padding: 5px 0 0 20px;
+  height: auto;
+}
+
+.page-content-header .title {
+  /* width: 300px; */
+}
+
+.page-content-header .title h3 {
+  font-weight: normal;
+  margin-top: 0
+}
+
+.page-content-header .search-box .search-field {
+  margin-top: 7px;
+  overflow: hidden;
+  min-width: 20rem;
+  height: 25px;
+  text-align: center;
+  border: none;
+  border-radius: .5rem;
+}
+
+/* .page-content-header .search-box .search-btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+} */
