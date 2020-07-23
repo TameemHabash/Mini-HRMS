@@ -1,0 +1,68 @@
+.home-container {
+  margin: .5rem 7rem 0rem 7rem;
+}
+
+.app-card {
+  margin: 3rem;
+  width: 20rem;
+  height: 11.25rem;
+  cursor: pointer;
+  transition: box-shadow ease-in-out 0s;
+}
+
+.app-card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.app-card:hover>.app-card-footer {
+  color: #43425D;
+}
+
+mat-card-header {
+  align-items: center;
+}
+
+mat-card-header>div {
+  display: table;
+}
+
+.app-card-title {
+  font-size: 1.2em;
+  color: rgb(87, 86, 86);
+}
+
+.app-card i {
+  font-size: 2em;
+  line-height: 1em;
+}
+
+mat-card-content {
+  letter-spacing: 2px;
+  margin: 1.6rem auto 0 auto;
+  height: 65px;
+}
+
+.card-content {
+  font-size: 1.1em;
+  color: rgb(145, 143, 143);
+  display: flex;
+  line-height: 2em;
+
+}
+
+.card-content__emps-num {
+  font-size: 4em;
+}
+
+.statisics-icon span {
+  /* color: cornflowerblue; */
+  color: #43425D;
+  font-size: 7.5em !important;
+  line-height: 2rem;
+  margin: 0 auto;
+}
+
+.app-card-footer {
+  /* font-size: 1.5em; */
+  margin: 0 auto;
+}

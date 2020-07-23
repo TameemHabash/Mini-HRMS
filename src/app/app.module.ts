@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 import { HrDetailsComponent } from './main-nav/hr-details/hr-details.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -25,6 +26,7 @@ import { AddEmployeeComponent } from './in-app/employees-page/add-employee/add-e
 import { CreateDepartmentComponent } from './in-app/departments-page/create-department/create-department.component';
 import { DepartmentComponent } from './in-app/departments-page/department/department.component';
 import { ContentHeaderComponent } from './in-app/content-header/content-header.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { ContentHeaderComponent } from './in-app/content-header/content-header.c
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

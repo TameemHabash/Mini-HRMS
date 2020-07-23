@@ -13,7 +13,7 @@
           apartment
         </span>&nbsp; Departments</a>
       <a mat-list-item href="#" class="items-list__item"><span class="material-icons text-center items-list__icon">
-          receipt
+          pending_actions
         </span>&nbsp; Absences</a>
       <a mat-list-item href="#" class="items-list__item"><i class="material-icons text-center items-list__icon">
           bar_chart
@@ -29,19 +29,10 @@
       <span *ngIf="!(isHandset$ | async)">&nbsp; </span>
       <app-hr-details class=""></app-hr-details>
     </mat-toolbar>
+    <!-- content here -->
     <div class="page-content">
       <app-content-header></app-content-header>
       <router-outlet></router-outlet>
     </div>
-    <!-- <div class="dropdown">
-      <button class="btn btn-secondary" type="button" id="">
-        asfasf
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </div>
-    </div> -->
   </mat-sidenav-content>
 </mat-sidenav-container>
