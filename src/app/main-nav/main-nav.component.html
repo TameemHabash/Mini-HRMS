@@ -3,19 +3,24 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar class="navbar__title">EMPLOYÈRA</mat-toolbar>
     <mat-nav-list class="items-list">
-      <a mat-list-item href="#" class="items-list__item"><span class="material-icons text-center items-list__icon">
+      <a mat-list-item href="#" class="items-list__item" routerLink="./home" routerLinkActive="active-tab"><span
+          class="material-icons text-center items-list__icon">
           home
         </span>&nbsp; Home</a>
-      <a mat-list-item href="#" class="items-list__item"><span class="material-icons text-center items-list__icon">
+      <a mat-list-item href="#" class="items-list__item" routerLink="./employees" routerLinkActive="active-tab"><span
+          class="material-icons text-center items-list__icon">
           supervised_user_circle
         </span>&nbsp; Employees</a>
-      <a mat-list-item href="#" class="items-list__item"><span class="material-icons text-center items-list__icon">
+      <a mat-list-item href="#" class="items-list__item" routerLink="./departments" routerLinkActive="active-tab"><span
+          class="material-icons text-center items-list__icon">
           apartment
         </span>&nbsp; Departments</a>
-      <a mat-list-item href="#" class="items-list__item"><span class="material-icons text-center items-list__icon">
+      <a mat-list-item href="#" class="items-list__item" routerLink="./absences" routerLinkActive="active-tab"><span
+          class="material-icons text-center items-list__icon">
           pending_actions
         </span>&nbsp; Absences</a>
-      <a mat-list-item href="#" class="items-list__item"><i class="material-icons text-center items-list__icon">
+      <a mat-list-item href="#" class="items-list__item" routerLink="./statistics" routerLinkActive="active-tab"><i
+          class="material-icons text-center items-list__icon">
           bar_chart
         </i>&nbsp; Statistics</a>
     </mat-nav-list>
