@@ -5,15 +5,14 @@ import { Department } from '../models/department';
   providedIn: 'root'
 })
 export class DepartmentService implements OnInit {
-  private departments: Department[];
+  private departments: Department[] = [
+    new Department(1, 'programming', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis consectetur deserunt fuga aperiam sequi rem molestias provident obcaecati doloribus'),
+    new Department(2, 'QA', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis consectetur deserunt fuga aperiam sequi rem molestias provident obcaecati doloribus'),
+    new Department(3, 'deplooying', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis consectetur deserunt fuga aperiam sequi rem molestias provident obcaecati doloribus')
+  ];
 
   constructor() { }
   ngOnInit() {
-    this.departments = [
-      new Department(1, 'programming', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis consectetur deserunt fuga aperiam sequi rem molestias provident obcaecati doloribus'),
-      new Department(2, 'QA', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis consectetur deserunt fuga aperiam sequi rem molestias provident obcaecati doloribus'),
-      new Department(3, 'deplooying', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis consectetur deserunt fuga aperiam sequi rem molestias provident obcaecati doloribus')
-    ]
   }
   getDepartments() {
     return this.departments.slice();
