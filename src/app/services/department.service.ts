@@ -1,5 +1,4 @@
 import { Injectable, OnInit } from '@angular/core';
-import { DepartmentsPageComponent } from '../in-app/departments-page/departments-page.component';
 import { Department } from '../models/department';
 
 @Injectable({
