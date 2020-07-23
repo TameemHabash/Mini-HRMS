@@ -32,6 +32,7 @@ const routes: Routes = [
       },
       { path: 'statistics', component: StatisticsPageComponent },
       { path: 'not-found', component: PageNotFoundComponent },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', redirectTo: 'not-found' }
     ]
   },
