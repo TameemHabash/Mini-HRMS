@@ -3,6 +3,7 @@
 html,
 body {
   height: 100%;
+  background-color: #ededf0 !important;
 }
 
 body {
@@ -36,6 +37,10 @@ body {
 
 .app-secondary-color {
   color: #c2c2c7;
+}
+
+.app-3rd-color {
+  color: #7c7c83;
 }
 
 /* .container {
@@ -206,4 +211,8 @@ body {
 
 .text-error {
   color: #D32F2F;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
