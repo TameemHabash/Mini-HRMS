@@ -1,10 +1,12 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Department } from '../models/department';
 import { SectorService } from './sector.service';
+import { throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class DepartmentService {
+  activeDepartmentID: number = -1;
   constructor(private sectorService: SectorService) { }
   private departments: Department[] = [
     // here i will get the deparments from the server without it's sectors
@@ -39,4 +41,24 @@ export class DepartmentService {
     this.departments.push(newDepartment);
     return this.getDepartments();
   }
+
+  setDepartmentName(deptID: number, newName: string) {
+    //here will be the PUT request from  the server 
+    // here will add the obsarvable fire for this change
+    const targetDepartmentIndex = this.departments.findIndex((dept) => dept.ID === deptID);
+    if (targetDepartmentIndex === -1) {
+      throw new Error(`department ID '${deptID} is not exsit`);
+    }
+    this.departments[targetDepartmentIndex].name = newName;
+  }
+  setDepartmentDescription(deptID: number, newDescription: string) {
+    //here will be the PUT request from  the server 
+    // here will add the obsarvable fire for this change
+    const targetDepartmentIndex = this.departments.findIndex((dept) => dept.ID === deptID);
+    if (targetDepartmentIndex === -1) {
+      throw new Error(`department ID '${deptID} is not exsit`);
+    }
+    this.departments[targetDepartmentIndex].description = newDescription;
+  }
+
 }

@@ -13,9 +13,21 @@ export class Department {
     get name() {
         return this._name;
     }
+    set name(name: string) {
+        if (name !== '') {
+            this.name = name;
+        }
+    }
+
     get description() {
         return this._description;
     }
+    set description(description: string) {
+        if (description !== '') {
+            this.description = description;
+        }
+    }
+
     get employeesNum() {
         return this._employeesNum;
     }
