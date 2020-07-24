@@ -1,1 +1,20 @@
-<p>department works!</p>
+<mat-card class="d-flex flex-column justify-content-center cursor-pointer">
+  <mat-card-header class="col-12">
+    <mat-card-title class="app-card-title text-uppercase app-main-color">{{department.name}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="col-12">
+    <p class="text-muted">
+      {{department.description}}
+    </p>
+    <div class="row text-center">
+      <div class="dept-details text-wrap col-lg-4 col-md-5 col-sm-6 text-center mt-2 app-main-color rounded-lg">
+        {{ department.sectors.length }}<span class="d-block app-3rd-color mt-2">Sectors</span>
+      </div>
+      <div class="col-lg-3 col-md-2"></div>
+      <p class="dept-details col-lg-4 col-md-5 col-sm-6 text-center mt-2 app-main-color">
+        {{department.employeesNum}}<br><span class="d-block app-3rd-color mt-2">Employees</span>
+      </p>
+    </div>
+  </mat-card-content>
+  <span mat-card-footer class="app-secondary-color app-card-footer">Click To edit</span>
+</mat-card>

@@ -1,2 +1,6 @@
-<p>departments-page works!</p>
+<div class="departments-container row h-100">
+  <div class="col-lg-6 col-md-6 col-sm-12 d-flex center" *ngFor="let dept of departments">
+    <app-department class="bg-white m-5" [department]="dept"></app-department>
+  </div>
+</div>
 <router-outlet></router-outlet>

@@ -1,0 +1,24 @@
+mat-card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+mat-card:hover>.app-card-footer {
+  color: #43425D;
+}
+
+.dept-details {
+  font-size: 2em;
+}
+
+div.dept-details {
+  transition: ease-in .1s;
+}
+
+div.dept-details:hover {
+  box-shadow: 1px 22px 25px 0px rgba(81, 61, 102, 0.25);
+  ;
+}
+
+.dept-details>span {
+  font-size: .6em;
+}
