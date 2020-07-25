@@ -1,0 +1,32 @@
+<div class="sector-dialog d-flex flex-column align-content-between justify-content-center rounded">
+  <div mat-dialog-title class="d-flex center w-100 mx-2">
+    <div class="d-flex flex-column w-75">
+      <mat-form-field appearance="fill" class="m-1">
+        <mat-label>sector name</mat-label>
+        <input matInput #sectorName>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="m-1">
+        <mat-label>Sector Description</mat-label>
+        <textarea matInput #sectorDescription></textarea>
+      </mat-form-field>
+    </div>
+    <button mat-icon-button (click)="onCreateSector(sectorName.value,sectorDescription.value)">
+      <i class="material-icons app-main-color add-sector-btn">add_box</i>
+    </button>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <div class="d-flex flex-column" *ngFor="let sector of sectors">
+      <div class="sector-container my-1 mx-2 w-100">
+        <p class="sector-name m-0">{{sector.name}}</p>
+        <button class="" mat-icon-button (click)="onDeletSector(sector.ID)">
+          <i class="material-icons text-danger remove-sector-btn">remove_circle</i>
+        </button>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+  </mat-dialog-content>
+  <mat-divider></mat-divider>
+</div>
+<mat-dialog-actions align="end" class="mt-5 m-1">
+  <button mat-raised-button mat-dialog-close class="app-bg-main text-white">Done</button>
+</mat-dialog-actions>

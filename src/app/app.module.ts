@@ -31,6 +31,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { from } from 'rxjs';
+import { SectorsDialogComponent } from './in-app/departments-page/sectors-dialog/sectors-dialog.component';
 
 
 const material = [
@@ -64,10 +65,12 @@ const material = [
     CreateDepartmentComponent,
     DepartmentComponent,
     ContentHeaderComponent,
-    DepartmentDialogComponent
+    DepartmentDialogComponent,
+    SectorsDialogComponent
   ],
   entryComponents: [
-    DepartmentDialogComponent
+    DepartmentDialogComponent,
+    SectorsDialogComponent
   ],
   imports: [
     BrowserModule,

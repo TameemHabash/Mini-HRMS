@@ -1,0 +1,10 @@
+.sector-container {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+
+.add-sector-btn {
+  font-size: 3rem;
+}
