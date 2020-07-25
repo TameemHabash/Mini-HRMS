@@ -12,18 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Architects+Daughter&family=Chewy&family=Noto+Sans+SC&display=swap" rel="stylesheet">
     <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Open+Sans:400,800'>
-
-
-    <!-- <script>
-            function myFunction() {
-                var x = document.getElementsByClassName("hidden-att");
-                if (x.style.display === "none") {
-                    x.style.display = "block";
-                } else {
-                    x.style.display = "none";
-                }
-            }
-        </script> -->
 </head>
 
 <body>
@@ -99,7 +87,7 @@
                         </div>
                     </div>
                     <div class="header2">
-                        <input type="number" class="main-color quantity" min="1" max="5">
+                        <input type="number" class="main-color quantity" min="5" max="400" step="5" placeholder="5">
                         <button class="add-raise-btn">Add Raise</button>
                     </div>
                 </div>
@@ -115,14 +103,14 @@
                             <tr>
                                 <th class="secondary-background-color att">ID:</th>
                                 <th class="val">
-                                    <input style="border: none;" type="text" id="id" name="id" placeholder="ID">
+                                    <input style="border: none;" type="text" id="emp-id" name="id" placeholder="ID">
                                 </th>
 
                             </tr>
                             <tr>
                                 <th class="secondary-background-color att">Dept.ID / Name:</th>
                                 <th class="val">
-                                    <select name="dept-no" style="border: none;">
+                                    <select name="dept-no" id="dept-no" style="border: none;">
                                         <option value="1">1 / Programming</option>
                                         <option value="2">2 / Accounting</option>
                                         <option value="3">3 / Sales</option>
@@ -143,7 +131,7 @@
                             <tr>
                                 <th class="secondary-background-color att">Citizenship:</th>
                                 <th class="val">
-                                    <select name="status" id="status" style="border: none;">
+                                    <select name="citizenship" id="citizenship" style="border: none;">
                                             <option value="other">Other</option>
                                             <option value="jordanian">Jordanian</option>
                                         </select>
@@ -159,15 +147,17 @@
                                 <th class="secondary-background-color att">Gender:</th>
                                 <th class="val">
                                     <select name="gender" style="border: none;">
-                                            <option value="Male">Male</option>
-                                            <option value="female">Female</option>
-                                        </select>
+                                        <option value="Male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
                                 </th>
                             </tr>
                             <tr>
                                 <th class="secondary-background-color att">Birth Date: </th>
                                 <th class="val">
-
+                                    <form action="/action_page.php">
+                                        <input style="border: none;" type="date" id="birthday" name="birthday">
+                                    </form>
                                 </th>
                             </tr>
                             <tr>
@@ -233,7 +223,7 @@
                                 <th class="secondary-background-color att">Employement:</th>
                                 <th class="val">
                                     <form action="/action_page.php">
-                                        <input style="border: none;" type="date" id="birthday" name="birthday">
+                                        <input style="border: none;" type="date" id="Employement" name="employment">
                                     </form>
                                 </th>
                             </tr>
@@ -255,6 +245,7 @@
                                 </th>
                             </tr>
                         </table>
+                        <button class="show-more" id="show-more">Show more</button>
                     </div>
                     <!-- end of the all personal section  -->
 
