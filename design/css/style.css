@@ -669,7 +669,8 @@ body {
 .details-box .info-section {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: space-between;
     margin-top: 10px
 }
 
@@ -730,8 +731,9 @@ body {
     color: gray
 }
 
-.details-box .salary-log {
-    margin-left: 110px
+.details-box .info-section .salary-log,
+.details-box .info-section .all-personal {
+    margin: 0 100px
 }
 
 
