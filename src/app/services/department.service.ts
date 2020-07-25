@@ -42,23 +42,15 @@ export class DepartmentService {
     return this.getDepartments();
   }
 
-  setDepartmentName(deptID: number, newName: string) {
-    //here will be the PUT request from  the server 
-    // here will add the obsarvable fire for this change
+  setDepartmentAttributes(deptID: number, newName: string, newDescription: string) {
     const targetDepartmentIndex = this.departments.findIndex((dept) => dept.ID === deptID);
     if (targetDepartmentIndex === -1) {
       throw new Error(`department ID '${deptID} is not exsit`);
     }
     this.departments[targetDepartmentIndex].name = newName;
-  }
-  setDepartmentDescription(deptID: number, newDescription: string) {
+    this.departments[targetDepartmentIndex].description = newDescription;
     //here will be the PUT request from  the server 
     // here will add the obsarvable fire for this change
-    const targetDepartmentIndex = this.departments.findIndex((dept) => dept.ID === deptID);
-    if (targetDepartmentIndex === -1) {
-      throw new Error(`department ID '${deptID} is not exsit`);
-    }
-    this.departments[targetDepartmentIndex].description = newDescription;
   }
 
 }
