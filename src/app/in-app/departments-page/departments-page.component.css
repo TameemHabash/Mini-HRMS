@@ -1,3 +1,11 @@
 .departments-container {
   margin: .5rem 7% 0rem 7%;
 }
+
+.add-dept-btn i {
+  font-size: 2rem;
+}
+
+.page-title {
+  letter-spacing: 2px;
+}
