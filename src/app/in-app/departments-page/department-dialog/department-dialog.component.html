@@ -1,11 +1,11 @@
 <div class="dept-dialog d-flex flex-column align-content-between justify-content-center rounded">
-  <mat-form-field appearance="fill" class="m-4">
+  <mat-form-field appearance="fill" class="m-4" hideRequiredMarker>
     <mat-label>Name</mat-label>
-    <input matInput #departmentName>
+    <input matInput #departmentName required>
   </mat-form-field>
-  <mat-form-field appearance="fill" class="m-4">
+  <mat-form-field appearance="fill" class="m-4" hideRequiredMarker>
     <mat-label>Description</mat-label>
-    <textarea matInput #departmentDescription></textarea>
+    <textarea matInput #departmentDescription required></textarea>
   </mat-form-field>
   <mat-dialog-actions class="mb-3 d-flex justify-content-around">
     <button mat-raised-button mat-dialog-close class="app-bg-main text-white">Cancel</button>

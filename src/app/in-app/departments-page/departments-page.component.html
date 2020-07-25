@@ -1,10 +1,11 @@
 <app-content-header>
   <h2 pageTitle class="page-title app-main-color font-weight-bold text-uppercase">Departments</h2>
-  <button btn mat-icon-button class="add-dept-btn app-main-color mt-2 mr-2">
+  <button btn mat-icon-button class="add-dept-btn app-main-color mt-2 mr-2" (click)="onAddDepartment()">
     <i class="material-icons">add_circle</i></button>
 </app-content-header>
 <div class="departments-container row h-100">
-  <div class="col-lg-6 col-md-6 col-sm-12 d-flex center" *ngFor="let dept of departments">
+  <div class="col-lg-6 col-md-6 col-sm-12 d-flex center" *ngFor="let dept of departments"
+    (click)="onShowDepartmentDetails(dept)">
     <app-department class="bg-white m-5" [department]="dept"></app-department>
   </div>
 </div>
