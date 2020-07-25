@@ -49,6 +49,16 @@ export class SectorService {
     // here will also fire the observable for adding a sector
   }
 
+  deleteSector(departmentID: number, sectorID: number) {
+    const targetSectorsIndex = this.outSectors.findIndex((dept) => dept.departmentID === departmentID);
+    if (targetSectorsIndex === -1) {
+      throw new Error(`Department of ID: '${departmentID}' is not exist`);
+    }
+    let targetSectorIndex = this.outSectors[targetSectorsIndex].sectors.findIndex((sect) => sect.ID === sectorID);
+    this.outSectors[targetSectorsIndex].sectors.splice(targetSectorIndex, 1);
+    // here i will send the delete request
+    // here will also fire the observable for removing a sector
+  }
 
 
   // editSectorName(newName: string) {

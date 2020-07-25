@@ -17,6 +17,7 @@ export class DepartmentsPageComponent implements AfterContentInit {
   }
   onAddDepartment() {
     this.dialog.open(DepartmentDialogComponent);
+    //need to subscribe to department observable
   }
   onShowDepartmentDetails(department) {
     this.dialog.open(DepartmentDialogComponent, { data: department });
