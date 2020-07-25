@@ -11,8 +11,8 @@ export class DepartmentDialogComponent implements OnInit, AfterViewInit {
   selectedDepartment: Department = null;
   selectedDepartmentLastName: string = '';
   selectedDepartmentLastDescription: string = '';
-  @ViewChild('#departmentName', { static: true }) DepartmentNameElement: ElementRef;
-  @ViewChild('#departmentDescription', { static: true }) DepartmentDescriptionElement: ElementRef;
+  @ViewChild('departmentName', { static: true }) DepartmentNameElement: ElementRef;
+  @ViewChild('departmentDescription', { static: true }) DepartmentDescriptionElement: ElementRef;
   constructor(@Inject(MAT_DIALOG_DATA) public recivedDept: Department, private deptService: DepartmentService) { }
 
   ngOnInit(): void {
@@ -25,17 +25,17 @@ export class DepartmentDialogComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     if (this.selectedDepartment) {
       this.DepartmentNameElement.nativeElement.value = this.selectedDepartment.name;
-      this.DepartmentNameElement.nativeElement.value = this.selectedDepartment.description;
+      this.DepartmentDescriptionElement.nativeElement.value = this.selectedDepartment.description;
     }
   }
   onUpdateDept(): void {
-    if (this.selectedDepartmentLastName !== this.DepartmentNameElement.nativeElement.value || this.selectedDepartmentLastDescription !== this.DepartmentNameElement.nativeElement.value) {
-      this.deptService.setDepartmentAttributes(this.selectedDepartment.ID, this.DepartmentNameElement.nativeElement.value, this.DepartmentNameElement.nativeElement.value);
+    if (this.selectedDepartmentLastName !== this.DepartmentNameElement.nativeElement.value || this.selectedDepartmentLastDescription !== this.DepartmentDescriptionElement.nativeElement.value) {
+      this.deptService.setDepartmentAttributes(this.selectedDepartment.ID, this.DepartmentNameElement.nativeElement.value, this.DepartmentDescriptionElement.nativeElement.value);
     }
   }
   onAddDept() {
-    if (this.DepartmentNameElement.nativeElement.value !== '' && this.DepartmentNameElement.nativeElement.value !== '') {
-      this.deptService.createDepartment(-1, this.DepartmentNameElement.nativeElement.value, this.DepartmentNameElement.nativeElement.value);
+    if (this.DepartmentNameElement.nativeElement.value !== '' && this.DepartmentDescriptionElement.nativeElement.value !== '') {
+      this.deptService.createDepartment(-1, this.DepartmentNameElement.nativeElement.value, this.DepartmentDescriptionElement.nativeElement.value);
     }
   }
 }

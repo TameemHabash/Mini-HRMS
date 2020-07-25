@@ -1,4 +1,4 @@
-<div class="dept-dialog bg-white shadow d-flex flex-column align-content-between justify-content-center rounded">
+<div class="dept-dialog d-flex flex-column align-content-between justify-content-center rounded">
   <mat-form-field appearance="fill" class="m-4">
     <mat-label>Name</mat-label>
     <input matInput #departmentName>
@@ -10,6 +10,6 @@
   <mat-dialog-actions class="mb-3 d-flex justify-content-around">
     <button mat-raised-button mat-dialog-close class="app-bg-main text-white">Cancel</button>
     <button mat-raised-button class="app-bg-main text-white"
-      (click)="selectedDepartment? onAddDept():onUpdateDept()">{{ selectedDepartment?'Add' : 'Update' }}</button>
+      (click)="selectedDepartment? onUpdateDept():onAddDept()">{{ selectedDepartment?'Update' : 'Add' }}</button>
   </mat-dialog-actions>
 </div>
