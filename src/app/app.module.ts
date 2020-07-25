@@ -26,7 +26,25 @@ import { AddEmployeeComponent } from './in-app/employees-page/add-employee/add-e
 import { CreateDepartmentComponent } from './in-app/departments-page/create-department/create-department.component';
 import { DepartmentComponent } from './in-app/departments-page/department/department.component';
 import { ContentHeaderComponent } from './in-app/content-header/content-header.component';
+import { DepartmentDialogComponent } from './in-app/departments-page/department-dialog/department-dialog.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
 import { from } from 'rxjs';
+
+
+const material = [
+  MatToolbarModule,
+  MatButtonModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatListModule,
+  MatCardModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatDialogModule
+];
+
 
 @NgModule({
   declarations: [
@@ -45,19 +63,18 @@ import { from } from 'rxjs';
     AddEmployeeComponent,
     CreateDepartmentComponent,
     DepartmentComponent,
-    ContentHeaderComponent
+    ContentHeaderComponent,
+    DepartmentDialogComponent
+  ],
+  entryComponents: [
+    DepartmentDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatCardModule
+    ...material
   ],
   providers: [],
   bootstrap: [AppComponent]
