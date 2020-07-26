@@ -34,4 +34,7 @@ export class Department {
     get sectors() {
         return this._sectors.slice();
     }
+    set sectors(newSectorsList: Sector[]) {
+        this._sectors = newSectorsList;
+    }
 }
