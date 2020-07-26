@@ -19,17 +19,11 @@ const routes: Routes = [
     path: 'HR', component: MainNavComponent, children: [
       { path: 'home', component: HomePageComponent },
       {
-        path: 'employees', component: EmployeesPageComponent, children: [
-          { path: 'add-emp', component: AddEmployeeComponent }
-        ]
+        path: 'employees', component: EmployeesPageComponent
       },
       { path: 'employees/:id', component: EmployeeDetailsPageComponent },
       { path: 'absences', component: AbsencesPageComponent },
-      {
-        path: 'departments', component: DepartmentsPageComponent, children: [
-          { path: 'create-department', component: CreateDepartmentComponent }
-        ]
-      },
+      { path: 'departments', component: DepartmentsPageComponent },
       { path: 'statistics', component: StatisticsPageComponent },
       { path: 'not-found', component: PageNotFoundComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
