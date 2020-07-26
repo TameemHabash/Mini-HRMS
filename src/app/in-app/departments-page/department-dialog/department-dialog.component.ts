@@ -7,7 +7,7 @@ import { DepartmentService } from 'src/app/services/department.service';
   templateUrl: './department-dialog.component.html',
   styleUrls: ['./department-dialog.component.css']
 })
-export class DepartmentDialogComponent implements OnInit, AfterViewInit {
+export class DepartmentDialogComponent implements OnInit {
   selectedDepartment: Department = null;
   selectedDepartmentLastName: string = '';
   selectedDepartmentLastDescription: string = '';
@@ -21,13 +21,14 @@ export class DepartmentDialogComponent implements OnInit, AfterViewInit {
       this.selectedDepartmentLastName = this.selectedDepartment.name;
       this.selectedDepartmentLastDescription = this.selectedDepartment.description;
     }
-  }
-  ngAfterViewInit(): void {
+
     if (this.selectedDepartment) {
       this.DepartmentNameElement.nativeElement.value = this.selectedDepartment.name;
       this.DepartmentDescriptionElement.nativeElement.value = this.selectedDepartment.description;
     }
+
   }
+
   onUpdateDept(): void {
     if (this.selectedDepartmentLastName !== this.DepartmentNameElement.nativeElement.value || this.selectedDepartmentLastDescription !== this.DepartmentDescriptionElement.nativeElement.value) {
       this.deptService.setDepartmentAttributes(this.selectedDepartment.ID, this.DepartmentNameElement.nativeElement.value, this.DepartmentDescriptionElement.nativeElement.value);

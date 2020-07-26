@@ -9,7 +9,7 @@
   </mat-form-field>
   <mat-dialog-actions class="mb-3 d-flex justify-content-around">
     <button mat-raised-button mat-dialog-close class="app-bg-main text-white">Cancel</button>
-    <button mat-raised-button class="app-bg-main text-white"
+    <button mat-raised-button mat-dialog-close class="app-bg-main text-white"
       (click)="selectedDepartment? onUpdateDept():onAddDept()">{{ selectedDepartment?'Update' : 'Add' }}</button>
   </mat-dialog-actions>
 </div>
