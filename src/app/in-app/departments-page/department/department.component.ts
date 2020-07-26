@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Department } from 'src/app/models/department';
+import { Department } from 'src/app/classes/department';
 import { MatDialog } from '@angular/material/dialog';
 import { SectorsDialogComponent } from '../sectors-dialog/sectors-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';

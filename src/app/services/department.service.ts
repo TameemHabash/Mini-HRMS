@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Department } from '../models/department';
+import { Department } from '../classes/department';
 import { SectorService } from './sector.service';
 import { throwError } from 'rxjs';
 @Injectable({

@@ -1,4 +1,4 @@
-import { Sector } from './sector';
+import { Sector } from '../models/sector.model';
 export class Department {
     constructor(
         private _ID: number,

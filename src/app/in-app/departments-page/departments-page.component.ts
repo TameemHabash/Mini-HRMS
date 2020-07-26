@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { DepartmentService } from 'src/app/services/department.service';
-import { Department } from 'src/app/models/department';
+import { Department } from 'src/app/classes/department';
 import { MatDialog } from '@angular/material/dialog';
 import { DepartmentDialogComponent } from './department-dialog/department-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';

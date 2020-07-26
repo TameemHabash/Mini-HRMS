@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SectorService } from 'src/app/services/sector.service';
-import { Sector } from 'src/app/models/sector';
+import { Sector } from 'src/app/models/sector.model';
 @Component({
   selector: 'app-sectors-dialog',
   templateUrl: './sectors-dialog.component.html',

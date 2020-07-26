@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Sector } from '../models/sector';
+import { Sector } from '../models/sector.model';
 
 interface OutSectors {
   departmentID: number;
