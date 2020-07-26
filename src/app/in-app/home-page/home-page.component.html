@@ -4,7 +4,7 @@
 </app-content-header>
 <div class="home-container d-flex flex-wrap">
   <mat-card class=" app-card d-flex flex-column align-content-between">
-    <mat-card-header class="">
+    <mat-card-header class="" (click)="goTo('employees')">
       <div mat-card-avatar><i class="material-icons app-main-color">supervised_user_circle</i></div>
       <mat-card-title class="app-card-title text-uppercase">employees</mat-card-title>
     </mat-card-header>
@@ -16,7 +16,7 @@
     <span mat-card-footer class="app-secondary-color app-card-footer">Click for details</span>
   </mat-card>
 
-  <mat-card class="app-card d-flex flex-column align-content-between">
+  <mat-card class="app-card d-flex flex-column align-content-between" (click)="goTo('departments')">
     <mat-card-header class="">
       <div mat-card-avatar><i class="material-icons app-main-color">apartment</i></div>
       <mat-card-title class="app-card-title text-uppercase">departments</mat-card-title>
@@ -29,7 +29,7 @@
     <span mat-card-footer class="app-secondary-color app-card-footer">Click for details</span>
   </mat-card>
 
-  <mat-card class="app-card d-flex flex-column align-content-between">
+  <mat-card class="app-card d-flex flex-column align-content-between" (click)="goTo('absences')">
     <mat-card-header class="">
       <div mat-card-avatar><i class="material-icons app-main-color">pending_actions</i></div>
       <mat-card-title class="app-card-title text-uppercase">Absences</mat-card-title>
@@ -42,7 +42,7 @@
     <span mat-card-footer class="app-secondary-color app-card-footer">Click for details</span>
   </mat-card>
 
-  <mat-card class="app-card d-flex flex-column align-content-between">
+  <mat-card class="app-card d-flex flex-column align-content-between" (click)="goTo('statistics')">
     <mat-card-header class="">
       <div mat-card-avatar><i class="material-icons app-main-color">bar_chart</i></div>
       <mat-card-title class="app-card-title text-uppercase">statistics</mat-card-title>
