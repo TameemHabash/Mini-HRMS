@@ -53,4 +53,8 @@ export class DepartmentService {
     // here will add the obsarvable fire for this change
   }
 
+  getDepartmentByID(deptID: number) {
+    return this.departments.find((dept) => dept.ID === deptID);
+  }
+
 }
