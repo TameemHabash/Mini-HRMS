@@ -1,27 +1,15 @@
-.emp-content-box {
-  width: 400px;
-  height: 120px;
-  background-color: #FFF;
-  margin: 10px;
-  border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-  box-shadow: 0px 1px 11px 0px rgba(0, 0, 0, 0.1);
+.employee-container {
+  min-width: 300px !important;
+  position: relative;
 }
 
-.edit-btn {
-  background-color: transparent;
-  border: none;
-  float: right;
-  padding: 7px;
-  cursor: pointer;
+.action-container {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
-.edit-btn i {}
-
-.edit-btn:hover i {
+.btn:hover i {
   color: #ac99b2;
 }
 
@@ -33,29 +21,30 @@
 }
 
 .emp-id {
-  width: 70px;
-  height: 60px;
-  margin: 15px;
-  padding: 10px 0 10px 10px;
-  margin: 20px 3px 20px 20px;
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
+  width: 85px;
+  height: 85px;
 }
 
-.emp-content-box span {
+.emp-content-box p {
   margin: 3px;
   font-size: 12px;
   color: gray
 }
 
-.emp-info .emp-name {
-  font-size: 15px;
-  font-weight: bold;
-  margin: 13px 0;
-  color: #434343
+.emp-name {
+  font-size: 16px;
+  color: #434343;
+  font-family: 'Noto Sans SC', sans-serif;
+  word-spacing: 4px;
+}
+
+.emp-info {
+  margin-left: 1rem;
+  margin-top: 12px;
+}
+
+.emp-info>* {
+  display: block;
 }
 
 .employee-data {
