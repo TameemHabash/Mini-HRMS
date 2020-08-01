@@ -32,7 +32,7 @@ export class EmployeeService {
     new Employee(21, 'salam nasser', 'female', '388-95-8144', '+962790000007', 'Jordanian', '9952000007', '1995-5-16', '2020-7-1', 10.0, 'amman - dahyet alrasheed', 'single', 'salam.nassar@gmail.com', 1, 2, 1),
     new Employee(22, 'tameem habash', 'male', '817-82-5966', '+962796203420', 'Jordanian', '9981000008', '1998-11-5', '2020-8-1', 7.9, 'amman - dahyat al-amir hasan', 'single', 'tameem.habash@gmail.com', 1, 1, 1),
   ];
-  getEmplyees(): Employee[] {
+  getEmployees(): Employee[] {
     return this.employees.slice();
   }
 
