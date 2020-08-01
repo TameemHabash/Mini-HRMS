@@ -3,3 +3,11 @@
   <button btn mat-icon-button class="add-emp-btn app-main-color mt-2 mr-2">
     <i class="material-icons">add_circle</i></button>
 </app-content-header>
+<div class="employees-container row mt-3 mb-1 overflow-scroll ">
+  <div class="col-lg-6 col-md-6 col-sm-12 px-4" *ngFor="let employee of employees">
+    <app-employee class="m-3" [employee]="employee"
+      [departmentName]="employeeService.getDepartmentName(employee.departmentID)"
+      [sectorName]="employeeService.getSectorNameByID(employee.sectorID)">
+    </app-employee>
+  </div>
+</div>
