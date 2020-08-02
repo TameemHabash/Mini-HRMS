@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { DepartmentService } from './department.service';
 import { SectorService } from './sector.service';
 import { Employee } from '../models/employee.model';
+import { SafeResourceUrl } from '@angular/platform-browser';
 @Injectable({
   providedIn: 'root'
 })
@@ -55,5 +56,11 @@ export class EmployeeService {
       }
     });
     return employeesNumber;
+  }
+  getEmployeeNameByID(empID: number): string {
+    if (empID) {
+      return this.employees.find((emp) => emp.ID === empID).name;
+    }
+    return '';
   }
 }

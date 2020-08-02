@@ -16,6 +16,7 @@ export class DepartmentComponent implements OnInit {
   @Input() department: Department;
   @Input() sectors: Sector[];
   @Input() employeesNumber: number;
+  @Input() managerName: string;
   constructor(private dialog: MatDialog, private router: Router, private route: ActivatedRoute) { }
 
 

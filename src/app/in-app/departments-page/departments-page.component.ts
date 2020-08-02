@@ -42,7 +42,7 @@ export class DepartmentsPageComponent implements OnInit {
         }
       );
     //need to subscribe to department observable
-    //need to subscribe to employees observable to change number of employees
+    //need to subscribe to employees observable to change number of employees and the manager if changes too
   }
   onShowDepartmentDetails(department: Department) {
     this.dialogRef = this.dialog.open(DepartmentDialogComponent, { data: department });
@@ -55,10 +55,16 @@ export class DepartmentsPageComponent implements OnInit {
         }
       );
   }
+
   getEmployeesNumberForDepartment(deptID: number): number {
     return this.employeeService.getEmployeesNumberByDepartmentID(deptID);
   }
+
   getSectorsForDepartment(deptID: number): Sector[] {
     return this.departmentsService.getSectorsByDepartmentID(deptID);
+  }
+
+  getManagerNameForDepartment(managerID: number): string {
+    return this.employeeService.getEmployeeNameByID(managerID);
   }
 }

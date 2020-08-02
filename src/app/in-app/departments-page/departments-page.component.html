@@ -7,7 +7,8 @@
   <div class="col-lg-6 col-md-6 col-sm-12 d-flex center" *ngFor="let dept of departments"
     (click)="onShowDepartmentDetails(dept)">
     <app-department class="bg-white m-5" [department]="dept"
-      [employeesNumber]="getEmployeesNumberForDepartment(dept.ID)" [sectors]="getSectorsForDepartment(dept.ID)">
+      [employeesNumber]="getEmployeesNumberForDepartment(dept.ID)" [sectors]="getSectorsForDepartment(dept.ID)"
+      [managerName]="getManagerNameForDepartment(dept.managerID)">
     </app-department>
   </div>
 </div>

@@ -3,7 +3,7 @@ export class Department {
         private _ID: number,
         private _name: string,
         private _description: string,
-        public _managerID?: number
+        public managerID?: number
     ) { }
     get ID() {
         return this._ID;
