@@ -30,9 +30,10 @@ import { DepartmentDialogComponent } from './in-app/departments-page/department-
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
-import { from } from 'rxjs';
 import { SectorsDialogComponent } from './in-app/departments-page/sectors-dialog/sectors-dialog.component';
 import { PaginatorComponent } from './in-app/paginator/paginator.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 const material = [
@@ -44,7 +45,8 @@ const material = [
   MatCardModule,
   MatInputModule,
   MatFormFieldModule,
-  MatDialogModule
+  MatDialogModule,
+  MatAutocompleteModule
 ];
 
 
@@ -79,7 +81,9 @@ const material = [
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    ...material
+    ...material,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

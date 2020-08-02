@@ -63,4 +63,14 @@ export class EmployeeService {
     }
     return '';
   }
+
+  getEmployeeByID(empID: number): Employee {
+    if (empID) {
+      return this.employees.find((emp) => emp.ID === empID);
+    }
+    return null;
+  }
+  getEmployeesByDepartmentID(deptID: number): Employee[] {
+    return this.employees.filter((emp) => emp.departmentID === deptID);
+  }
 }

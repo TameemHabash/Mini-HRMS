@@ -7,6 +7,19 @@
     <mat-label>Description</mat-label>
     <textarea matInput #departmentDescription required></textarea>
   </mat-form-field>
+
+  <form *ngIf="recivedData" class="example-form ml-4">
+    <mat-form-field class="manager">
+      <mat-label>Manager</mat-label>
+      <input type="text" matInput [formControl]="managerFormConrol" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="diplayEmployee">
+        <mat-option *ngFor="let emp of filteredEmployees | async" [value]="emp">
+          {{emp.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+
   <mat-dialog-actions class="mb-3 d-flex justify-content-around">
     <button mat-raised-button mat-dialog-close class="app-bg-main text-white">Cancel</button>
     <button mat-raised-button mat-dialog-close class="app-bg-main text-white"

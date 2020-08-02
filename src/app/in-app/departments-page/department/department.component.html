@@ -3,7 +3,7 @@
     <mat-card-title class="app-card-title text-uppercase app-main-color font-smaller">{{department.name}}
     </mat-card-title>
     <span class="text-muted mt-1 mb-4 text-capitalize">
-      {{managerName!==''? 'manager: &nbsp; &nbsp;' + managerName:'have no manager yet'}}</span>
+      {{manager && manager.name!==''? 'manager: &nbsp; &nbsp;' + manager.name:'have no manager yet'}}</span>
   </mat-card-header>
   <mat-card-content class="col-12">
     <p class="text-muted">

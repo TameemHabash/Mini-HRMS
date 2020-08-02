@@ -5,10 +5,10 @@
 </app-content-header>
 <div class="departments-container row h-100">
   <div class="col-lg-6 col-md-6 col-sm-12 d-flex center" *ngFor="let dept of departments"
-    (click)="onShowDepartmentDetails(dept)">
+    (click)="onShowDepartmentDetails(dept, getManagerForDepartment(dept.managerID))">
     <app-department class="bg-white m-5" [department]="dept"
       [employeesNumber]="getEmployeesNumberForDepartment(dept.ID)" [sectors]="getSectorsForDepartment(dept.ID)"
-      [managerName]="getManagerNameForDepartment(dept.managerID)">
+      [manager]="getManagerForDepartment(dept.managerID)">
     </app-department>
   </div>
 </div>

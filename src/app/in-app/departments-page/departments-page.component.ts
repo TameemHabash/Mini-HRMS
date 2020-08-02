@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { Sector } from 'src/app/models/sector.model';
+import { Employee } from 'src/app/models/employee.model';
 @Component({
   selector: 'app-departments-page',
   templateUrl: './departments-page.component.html',
@@ -44,8 +45,8 @@ export class DepartmentsPageComponent implements OnInit {
     //need to subscribe to department observable
     //need to subscribe to employees observable to change number of employees and the manager if changes too
   }
-  onShowDepartmentDetails(department: Department) {
-    this.dialogRef = this.dialog.open(DepartmentDialogComponent, { data: department });
+  onShowDepartmentDetails(department: Department, manager: Employee) {
+    this.dialogRef = this.dialog.open(DepartmentDialogComponent, { data: { department: department, manager: manager } });
     this.router.navigate([], { relativeTo: this.route, fragment: 'department', queryParams: { mode: 'show-and-edit', id: department.ID } });
     this.dialogRef.afterClosed()
       .pipe(finalize(() => { this.dialogRef = undefined }))
@@ -64,7 +65,7 @@ export class DepartmentsPageComponent implements OnInit {
     return this.departmentsService.getSectorsByDepartmentID(deptID);
   }
 
-  getManagerNameForDepartment(managerID: number): string {
-    return this.employeeService.getEmployeeNameByID(managerID);
+  getManagerForDepartment(managerID: number): Employee {
+    return this.employeeService.getEmployeeByID(managerID);
   }
 }
