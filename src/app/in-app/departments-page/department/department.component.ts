@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Department } from 'src/app/classes/department';
+import { Department } from 'src/app/models/department.model';
 import { MatDialog } from '@angular/material/dialog';
 import { SectorsDialogComponent } from '../sectors-dialog/sectors-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
+import { EmployeeService } from 'src/app/services/employee.service';
+import { Sector } from 'src/app/models/sector.model';
 
 @Component({
   selector: 'app-department',
@@ -12,9 +14,13 @@ import { finalize } from 'rxjs/operators';
 })
 export class DepartmentComponent implements OnInit {
   @Input() department: Department;
+  @Input() sectors: Sector[];
+  @Input() employeesNumber: number;
   constructor(private dialog: MatDialog, private router: Router, private route: ActivatedRoute) { }
 
+
   ngOnInit(): void {
+
   }
   onShowSectors($event, deptID: number) {
     $event.stopPropagation();

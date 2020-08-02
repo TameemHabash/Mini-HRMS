@@ -1,10 +1,12 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { DepartmentService } from 'src/app/services/department.service';
-import { Department } from 'src/app/classes/department';
+import { Department } from 'src/app/models/department.model';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DepartmentDialogComponent } from './department-dialog/department-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
+import { EmployeeService } from 'src/app/services/employee.service';
+import { Sector } from 'src/app/models/sector.model';
 @Component({
   selector: 'app-departments-page',
   templateUrl: './departments-page.component.html',
@@ -13,7 +15,7 @@ import { finalize } from 'rxjs/operators';
 export class DepartmentsPageComponent implements OnInit {
   departments: Department[];
   dialogRef: MatDialogRef<DepartmentDialogComponent>;
-  constructor(private departmentsService: DepartmentService, private dialog: MatDialog, private route: ActivatedRoute, private router: Router) { }
+  constructor(private departmentsService: DepartmentService, private employeeService: EmployeeService, private dialog: MatDialog, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.departments = this.departmentsService.getDepartments();
@@ -40,6 +42,7 @@ export class DepartmentsPageComponent implements OnInit {
         }
       );
     //need to subscribe to department observable
+    //need to subscribe to employees observable to change number of employees
   }
   onShowDepartmentDetails(department: Department) {
     this.dialogRef = this.dialog.open(DepartmentDialogComponent, { data: department });
@@ -51,5 +54,11 @@ export class DepartmentsPageComponent implements OnInit {
           this.router.navigate([], { relativeTo: this.route });
         }
       );
+  }
+  getEmployeesNumberForDepartment(deptID: number): number {
+    return this.employeeService.getEmployeesNumberByDepartmentID(deptID);
+  }
+  getSectorsForDepartment(deptID: number): Sector[] {
+    return this.departmentsService.getSectorsByDepartmentID(deptID);
   }
 }

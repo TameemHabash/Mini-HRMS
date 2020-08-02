@@ -2,6 +2,7 @@ export class Sector {
     constructor(
         private _ID: number,
         private _name: string,
+        private _departmentID: number,
         private _description?: string
     ) { }
     get ID() {
@@ -12,5 +13,8 @@ export class Sector {
     }
     get description() {
         return this._description;
+    }
+    get departmentID() {
+        return this._departmentID;
     }
 }

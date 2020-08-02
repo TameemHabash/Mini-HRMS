@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { Department } from 'src/app/classes/department';
+import { Department } from 'src/app/models/department.model';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DepartmentService } from 'src/app/services/department.service';
 @Component({

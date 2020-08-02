@@ -21,12 +21,12 @@ export class SectorsDialogComponent implements OnInit {
   onCreateSector(name: string, description?: string) {
     if (name !== '') {
       if (description !== '') {
-        this.sectorService.createSectorsInDepartmen(this.deptID, -1, name, description);
+        this.sectorService.createSectorsInDepartmen(-1, name, this.deptID, description);
       }
-      this.sectorService.createSectorsInDepartmen(this.deptID, -1, name);
+      this.sectorService.createSectorsInDepartmen(-1, name, this.deptID);
     }
   }
   onDeletSector(sectorID: number) {
-    this.sectorService.deleteSector(this.deptID, sectorID);
+    this.sectorService.deleteSector(sectorID);
   }
 }

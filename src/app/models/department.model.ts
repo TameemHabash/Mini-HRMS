@@ -1,9 +1,9 @@
-export class DepartmentModel {
+export class Department {
     constructor(
         private _ID: number,
         private _name: string,
         private _description: string,
-        private _managerID: number
+        public _managerID?: number
     ) { }
     get ID() {
         return this._ID;
@@ -11,25 +11,18 @@ export class DepartmentModel {
     get name() {
         return this._name;
     }
+    set name(name: string) {
+        if (name !== '') {
+            this.name = name;
+        }
+    }
+
     get description() {
         return this._description;
     }
-    get managerID() {
-        return this._managerID;
-    }
-    set name(newName: string) {
-        if (newName !== '') {
-            this._name = newName;
-        }
-    }
-    set description(newDescription: string) {
-        if (newDescription !== '') {
-            this._description = newDescription;
-        }
-    }
-    set managerID(newManagerID: number) {
-        if (newManagerID !== -1) {
-            this._managerID = newManagerID;
+    set description(description: string) {
+        if (description !== '') {
+            this.description = description;
         }
     }
 }

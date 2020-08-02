@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Sector } from '../models/sector.model';
 
-interface OutSectors {
-  departmentID: number;
-  sectors: Sector[];
-}
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +8,14 @@ interface OutSectors {
 export class SectorService {
   activeDepartmentID: number = -1;
   activeSectorID: number = -1;
-  private outSectors: OutSectors[] = [
+  private sectors: Sector[] = [
     // this will be getted from the server  
-    { departmentID: 1, sectors: [new Sector(1, 'java'), new Sector(2, 'paython')] },
-    { departmentID: 2, sectors: [new Sector(3, 'helo'), new Sector(4, 'Hi')] },
-    { departmentID: 3, sectors: [new Sector(5, 'HR'), new Sector(6, 'heRes')] }
+    new Sector(1, 'java', 1),
+    new Sector(2, 'paython', 1),
+    new Sector(3, 'helo', 2),
+    new Sector(4, 'Hi', 2),
+    new Sector(5, 'HR', 3),
+    new Sector(6, 'heRes', 3)
   ];
 
   constructor() { }
@@ -29,42 +28,31 @@ export class SectorService {
   //   return {targetSectorsIndex:targetSectorsIndex,targetSectorIndex:targetSectorIndex};
   // }
 
-  getSectorsOfDepartment(departmentID: number) {
-    const targetSectors = this.outSectors.find((dept) => dept.departmentID === departmentID);
-    if (targetSectors) {
-      return targetSectors.sectors.slice();
-    }
-    return [];
+  getSectorsOfDepartment(departmentID: number): Sector[] {
+    return this.sectors.filter((sector) => sector.departmentID === departmentID);
   }
-  createSectorsInDepartmen(departmentID: number, id: number, name: string, description?: string) {
-    const targetSectorsIndex = this.outSectors.findIndex((dept) => dept.departmentID === departmentID);
-    if (targetSectorsIndex === -1) {
-      throw new Error(`Department of ID: '${departmentID}' is not exist`);
-    }
+  createSectorsInDepartmen(id: number, name: string, departmentID: number, description?: string): void {
     if (description) {
-      this.outSectors[targetSectorsIndex].sectors.push(new Sector(id, name, description));
+      this.sectors.push(new Sector(id, name, departmentID, description));
+    } else {
+      this.sectors.push(new Sector(id, name, departmentID));
     }
-    this.outSectors[targetSectorsIndex].sectors.push(new Sector(id, name));
     // here i will send the post request
     // here will also fire the observable for adding a sector
   }
 
-  deleteSector(departmentID: number, sectorID: number) {
-    const targetSectorsIndex = this.outSectors.findIndex((dept) => dept.departmentID === departmentID);
-    if (targetSectorsIndex === -1) {
-      throw new Error(`Department of ID: '${departmentID}' is not exist`);
+  deleteSector(sectorID: number): Sector {
+    const targetSectorIndex = this.sectors.findIndex((sector) => sector.ID === sectorID);
+    if (targetSectorIndex === -1) {
+      throw new Error(`Sector of ID: '${sectorID}' is not exist`);
     }
-    let targetSectorIndex = this.outSectors[targetSectorsIndex].sectors.findIndex((sect) => sect.ID === sectorID);
-    this.outSectors[targetSectorsIndex].sectors.splice(targetSectorIndex, 1);
+    const deletedSector = this.sectors.splice(targetSectorIndex, 1)[0];
+    return deletedSector;
     // here i will send the delete request
     // here will also fire the observable for removing a sector
   }
 
-
-  // editSectorName(newName: string) {
-  //   if (newName !== '') {
-  //     const targetIndexs= this.getTargetSectorsAndSrctor();
-  //     this.outSectors[targetIndexs.targetSectorsIndex].sectors[targetIndexs.targetSectorIndex].name = newName;
-  //   }
-  // }
+  getSectorNameByID(sectorID: number): string {
+    return this.sectors.find((sector) => sector.ID === sectorID).name;
+  }
 }
