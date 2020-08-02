@@ -1,0 +1,9 @@
+ul li button {
+  color: #43425D;
+}
+
+.active-page {
+  background-color: #43425D !important;
+  color: white !important;
+  font-weight: bold;
+}

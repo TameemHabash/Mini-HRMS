@@ -32,7 +32,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { from } from 'rxjs';
 import { SectorsDialogComponent } from './in-app/departments-page/sectors-dialog/sectors-dialog.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { PaginatorComponent } from './in-app/paginator/paginator.component';
 
 
 const material = [
@@ -67,7 +67,8 @@ const material = [
     DepartmentComponent,
     ContentHeaderComponent,
     DepartmentDialogComponent,
-    SectorsDialogComponent
+    SectorsDialogComponent,
+    PaginatorComponent
   ],
   entryComponents: [
     DepartmentDialogComponent,

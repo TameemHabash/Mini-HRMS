@@ -1,0 +1,14 @@
+<ul class="pagination">
+  <li *ngIf="items.length>pageSize" class="page-item"><button class="page-link" [disabled]="currentPage===1"
+      (click)="setPage(1)">First</button></li>
+  <li class="page-item" *ngIf="items.length>pageSize"><button class="page-link" [disabled]="currentPage===1"
+      (click)="setPage(currentPage-1)">Previous</button></li>
+
+  <li class="page-item" *ngFor="let num of arrayOfnumbers; let i=index"><button class="page-link"
+      [class.active-page]="currentPage===i+1" (click)="setPage(i+1)">{{i+1}}</button></li>
+
+  <li class="page-item" *ngIf="items.length>pageSize"><button class="page-link" [disabled]="currentPage===numberOfPages"
+      (click)="setPage(currentPage+1)">Next</button></li>
+  <li class="page-item" *ngIf="items.length>pageSize"><button class="page-link" [disabled]="currentPage===numberOfPages"
+      (click)="setPage(numberOfPages)">Last</button></li>
+</ul>
