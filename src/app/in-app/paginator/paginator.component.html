@@ -1,4 +1,4 @@
-<ul class="pagination">
+<ul class="pagination flex-wrap justify-content-center">
   <li *ngIf="items.length>pageSize" class="page-item"><button class="page-link" [disabled]="currentPage===1"
       (click)="setPage(1)">First</button></li>
   <li class="page-item" *ngIf="items.length>pageSize"><button class="page-link" [disabled]="currentPage===1"
