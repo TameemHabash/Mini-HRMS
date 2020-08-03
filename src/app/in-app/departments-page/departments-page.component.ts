@@ -24,7 +24,8 @@ export class DepartmentsPageComponent implements OnInit {
       .subscribe((queryParams) => {
         if (!this.dialogRef) {
           if (queryParams.mode === 'show-and-edit') {
-            this.dialog.open(DepartmentDialogComponent, { data: this.departmentsService.getDepartmentByID(+queryParams.id) });
+            const targetDeapartment = this.departmentsService.getDepartmentByID(+queryParams.id);
+            this.dialog.open(DepartmentDialogComponent, { data: { department: targetDeapartment, manager: this.employeeService.getEmployeeByID(targetDeapartment.managerID) } });
           }
           else if (queryParams.mode === 'add') {
             this.dialog.open(DepartmentDialogComponent);
@@ -36,7 +37,7 @@ export class DepartmentsPageComponent implements OnInit {
     this.dialogRef = this.dialog.open(DepartmentDialogComponent);
     this.router.navigate([], { relativeTo: this.route, fragment: 'department', queryParams: { mode: 'add' } });
     this.dialogRef.afterClosed()
-      .pipe(finalize(() => console.log("completed")))
+      .pipe(finalize(() => { this.dialogRef = undefined }))
       .subscribe(
         () => {
           this.router.navigate([], { relativeTo: this.route });
