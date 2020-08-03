@@ -9,13 +9,13 @@
     <p class="text-muted">
       {{department.description}}
     </p>
-    <div class="row text-center">
-      <div class="dept-details text-wrap col-lg-4 col-md-5 col-sm-6 text-center mt-2 app-main-color rounded-lg"
+    <div class="row center">
+      <div class="dept-details text-wrap col-6 text-center mt-2 app-main-color rounded-lg"
         (click)="onShowSectors($event ,department.ID)">
         {{ sectors.length }}<span class="d-block app-3rd-color mt-2">Sectors</span>
       </div>
-      <div class="col-lg-3 col-md-2"></div>
-      <p class="dept-details col-lg-4 col-md-5 col-sm-6 text-center mt-2 app-main-color">
+      <!-- <div class="col-lg-3 col-md-2"></div> -->
+      <p class="dept-details col-6 text-center mt-2 app-main-color pt-2">
         {{employeesNumber}}<br><span class="d-block app-3rd-color mt-2">Employees</span>
       </p>
     </div>

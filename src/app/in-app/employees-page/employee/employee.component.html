@@ -1,4 +1,4 @@
-<mat-card class="employee-container d-flex flex-column p-2">
+<mat-card class="employee-container d-flex flex-column p-0">
   <div class="action-container">
     <button class="btn remove-button-styling mx-2"><i
         class="material-icons app-secondary-color font-smaller">edit</i></button>
@@ -6,14 +6,15 @@
         class="material-icons app-secondary-color font-smaller">archive</i></button>
   </div>
   <mat-card-content class="d-flex align-content-center mt-2">
-    <div class="app-bg-secondary emp-id rounded-circle overflow-hidden mr-3">
+    <div class="app-bg-secondary emp-id rounded-circle overflow-hidden mx-3 mt-2">
       <!-- <img class="emp-pic" src="imgs/00.PNG"> -->
     </div>
-    <div class="emp-info d-felx flex-column app-secondary-color text-capitalize">
+    <div class="emp-info d-felx flex-column app-secondary-color text-capitalize mb-2">
       <p class="emp-name my-1 font-weight-bold">{{employee.name}}</p>
-      <span>ID: <span class="employee-data font-weight-bold">{{employee.ID}}</span> </span>
-      <span>Department: <span class="employee-data font-weight-bold">{{departmentName}}</span> </span>
-      <span>Sector: <span class="employee-data font-weight-bold">{{sectorName}}</span> </span>
+      <span class="text-muted">ID: &nbsp;<span class="employee-data">{{employee.ID}}</span> </span>
+      <span class="text-muted">Department: &nbsp;<span class="employee-data">{{departmentName}}</span>
+      </span>
+      <span class="text-muted">Sector: &nbsp;<span class="employee-data">{{sectorName}}</span> </span>
     </div>
   </mat-card-content>
 </mat-card>
