@@ -39,6 +39,9 @@ export class PaginatorComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     // reset page if items array has changed
     if (changes.items.currentValue !== changes.items.previousValue) {
+      this._numberOfPages = Math.ceil(this.items.length / this.pageSize);
+      this._arrayOfnumbers = Array(this._numberOfPages);
+      this._currentPage = this.initialPage;
       this.setPage(this._currentPage);
     }
   }
