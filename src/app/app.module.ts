@@ -34,6 +34,7 @@ import { SectorsDialogComponent } from './in-app/departments-page/sectors-dialog
 import { PaginatorComponent } from './in-app/paginator/paginator.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 const material = [
@@ -46,7 +47,8 @@ const material = [
   MatInputModule,
   MatFormFieldModule,
   MatDialogModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatTooltipModule
 ];
 
 
