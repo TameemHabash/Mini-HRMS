@@ -1,9 +1,11 @@
 <mat-card class="employee-container d-flex flex-column p-0">
   <div class="action-container">
-    <button class="btn remove-button-styling mx-2"><i
+    <button *ngIf="activePage" class="btn remove-button-styling mx-2" (click)="onEditEmployee()"><i
         class="material-icons app-secondary-color font-smaller">edit</i></button>
-    <button class="btn remove-button-styling mx-2"><i
+    <button *ngIf="activePage" class="btn remove-button-styling mx-2" (click)="onArchive()"><i
         class="material-icons app-secondary-color font-smaller">archive</i></button>
+    <button *ngIf="!activePage" class="btn remove-button-styling mx-2" (click)="onUnarchive()"><i
+        class="material-icons app-secondary-color">unarchive</i></button>
   </div>
   <mat-card-content class="d-flex align-content-center mt-2">
     <div class="app-bg-secondary emp-id rounded-circle overflow-hidden mx-3 mt-2">

@@ -13,6 +13,7 @@ export class Employee {
         public address: string,
         public status: string,
         public email: string,
+        public active: boolean,
         public departmentID: number,
         public sectorID: number,
         public HRID: number
