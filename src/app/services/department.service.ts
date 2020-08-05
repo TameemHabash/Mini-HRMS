@@ -16,12 +16,12 @@ export class DepartmentService {
       1,
       'programming',
       'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis consectetur deserunt fuga aperiam sequi rem molestias provident obcaecati doloribus',
-      10),
+      17),
     new Department(
       2,
       'QA',
       'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis consectetur deserunt fuga aperiam sequi rem molestias provident obcaecati doloribus',
-      15),
+      5),
     new Department(
       3,
       'deplooying',
@@ -49,13 +49,19 @@ export class DepartmentService {
     //here will be the fire of adding new department
   }
 
-  setDepartmentAttributes(deptID: number, newName: string, newDescription: string) {
+  setDepartmentAttributes(deptID: number, newName: string, newDescription: string, newManagerID?: number) {
     const targetDepartmentIndex = this.departments.findIndex((dept) => dept.ID === deptID);
     if (targetDepartmentIndex === -1) {
       throw new Error(`department of ID '${deptID} is not exsit`);
     }
     this.departments[targetDepartmentIndex].name = newName;
     this.departments[targetDepartmentIndex].description = newDescription;
+    if (newManagerID) {
+      this.departments[targetDepartmentIndex].managerID = newManagerID;
+    } else {
+      this.departments[targetDepartmentIndex].managerID = null;
+    }
+
     //here will be the PUT request from  the server 
     // here will add the obsarvable fire for this change
   }

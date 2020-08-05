@@ -16,6 +16,7 @@ export class DepartmentDialogComponent implements OnInit {
   selectedDepartment: Department = null;
   selectedDepartmentLastName: string = '';
   selectedDepartmentLastDescription: string = '';
+  selectedDepartmentLastManager: Employee;
   managerFormConrol = new FormControl();
   selectedManager: Employee;
   depertmentEmployees: Employee[];
@@ -50,6 +51,7 @@ export class DepartmentDialogComponent implements OnInit {
 
     if (this.selectedManager) {
       this.managerFormConrol.setValue(this.selectedManager);
+      this.selectedDepartmentLastManager = this.managerFormConrol.value;
     }
 
   }
@@ -63,8 +65,8 @@ export class DepartmentDialogComponent implements OnInit {
     return emp && emp.name ? emp.name : '';
   }
   onUpdateDept(): void {
-    if (this.selectedDepartmentLastName !== this.DepartmentNameElement.nativeElement.value || this.selectedDepartmentLastDescription !== this.DepartmentDescriptionElement.nativeElement.value) {
-      this.deptService.setDepartmentAttributes(this.selectedDepartment.ID, this.DepartmentNameElement.nativeElement.value, this.DepartmentDescriptionElement.nativeElement.value);
+    if (this.selectedDepartmentLastName !== this.DepartmentNameElement.nativeElement.value || this.selectedDepartmentLastDescription !== this.DepartmentDescriptionElement.nativeElement.value || this.managerFormConrol?.value?.ID !== this.selectedDepartmentLastManager?.ID) {
+      this.deptService.setDepartmentAttributes(this.selectedDepartment.ID, this.DepartmentNameElement.nativeElement.value, this.DepartmentDescriptionElement.nativeElement.value, this.managerFormConrol?.value?.ID);
     }
   }
   onAddDept() {
