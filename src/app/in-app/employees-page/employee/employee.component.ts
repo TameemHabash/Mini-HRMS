@@ -11,6 +11,7 @@ export class EmployeeComponent implements OnInit {
   @Input() departmentName: string;
   @Input() sectorName: string;
   @Input() activePage: boolean;
+  btnHover: boolean = false;
   @Output() employeeStateChange: EventEmitter<{ employee: Employee, newState: boolean }> = new EventEmitter();
   @Output() showEmployeeDetails: EventEmitter<Employee> = new EventEmitter();
   constructor() { }

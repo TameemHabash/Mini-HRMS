@@ -18,6 +18,7 @@ export class DepartmentComponent implements OnInit {
   @Input() sectors: Sector[];
   @Input() employeesNumber: number;
   @Input() manager: Employee;
+  sectorHover: boolean = false;
   constructor(private dialog: MatDialog, private router: Router, private route: ActivatedRoute) { }
 
 

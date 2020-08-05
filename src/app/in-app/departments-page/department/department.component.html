@@ -1,5 +1,6 @@
 <mat-card class="d-flex flex-column justify-content-center hover-shadow cursor-pointer"
-  matTooltip="{{'Click to edit ' +department.name +' details'}}" matTooltipPosition="above" matTooltipShowDelay="600">
+  matTooltip="{{'Click to edit ' +department.name +' details'}}" matTooltipPosition="above" matTooltipShowDelay="600"
+  [matTooltipDisabled]="sectorHover">
   <mat-card-header class="col-12 flex-column">
     <mat-card-title class="app-card-title text-uppercase app-main-color font-smaller">{{department.name}}
     </mat-card-title>
@@ -12,7 +13,8 @@
     </p>
     <div class="row center">
       <div class="dept-details text-wrap col-6 text-center mt-2 app-main-color rounded-lg"
-        (click)="onShowSectors($event ,department.ID)">
+        (click)="onShowSectors($event ,department.ID)" matTooltip="Show and edit sectors" matTooltipShowDelay="350"
+        matTooltipPosition="above" (mouseenter)="sectorHover=true" (mouseleave)="sectorHover=false">
         {{ sectors.length }}<span class="d-block app-3rd-color mt-2">Sectors</span>
       </div>
       <!-- <div class="col-lg-3 col-md-2"></div> -->
