@@ -13,7 +13,7 @@ export class Department {
     }
     set name(name: string) {
         if (name !== '') {
-            this.name = name;
+            this._name = name;
         }
     }
 
@@ -22,7 +22,7 @@ export class Department {
     }
     set description(description: string) {
         if (description !== '') {
-            this.description = description;
+            this._description = description;
         }
     }
 }
