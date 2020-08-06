@@ -10,8 +10,9 @@
         <textarea matInput #sectorDescription></textarea>
       </mat-form-field>
     </div>
-    <button mat-icon-button (click)="onCreateSector(sectorName.value,sectorDescription.value)">
-      <i class="material-icons app-main-color add-sector-btn">add_box</i>
+    <button mat-icon-button
+      (click)="onCreateSector(sectorName.value,sectorDescription.value); sectorName.value=''; sectorDescription.value=''">
+      <i class=" material-icons app-main-color add-sector-btn">add_box</i>
     </button>
   </div>
   <mat-dialog-content class="mat-typography">

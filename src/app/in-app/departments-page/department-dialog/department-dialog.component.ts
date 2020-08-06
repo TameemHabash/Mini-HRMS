@@ -71,7 +71,7 @@ export class DepartmentDialogComponent implements OnInit {
   }
   onAddDept() {
     if (this.DepartmentNameElement.nativeElement.value !== '' && this.DepartmentDescriptionElement.nativeElement.value !== '') {
-      this.deptService.createDepartment(-1, this.DepartmentNameElement.nativeElement.value, this.DepartmentDescriptionElement.nativeElement.value);
+      this.deptService.createDepartment(this.DepartmentNameElement.nativeElement.value, this.DepartmentDescriptionElement.nativeElement.value);
     }
   }
 }

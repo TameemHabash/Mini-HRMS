@@ -2,12 +2,13 @@ import { Injectable, } from '@angular/core';
 import { Department } from '../models/department.model';
 import { SectorService } from './sector.service';
 import { Sector } from '../models/sector.model';
+import { UtilsService } from './utils.service';
 @Injectable({
   providedIn: 'root'
 })
 export class DepartmentService {
   activeDepartmentID: number = -1;
-  constructor(private sectorService: SectorService) { }
+  constructor(private sectorService: SectorService, private utils: UtilsService) { }
   private departments: Department[] = [
     // here i will get the deparments from the server without it's sectors
     // 
@@ -42,8 +43,8 @@ export class DepartmentService {
     return this.departments.find((dept) => dept.ID === deptID).name;
   }
 
-  createDepartment(id: number, name: string, description: string): Department[] {
-    this.departments.push(new Department(id, name, description));
+  createDepartment(name: string, description: string): Department[] {
+    this.departments.push(new Department(this.utils.generateRandomNumber(2), name, description));
     return this.getDepartments();
     //here will be the Post request from  the server 
     //here will be the fire of adding new department

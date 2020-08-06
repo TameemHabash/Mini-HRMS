@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Sector } from '../models/sector.model';
+import { UtilsService } from '../services/utils.service';
 
 
 @Injectable({
@@ -18,7 +19,7 @@ export class SectorService {
     new Sector(6, 'heRes', 3)
   ];
 
-  constructor() { }
+  constructor(private utils: UtilsService) { }
   // getTargetSectorsAndSrctor() {
   //   if (this.activeDepartmentID===-1 || this.activeSectorID===-1) {
   //     return {targetSectorsIndex:-1,targetSectorIndex:-1};
@@ -31,11 +32,11 @@ export class SectorService {
   getSectorsOfDepartment(departmentID: number): Sector[] {
     return this.sectors.filter((sector) => sector.departmentID === departmentID);
   }
-  createSectorsInDepartmen(id: number, name: string, departmentID: number, description?: string): void {
+  createSectorsInDepartmen(name: string, departmentID: number, description?: string): void {
     if (description) {
-      this.sectors.push(new Sector(id, name, departmentID, description));
+      this.sectors.push(new Sector(this.utils.generateRandomNumber(), name, departmentID, description));
     } else {
-      this.sectors.push(new Sector(id, name, departmentID));
+      this.sectors.push(new Sector(this.utils.generateRandomNumber(), name, departmentID));
     }
     // here i will send the post request
     // here will also fire the observable for adding a sector
