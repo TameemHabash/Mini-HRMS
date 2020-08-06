@@ -22,8 +22,9 @@ export class SectorsDialogComponent implements OnInit {
     if (name !== '') {
       if (description !== '') {
         this.sectorService.createSectorsInDepartmen(-1, name, this.deptID, description);
+      } else {
+        this.sectorService.createSectorsInDepartmen(-1, name, this.deptID);
       }
-      this.sectorService.createSectorsInDepartmen(-1, name, this.deptID);
     }
   }
   onDeletSector(sectorID: number) {
