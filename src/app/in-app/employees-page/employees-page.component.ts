@@ -1,17 +1,21 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { Employee } from 'src/app/models/employee.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ThrowStmt } from '@angular/compiler';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-employees-page',
   templateUrl: './employees-page.component.html',
   styleUrls: ['./employees-page.component.css']
 })
-export class EmployeesPageComponent implements OnInit {
+export class EmployeesPageComponent implements OnInit, OnDestroy {
   employees: Employee[];
   employeesToShow: Employee[];
   active: boolean = true;
+  private employeesSubscription: Subscription = new Subscription();
+
   constructor(public employeeService: EmployeeService, private router: Router, private route: ActivatedRoute) { }
   //subscribe to changes on employees list in the service
   ngOnInit(): void {
@@ -26,7 +30,13 @@ export class EmployeesPageComponent implements OnInit {
         this.active = true;
       }
     });
+    this.employeesSubscription = this.employeeService.employeesChanged.subscribe((newEmployees: Employee[]) => { this.employees = newEmployees })
   }
+
+  ngOnDestroy() {
+    this.employeesSubscription.unsubscribe();
+  }
+
   pageChanged(newViewList: Employee[]) {
     this.employeesToShow = newViewList;
   }

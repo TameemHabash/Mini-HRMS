@@ -3,11 +3,13 @@ import { Department } from '../models/department.model';
 import { SectorService } from './sector.service';
 import { Sector } from '../models/sector.model';
 import { UtilsService } from './utils.service';
+import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class DepartmentService {
   activeDepartmentID: number = -1;
+  departmentsChanged: Subject<Department[]> = new Subject();
   constructor(private sectorService: SectorService, private utils: UtilsService) { }
   private departments: Department[] = [
     // here i will get the deparments from the server without it's sectors
@@ -45,9 +47,9 @@ export class DepartmentService {
 
   createDepartment(name: string, description: string): Department[] {
     this.departments.push(new Department(this.utils.generateRandomNumber(2), name, description));
-    return this.getDepartments();
     //here will be the Post request from  the server 
-    //here will be the fire of adding new department
+    this.departmentsChanged.next(this.departments.slice());
+    return this.getDepartments();
   }
 
   setDepartmentAttributes(deptID: number, newName: string, newDescription: string, newManagerID?: number) {
@@ -64,7 +66,7 @@ export class DepartmentService {
     }
 
     //here will be the PUT request from  the server 
-    // here will add the obsarvable fire for this change
+    this.departmentsChanged.next(this.departments.slice());
   }
 
   getDepartmentByID(deptID: number): Department {

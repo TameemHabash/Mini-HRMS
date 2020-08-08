@@ -3,6 +3,7 @@ import { DepartmentService } from './department.service';
 import { SectorService } from './sector.service';
 import { Employee } from '../models/employee.model';
 import { SafeResourceUrl } from '@angular/platform-browser';
+import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,6 +11,7 @@ export class EmployeeService {
   private activeEmployees: Employee[];
   private inactiveEmployees: Employee[];
   private allEmployees: Employee[];
+  employeesChanged: Subject<Employee[]> = new Subject();
   constructor(private departmentSecvice: DepartmentService, private sectorService: SectorService) {
     //here will be the get request from the server for employees
     this.allEmployees = [
@@ -51,6 +53,7 @@ export class EmployeeService {
   addEmployee(newEmployee: Employee): void {
     this.allEmployees.push(newEmployee);
     this._separateEmployees();
+    this.employeesChanged.next(this.activeEmployees.slice());
   }
 
   getDepartmentName(deptID: number): string {
@@ -94,10 +97,12 @@ export class EmployeeService {
   archiveEmployee(empID: number): void {
     this.allEmployees[this.allEmployees.findIndex((emp) => emp.ID === empID)].active = false;
     this._separateEmployees();
+    this.employeesChanged.next(this.activeEmployees.slice());
   }
 
   unarchiveEmployee(empID: number): void {
     this.allEmployees[this.allEmployees.findIndex((emp) => emp.ID === empID)].active = true;
     this._separateEmployees();
+    this.employeesChanged.next(this.inactiveEmployees.slice());
   }
 }

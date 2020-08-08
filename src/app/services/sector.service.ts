@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Sector } from '../models/sector.model';
 import { UtilsService } from '../services/utils.service';
+import { Subject } from 'rxjs';
 
 
 @Injectable({
@@ -9,6 +10,7 @@ import { UtilsService } from '../services/utils.service';
 export class SectorService {
   activeDepartmentID: number = -1;
   activeSectorID: number = -1;
+  sectorsChanged: Subject<Sector[]> = new Subject();
   private sectors: Sector[] = [
     // this will be getted from the server  
     new Sector(1, 'java', 1),
@@ -39,7 +41,7 @@ export class SectorService {
       this.sectors.push(new Sector(this.utils.generateRandomNumber(), name, departmentID));
     }
     // here i will send the post request
-    // here will also fire the observable for adding a sector
+    this.sectorsChanged.next(this.sectors.slice());
   }
 
   deleteSector(sectorID: number): Sector {
@@ -48,9 +50,9 @@ export class SectorService {
       throw new Error(`Sector of ID: '${sectorID}' is not exist`);
     }
     const deletedSector = this.sectors.splice(targetSectorIndex, 1)[0];
-    return deletedSector;
     // here i will send the delete request
-    // here will also fire the observable for removing a sector
+    this.sectorsChanged.next(this.sectors.slice());
+    return deletedSector;
   }
 
   getSectorNameByID(sectorID: number): string {
