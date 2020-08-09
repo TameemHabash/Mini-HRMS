@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StatisticsService } from 'src/app/services/statistics.service';
 
 @Component({
   selector: 'app-home-page',
@@ -8,10 +9,15 @@ import { Router } from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  employeesCount: number = 0;
+  departmentCount: number = 0;
+  constructor(private router: Router, private statisticsService: StatisticsService) { }
 
   ngOnInit(): void {
+    this.employeesCount = this.statisticsService.getEmployeesCount();
+    this.departmentCount = this.statisticsService.getDepartmentsCount();
   }
+
   goTo(path: string) {
     this.router.navigate(['HR', path]);
   }

@@ -105,4 +105,8 @@ export class EmployeeService {
     this._separateEmployees();
     this.employeesChanged.next(this.inactiveEmployees.slice());
   }
+
+  getEmployeesCount(): number {
+    return this.activeEmployees.length;
+  }
 }

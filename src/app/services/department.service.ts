@@ -73,4 +73,7 @@ export class DepartmentService {
     return this.departments.find((dept) => dept.ID === deptID);
   }
 
+  getDepartmentsCount(): number {
+    return this.departments.length;
+  }
 }
