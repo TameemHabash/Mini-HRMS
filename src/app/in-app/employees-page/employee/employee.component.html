@@ -19,9 +19,11 @@
     <div class="emp-info d-felx flex-column app-secondary-color text-capitalize mb-2">
       <p class="emp-name my-1 font-weight-bold">{{employee.name}}</p>
       <span class="text-muted">ID: &nbsp;<span class="employee-data">{{employee.ID}}</span> </span>
-      <span class="text-muted">Department: &nbsp;<span class="employee-data">{{departmentName}}</span>
+      <span class="text-muted">Department: &nbsp;<span class="employee-data"
+          [ngClass]="{'text-danger':!departmentName}">{{departmentName?departmentName:'deleted department'}}</span>
       </span>
-      <span class="text-muted">Sector: &nbsp;<span class="employee-data">{{sectorName}}</span> </span>
+      <span class="text-muted">Sector: &nbsp;<span class="employee-data"
+          [ngClass]="{'text-danger':!sectorName}">{{sectorName?sectorName:'deleted sector'}}</span> </span>
     </div>
   </mat-card-content>
 </mat-card>

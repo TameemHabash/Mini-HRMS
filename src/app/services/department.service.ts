@@ -42,7 +42,7 @@ export class DepartmentService {
   }
 
   getDepartmentNameByID(deptID: number): string {
-    return this.departments.find((dept) => dept.ID === deptID).name;
+    return this.departments.find((dept) => dept.ID === deptID)?.name;
   }
 
   createDepartment(name: string, description: string): Department[] {

@@ -56,6 +56,6 @@ export class SectorService {
   }
 
   getSectorNameByID(sectorID: number): string {
-    return this.sectors.find((sector) => sector.ID === sectorID).name;
+    return this.sectors.find((sector) => sector.ID === sectorID)?.name;
   }
 }
