@@ -22,7 +22,6 @@ import { EmployeesPageComponent } from './in-app/employees-page/employees-page.c
 import { EmployeeComponent } from './in-app/employees-page/employee/employee.component';
 import { EmployeeDetailsPageComponent } from './in-app/employees-page/employee-details-page/employee-details-page.component';
 import { StatisticsPageComponent } from './in-app/statistics-page/statistics-page.component';
-import { AddEmployeeComponent } from './in-app/employees-page/add-employee/add-employee.component';
 import { CreateDepartmentComponent } from './in-app/departments-page/create-department/create-department.component';
 import { DepartmentComponent } from './in-app/departments-page/department/department.component';
 import { ContentHeaderComponent } from './in-app/content-header/content-header.component';
@@ -35,6 +34,7 @@ import { PaginatorComponent } from './in-app/paginator/paginator.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { EmployeeDialogComponent } from './in-app/employees-page/employee-dialog/employee-dialog.component';
 
 
 const material = [
@@ -66,13 +66,13 @@ const material = [
     EmployeeComponent,
     EmployeeDetailsPageComponent,
     StatisticsPageComponent,
-    AddEmployeeComponent,
     CreateDepartmentComponent,
     DepartmentComponent,
     ContentHeaderComponent,
     DepartmentDialogComponent,
     SectorsDialogComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    EmployeeDialogComponent
   ],
   entryComponents: [
     DepartmentDialogComponent,

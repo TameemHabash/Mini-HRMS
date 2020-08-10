@@ -10,7 +10,6 @@ import { CreateDepartmentComponent } from './in-app/departments-page/create-depa
 import { StatisticsPageComponent } from './in-app/statistics-page/statistics-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { AddEmployeeComponent } from './in-app/employees-page/add-employee/add-employee.component';
 
 
 const routes: Routes = [
