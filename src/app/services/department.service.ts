@@ -17,17 +17,17 @@ export class DepartmentService {
     // 
     new Department(
       1,
-      'programming',
+      'development',
       'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis consectetur deserunt fuga aperiam sequi rem molestias provident obcaecati doloribus',
       17),
     new Department(
       2,
-      'QA',
+      'quality assurance',
       'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis consectetur deserunt fuga aperiam sequi rem molestias provident obcaecati doloribus',
       5),
     new Department(
       3,
-      'deplooying',
+      'sales',
       'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis consectetur deserunt fuga aperiam sequi rem molestias provident obcaecati doloribus',
     )
   ];

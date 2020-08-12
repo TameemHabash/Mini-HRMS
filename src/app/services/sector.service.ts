@@ -13,12 +13,13 @@ export class SectorService {
   sectorsChanged: Subject<Sector[]> = new Subject();
   private sectors: Sector[] = [
     // this will be getted from the server  
-    new Sector(1, 'java', 1),
-    new Sector(2, 'paython', 1),
-    new Sector(3, 'helo', 2),
-    new Sector(4, 'Hi', 2),
-    new Sector(5, 'HR', 3),
-    new Sector(6, 'heRes', 3)
+    new Sector(1, 'Backend', 1),
+    new Sector(2, 'Frontend', 1),
+    new Sector(3, 'DevOps', 1),
+
+    new Sector(4, 'standards', 2),
+    new Sector(5, 'security testing', 2),
+    new Sector(6, 'online sales', 3)
   ];
 
   constructor(private utils: UtilsService) { }
