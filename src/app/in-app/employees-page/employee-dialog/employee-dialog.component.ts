@@ -16,11 +16,11 @@ import { UtilsService } from 'src/app/services/utils.service';
 })
 export class EmployeeDialogComponent implements OnInit {
   genders: string[] = ['male', 'female'];
-  nationalities: string[] = ['Jordanian'];
-  statuses: string[] = ['Single', 'Married', 'Other'];
+  nationalities: string[] = ['jordanian'];
+  statuses: string[] = ['single', 'married', 'other'];
   actives = [
-    { name: 'Active', active: true },
-    { name: 'Archived', active: false }
+    { name: 'active', active: true },
+    { name: 'archived', active: false }
   ];
   HRs: HRUser[] = this.utilsService.getHRs();
   ActiveHR: HRUser = this.HRs[0];

@@ -14,7 +14,7 @@
         <mat-label>Gender</mat-label>
         <mat-select ngModel name="gender" required>
           <mat-option *ngFor="let gender of genders" [value]="gender">
-            {{gender}}
+            {{gender | titlecase}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -37,7 +37,7 @@
         <mat-label>Nationality</mat-label>
         <mat-select [ngModel]="nationalities[0]" name="nationality" required>
           <mat-option *ngFor="let nationality of nationalities" [value]="nationality">
-            {{nationality}}
+            {{nationality | titlecase}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -67,7 +67,7 @@
         <mat-label>Status</mat-label>
         <mat-select ngModel name="status" required>
           <mat-option *ngFor="let status of statuses" [value]="status">
-            {{status}}
+            {{status | titlecase}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -91,7 +91,7 @@
         <mat-label>HR</mat-label>
         <mat-select [ngModel]="ActiveHR.HRID" name="HRID" required>
           <mat-option *ngFor="let HR of HRs" [value]="HR.HRID">
-            {{HR.userName}}
+            {{HR.userName | titlecase}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -102,7 +102,7 @@
         <mat-label>Department</mat-label>
         <mat-select ngModel name="departmentID" required (selectionChange)="onDepartmentChange()">
           <mat-option *ngFor="let depatrment of departments" [value]="depatrment.ID">
-            {{depatrment.name}}
+            {{depatrment.name | titlecase}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -111,7 +111,7 @@
         <mat-label>Sector</mat-label>
         <mat-select ngModel name="sectorID" required>
           <mat-option *ngFor="let sector of sectors" [value]="sector.ID">
-            {{sector.name}}
+            {{sector.name | titlecase}}
           </mat-option>
         </mat-select>
       </mat-form-field>
