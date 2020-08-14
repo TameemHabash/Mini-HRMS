@@ -7,7 +7,6 @@ import { Sector } from 'src/app/models/sector.model';
 import { HRUser } from 'src/app/models/HRUser.model';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { Employee } from 'src/app/models/employee.model';
-import { MatDialogRef } from '@angular/material/dialog';
 import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
@@ -25,12 +24,11 @@ export class EmployeeDialogComponent implements OnInit {
   ];
   HRs: HRUser[] = this.utilsService.getHRs();
   ActiveHR: HRUser = this.HRs[0];
-
   selectedActives = true;
   departments: Department[];
   sectors: Sector[];
   @ViewChild('employeeForm') empForm: NgForm;
-  constructor(private dialogRef: MatDialogRef<EmployeeDialogComponent>, private departmentService: DepartmentService, private sectorService: SectorService, private employeeService: EmployeeService, private utilsService: UtilsService) {
+  constructor(private departmentService: DepartmentService, private sectorService: SectorService, private employeeService: EmployeeService, private utilsService: UtilsService) {
 
   }
 
@@ -47,28 +45,27 @@ export class EmployeeDialogComponent implements OnInit {
     return day !== 5;
   }
 
-  onAddEmployee(form: NgForm) {
-    if (form.valid) {
+  onAddEmployee() {
+    if (this.empForm.valid) {
       const newEmp = new Employee(
         this.employeeService.newEmployeeID(),
-        form.value.name,
-        form.value.gender,
-        form.value.SSN,
-        form.value.telNumber,
-        form.value.nationality,
-        form.value.nationalID,
-        form.value.birthDate,
-        form.value.startDate,
-        +form.value.rating,
-        form.value.address,
-        form.value.status,
-        form.value.email,
+        this.empForm.value.name,
+        this.empForm.value.gender,
+        this.empForm.value.SSN,
+        this.empForm.value.telNumber,
+        this.empForm.value.nationality,
+        this.empForm.value.nationalID,
+        this.empForm.value.birthDate,
+        this.empForm.value.startDate,
+        +this.empForm.value.rating,
+        this.empForm.value.address,
+        this.empForm.value.status,
+        this.empForm.value.email,
         true,
-        +form.value.departmentID,
-        +form.value.sectorID,
-        +form.value.HRID);
+        +this.empForm.value.departmentID,
+        +this.empForm.value.sectorID,
+        +this.empForm.value.HRID);
       this.employeeService.addEmployee(newEmp);
     }
-    console.log(form);
   }
 }
