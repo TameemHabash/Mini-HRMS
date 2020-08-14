@@ -46,6 +46,10 @@ export class EmployeeService {
     this.inactiveEmployees = this.allEmployees.filter((emp) => emp.active === false);
   }
 
+  newEmployeeID(): number {
+    return this.allEmployees.length + 1
+  }
+
   getEmployees(): Employee[] {
     return this.activeEmployees.slice();
   }

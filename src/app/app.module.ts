@@ -6,12 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card';
 import { HrDetailsComponent } from './main-nav/hr-details/hr-details.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -26,15 +20,24 @@ import { CreateDepartmentComponent } from './in-app/departments-page/create-depa
 import { DepartmentComponent } from './in-app/departments-page/department/department.component';
 import { ContentHeaderComponent } from './in-app/content-header/content-header.component';
 import { DepartmentDialogComponent } from './in-app/departments-page/department-dialog/department-dialog.component';
+import { EmployeeDialogComponent } from './in-app/employees-page/employee-dialog/employee-dialog.component';
+import { SectorsDialogComponent } from './in-app/departments-page/sectors-dialog/sectors-dialog.component';
+import { PaginatorComponent } from './in-app/paginator/paginator.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
-import { SectorsDialogComponent } from './in-app/departments-page/sectors-dialog/sectors-dialog.component';
-import { PaginatorComponent } from './in-app/paginator/paginator.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { EmployeeDialogComponent } from './in-app/employees-page/employee-dialog/employee-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 const material = [
@@ -48,7 +51,10 @@ const material = [
   MatFormFieldModule,
   MatDialogModule,
   MatAutocompleteModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatSelectModule,
+  MatNativeDateModule,
+  MatDatepickerModule
 ];
 
 

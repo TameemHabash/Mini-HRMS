@@ -1,1 +1,137 @@
-<p>employee-dialog works!</p>
+<h2 mat-dialog-title class="app-main-color text-center">Add New Employee</h2>
+<mat-dialog-content class="mat-typography add-emp-dialog">
+  <form (ngSubmit)="onAddEmployee(employeeForm)" #employeeForm="ngForm"
+    class="d-flex flex-column align-content-between justify-content-center  mat-typography">
+
+
+    <div class="my-3 d-flex justify-content-between align-content-center">
+      <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
+        <mat-label>Name</mat-label>
+        <input matInput type="text" ngModel name="name" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
+        <mat-label>Gender</mat-label>
+        <mat-select ngModel name="gender" required>
+          <mat-option *ngFor="let gender of genders" [value]="gender">
+            {{gender}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="my-3 d-flex justify-content-between align-content-center">
+      <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
+        <mat-label>SSN</mat-label>
+        <input matInput type="text" ngModel name="SSN" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
+        <mat-label>Phone Number</mat-label>
+        <input matInput type="text" ngModel name="telNumber" required>
+      </mat-form-field>
+    </div>
+
+    <div class="my-3 d-flex justify-content-between align-content-center">
+      <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
+        <mat-label>Nationality</mat-label>
+        <mat-select [ngModel]="nationalities[0]" name="nationality" required>
+          <mat-option *ngFor="let nationality of nationalities" [value]="nationality">
+            {{nationality}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
+        <mat-label>National ID</mat-label>
+        <input matInput type="text" ngModel name="nationalID" required>
+      </mat-form-field>
+    </div>
+
+    <div class="my-3 d-flex justify-content-between align-content-center">
+      <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
+        <mat-label>Birth Date</mat-label>
+        <input matInput ngModel name="birthDate" required [matDatepicker]="birthDate">
+        <mat-datepicker-toggle [for]="birthDate" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #birthDate></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
+        <mat-label>Address</mat-label>
+        <input matInput type="text" ngModel name="address" required>
+      </mat-form-field>
+    </div>
+
+    <div class="my-3 d-flex justify-content-between align-content-center">
+      <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
+        <mat-label>Status</mat-label>
+        <mat-select ngModel name="status" required>
+          <mat-option *ngFor="let status of statuses" [value]="status">
+            {{status}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
+        <mat-label>Email</mat-label>
+        <input matInput type="email" ngModel name="email" email required>
+      </mat-form-field>
+    </div>
+
+    <div class="my-3 d-flex justify-content-between align-content-center">
+      <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
+        <mat-label>Hire Date</mat-label>
+        <input matInput ngModel name="startDate" required [matDatepicker]="startDate"
+          [matDatepickerFilter]="startDateFilter">
+        <mat-datepicker-toggle [for]="startDate" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
+        <mat-label>HR</mat-label>
+        <mat-select [ngModel]="ActiveHR.HRID" name="HRID" required>
+          <mat-option *ngFor="let HR of HRs" [value]="HR.HRID">
+            {{HR.userName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="my-3 d-flex justify-content-between align-content-center">
+      <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
+        <mat-label>Department</mat-label>
+        <mat-select ngModel name="departmentID" required (selectionChange)="onDepartmentChange()">
+          <mat-option *ngFor="let depatrment of departments" [value]="depatrment.ID">
+            {{depatrment.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
+        <mat-label>Sector</mat-label>
+        <mat-select ngModel name="sectorID" required>
+          <mat-option *ngFor="let sector of sectors" [value]="sector.ID">
+            {{sector.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+    <div class="my-3 d-flex justify-content-between align-content-center">
+      <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
+        <mat-label>Rating</mat-label>
+        <input matInput type="number" min="0" max="10" step="0.05" [ngModel]="7" name="rating" required>
+      </mat-form-field>
+    </div>
+
+
+
+    <mat-dialog-actions class="d-flex justify-content-around mt-3">
+      <button mat-raised-button mat-dialog-close class="app-bg-main text-white" type="button">Cancel</button>
+      <button mat-raised-button mat-dialog-close class="app-bg-main text-white" type="submit"
+        [disabled]="!employeeForm.valid">Add</button>
+    </mat-dialog-actions>
+
+  </form>
+</mat-dialog-content>

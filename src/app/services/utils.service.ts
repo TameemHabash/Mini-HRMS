@@ -1,9 +1,19 @@
 import { Injectable } from '@angular/core';
+import { HRUser } from '../models/HRUser.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
+  HRs: HRUser[] = [
+    // here will get the HRs from the HR service
+    new HRUser(1, 'rahaf malas', 'rahaf.malas', 'rahaf.malas@gmail.com', 'emptyURL'),
+    new HRUser(2, 'tameem habash', 'rahaf.malas', 'rahaf.malas@gmail.com', 'emptyURL'),
+    new HRUser(3, 'abdelrahaman al-tamimi', 'rahaf.malas', 'rahaf.malas@gmail.com', 'emptyURL'),
+    new HRUser(4, 'jehad adwan', 'rahaf.malas', 'rahaf.malas@gmail.com', 'emptyURL')
+  ];
+  //set ActiveHR when login and reset it when logout
+  ActiveHR: HRUser = this.HRs[0];
 
   constructor() { }
   generateAlphabeticString(stringLength: number = 5): string {
@@ -23,5 +33,9 @@ export class UtilsService {
   }
   generateRandomNumber(numberLenght = 3): number {
     return +(Math.floor(Math.random() * 999999999999).toString().substring(0, numberLenght));
+  }
+
+  getHRs(): HRUser[] {
+    return this.HRs.slice();
   }
 }
