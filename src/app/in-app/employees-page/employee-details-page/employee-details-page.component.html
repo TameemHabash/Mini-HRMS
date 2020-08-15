@@ -246,8 +246,10 @@
             <th class="sal">{{ log.bonus? (log.bonus + ' JD' ): 0 }}</th>
           </tr>
         </table>
-        <app-small-paginator [items]="salaryLogs" (changeSlide)="onChangeSlide($event)" class="mt-3">
-        </app-small-paginator>
+        <div class="w-100 d-flex justify-content-center mt-3">
+          <app-small-paginator [items]="salaryLogs" (changeSlide)="onChangeSlide($event)" class="">
+          </app-small-paginator>
+        </div>
       </div>
     </div>
 

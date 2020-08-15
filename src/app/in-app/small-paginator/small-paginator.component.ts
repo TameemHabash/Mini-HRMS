@@ -20,7 +20,6 @@ export class SmallPaginatorComponent implements OnInit, OnChanges {
     return this._currentSlide;
   }
   ngOnInit(): void {
-    debugger;
     // set page if items array isn't empty
     if (this.items && this.items.length) {
       this._slidesCount = Math.ceil(this.items.length / this.slideSize);
@@ -29,7 +28,6 @@ export class SmallPaginatorComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    debugger;
     // reset slider if items array has changed
     if (changes.items.currentValue !== changes.items.previousValue) {
       this._slidesCount = Math.ceil(this.items.length / this.slideSize);
