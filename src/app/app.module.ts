@@ -40,6 +40,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { SmallPaginatorComponent } from './in-app/small-paginator/small-paginator.component';
+import { AttendancesDialogComponent } from './in-app/employees-page/employee-details-page/attendances-dialog/attendances-dialog.component';
 
 
 const material = [
@@ -82,7 +83,8 @@ const material = [
     SectorsDialogComponent,
     PaginatorComponent,
     EmployeeDialogComponent,
-    SmallPaginatorComponent
+    SmallPaginatorComponent,
+    AttendancesDialogComponent
   ],
   entryComponents: [
     DepartmentDialogComponent,
