@@ -12,6 +12,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { SalaryService } from 'src/app/services/salary.service';
 import { Salary } from 'src/app/models/salary.model';
 import { SalaryLog } from 'src/app/models/salaryLog.model';
+import { MatDialog } from '@angular/material/dialog';
+import { AttendancesDialogComponent } from './attendances-dialog/attendances-dialog.component';
 
 @Component({
   selector: 'app-employee-details-page',
@@ -40,7 +42,15 @@ export class EmployeeDetailsPageComponent implements OnInit {
   salaryLogs: SalaryLog[];
   salarLogsToShow: SalaryLog[];
   @ViewChild('employeeForm') empForm: NgForm;
-  constructor(private departmentService: DepartmentService, private sectorService: SectorService, private employeeService: EmployeeService, private salaryService: SalaryService, private utilsService: UtilsService, private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private departmentService: DepartmentService,
+    private sectorService: SectorService,
+    private employeeService: EmployeeService,
+    private salaryService: SalaryService,
+    private utilsService: UtilsService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.departments = this.departmentService.getDepartments();
@@ -86,7 +96,7 @@ export class EmployeeDetailsPageComponent implements OnInit {
     this.showMore = false;
   }
   onViewAttendances() {
-
+    this.dialog.open(AttendancesDialogComponent, { data: this.employee, width: '650px' });
   }
   addRaise() {
 
