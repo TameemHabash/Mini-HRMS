@@ -20,19 +20,22 @@ export class EmployeeComponent implements OnInit {
 
   }
 
-  onEditEmployee() {
+  onEditEmployee(event: Event) {
+    event.stopPropagation();
     this.showEmployeeDetails.emit(this.employee);
   }
 
-  onArchive() {
+  onArchive(event: Event) {
     //open confirmation dialog
+    event.stopPropagation();
     if (true) {
       this.employeeStateChange.emit({ employee: this.employee, newState: false });
     }
   }
 
-  onUnarchive() {
+  onUnarchive(event: Event) {
     //open confirmation dialog
+    event.stopPropagation();
     if (true) {
       this.employeeStateChange.emit({ employee: this.employee, newState: true });
     }

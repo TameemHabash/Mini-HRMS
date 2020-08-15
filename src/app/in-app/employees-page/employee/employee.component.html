@@ -2,13 +2,13 @@
   matTooltip="{{'Show and edit &nbsp;`' + (employee.name |uppercase) +'`&nbsp; details'}}" matTooltipPosition="above"
   matTooltipShowDelay="600" [matTooltipDisabled]="btnHover">
   <div class="action-container">
-    <button *ngIf="activePage" class="btn remove-button-styling mx-2" (click)="onEditEmployee()"
+    <button *ngIf="activePage" class="btn remove-button-styling mx-2" (click)="onEditEmployee($event)"
       matTooltip="Edit Details" matTooltipShowDelay="350" (mouseenter)="btnHover=true" (mouseleave)="btnHover=false">
       <i class="material-icons app-secondary-color font-smaller">edit</i></button>
-    <button *ngIf="activePage" class="btn remove-button-styling mx-2" (click)="onArchive()"
+    <button *ngIf="activePage" class="btn remove-button-styling mx-2" (click)="onArchive($event)"
       matTooltip="{{'Archive `' + employee.name + '`' }}" matTooltipShowDelay="350" (mouseenter)="btnHover=true"
       (mouseleave)="btnHover=false"><i class="material-icons app-secondary-color font-smaller">archive</i></button>
-    <button *ngIf="!activePage" class="btn remove-button-styling mx-2" (click)="onUnarchive()"
+    <button *ngIf="!activePage" class="btn remove-button-styling mx-2" (click)="onUnarchive($event)"
       matTooltip="{{'Unarchive `' + employee.name + '`' }}" matTooltipShowDelay="350" (mouseenter)="btnHover=true"
       (mouseleave)="btnHover=false"><i class="material-icons app-secondary-color">unarchive</i></button>
   </div>
