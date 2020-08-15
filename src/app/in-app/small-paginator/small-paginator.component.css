@@ -1,0 +1,7 @@
+button:disabled {
+  opacity: .7;
+}
+
+mat-icon {
+  font-size: 2.3rem;
+}
