@@ -70,7 +70,7 @@
   font-size: 18px;
 } */
 .all-personal-container {
-  margin-top: 4.8rem;
+  margin-top: 3.3rem;
 }
 
 /* .salary-log {
@@ -118,8 +118,6 @@
   margin: 0 100px
 }
 
-.add-raise-btn {}
-
 .add-raise-btn mat-icon {
   font-size: 2rem;
 }
@@ -130,4 +128,8 @@
 
 .update-btn {
   width: 7rem;
+}
+
+.update-btn-container {
+  background-color: #61506d5e;
 }

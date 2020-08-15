@@ -113,7 +113,9 @@ export class EmployeeDetailsPageComponent implements OnInit {
       this.employee.sectorID = +this.empForm.value.sectorID;
       this.employee.HRID = +this.empForm.value.HRID;
       this.employeeService.updateEmployee(this.employee);
-      this.onNavigateEmployees();
+      setTimeout(() => {
+        this.onNavigateEmployees();
+      }, 200)
     }
   }
 
