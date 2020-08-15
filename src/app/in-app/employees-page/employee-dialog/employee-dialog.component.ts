@@ -8,6 +8,7 @@ import { HRUser } from 'src/app/models/HRUser.model';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { Employee } from 'src/app/models/employee.model';
 import { UtilsService } from 'src/app/services/utils.service';
+import { SalaryService } from 'src/app/services/salary.service';
 
 @Component({
   selector: 'app-employee-dialog',
@@ -28,9 +29,11 @@ export class EmployeeDialogComponent implements OnInit {
   departments: Department[];
   sectors: Sector[];
   @ViewChild('employeeForm') empForm: NgForm;
-  constructor(private departmentService: DepartmentService, private sectorService: SectorService, private employeeService: EmployeeService, private utilsService: UtilsService) {
-
-  }
+  constructor(private departmentService: DepartmentService,
+    private sectorService: SectorService,
+    private employeeService: EmployeeService,
+    private utilsService: UtilsService,
+    private salaryService: SalaryService) { }
 
   ngOnInit(): void {
     this.departments = this.departmentService.getDepartments();
@@ -66,6 +69,7 @@ export class EmployeeDialogComponent implements OnInit {
         +this.empForm.value.sectorID,
         +this.empForm.value.HRID);
       this.employeeService.addEmployee(newEmp);
+      this.salaryService.onAddEmployee(newEmp.ID, +this.empForm.value.salary);
     }
   }
 }

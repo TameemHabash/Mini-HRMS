@@ -105,7 +105,7 @@ export class SalaryService {
   }
 
   onAddEmployee(empId: number, amount: number): Salary {
-    if (amount > 350) {
+    if (amount >= 350) {
       this._salaries.push(new Salary(this.newSalaryID(), empId, amount));
       return this._salaries[length - 1];
     }

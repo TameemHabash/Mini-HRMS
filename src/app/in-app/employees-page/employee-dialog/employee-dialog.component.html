@@ -120,6 +120,11 @@
 
     <div class="my-3 d-flex justify-content-between align-content-center">
       <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
+        <mat-label>Salary</mat-label>
+        <input matInput type="number" min="350" step="10" ngModel name="salary" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
         <mat-label>Rating</mat-label>
         <input matInput type="number" min="0" max="10" step="0.05" [ngModel]="7" name="rating" required>
       </mat-form-field>
