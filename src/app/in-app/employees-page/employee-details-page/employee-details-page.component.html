@@ -247,7 +247,9 @@
           </tr>
         </table>
         <div class="w-100 d-flex justify-content-center mt-3">
-          <app-small-paginator [items]="salaryLogs" (changeSlide)="onChangeSlide($event)" class="">
+          <h1 *ngIf="salaryLogs.length===0" class="text muted">No salary logs to show</h1>
+          <app-small-paginator *ngIf="salaryLogs.length!==0" [items]="salaryLogs" (changeSlide)="onChangeSlide($event)"
+            class="">
           </app-small-paginator>
         </div>
       </div>
