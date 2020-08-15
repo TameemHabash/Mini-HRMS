@@ -21,10 +21,14 @@
       </div>
     </div>
     <div class="d-flex flex-row-reverse col-6 align-items-center">
-      <button mat-raised-button class="app-bg-main edit-btn  mr-5 mt-2 text-white" type="button"
-        (click)="onEditEmployee()">Edit</button>
-      <button mat-raised-button class="app-bg-main edit-btn  mr-5 mt-2 text-white" type="button"
-        (click)="onViewAttendances()">Attendances</button>
+      <button mat-icon-button class="edit-btn  mr-5" type="button" matTooltip="Enable Edit" matTooltipShowDelay="200"
+        (click)="onEditEmployee()">
+        <mat-icon class="app-main-color">edit</mat-icon>
+      </button>
+      <button mat-icon-button class="attendances-btn  mr-3" type="button" (click)="onViewAttendances()"
+        matTooltip="Show Attendances" matTooltipShowDelay="200">
+        <mat-icon class=" app-main-color">date_range</mat-icon>
+      </button>
     </div>
 
   </div>
@@ -232,12 +236,15 @@
     <!-- beginning of the salary log section  -->
     <div class="mx-0 col-lg-6 col-md-6 col-sm-12 salary-log-container">
       <div class="salary-log d-flex justify-content-center flex-column mx-5">
-        <div class="">
+        <div class="add-raise-container mr-5" align="center">
           <mat-form-field appearance="outline" class="mx-3">
             <mat-label>Raise</mat-label>
             <input matInput type="number" min="5" max="100" step="5" name="add-raise">
           </mat-form-field>
-          <button mat-raised-button class="app-bg-main text-white" type="button" (click)="addRaise()">Add Raise</button>
+          <button mat-icon-button class="add-raise-btn" type="button" (click)="addRaise()" matTooltip="Add Raise"
+            matTooltipShowDelay="200">
+            <mat-icon class="app-main-color">add_circle</mat-icon>
+          </button>
         </div>
         <table class="main-color month-sal">
           <tr>

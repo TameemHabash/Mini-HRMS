@@ -25,11 +25,28 @@
 
 .emp-name input {
   font-size: 22px;
-  width: auto;
 }
 
 .edit-btn {
-  height: 40px;
+  height: 2rem;
+  width: 2rem;
+}
+
+.edit-btn mat-icon {
+  font-size: 2rem;
+}
+
+.attendances-btn {
+  height: 2rem;
+  width: 2rem;
+}
+
+.attendances-btn mat-icon {
+  font-size: 2rem;
+}
+
+.mat-raised-button {
+  min-width: 0 !important;
 }
 
 
@@ -99,6 +116,16 @@
 .details-box .salary-log,
 .details-box .all-personal {
   margin: 0 100px
+}
+
+.add-raise-btn {}
+
+.add-raise-btn mat-icon {
+  font-size: 2rem;
+}
+
+.add-raise-container {
+  font-size: 11px;
 }
 
 .update-btn {
