@@ -9,7 +9,9 @@ import { Sector } from 'src/app/models/sector.model';
 import { NgForm } from '@angular/forms';
 import { Employee } from 'src/app/models/employee.model';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { SalaryService } from 'src/app/services/salary.service';
+import { Salary } from 'src/app/models/salary.model';
+import { SalaryLog } from 'src/app/models/salaryLog.model';
 
 @Component({
   selector: 'app-employee-details-page',
@@ -33,9 +35,12 @@ export class EmployeeDetailsPageComponent implements OnInit {
   sectors: Sector[];
   showMore: boolean;
   editable: boolean;
-  salary: number = 500;
+  oldSalaryValue: number;
+  salary: Salary;
+  salaryLogs: SalaryLog[];
+  salarLogsToShow: SalaryLog[];
   @ViewChild('employeeForm') empForm: NgForm;
-  constructor(private departmentService: DepartmentService, private sectorService: SectorService, private employeeService: EmployeeService, private utilsService: UtilsService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private departmentService: DepartmentService, private sectorService: SectorService, private employeeService: EmployeeService, private salaryService: SalaryService, private utilsService: UtilsService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.departments = this.departmentService.getDepartments();
@@ -50,6 +55,11 @@ export class EmployeeDetailsPageComponent implements OnInit {
     this.sectors = this.sectorService.getSectorsOfDepartment(this.employee.departmentID);
     this.showMore = this.employeeService.EditableForm;
     this.editable = this.employeeService.EditableForm;
+    this.salary = this.salaryService.getSalaryByEmployeeID(this.employee.ID);
+    this.oldSalaryValue = this.salary.amount;
+    this.salaryLogs = this.salaryService.getLogsBySalaryID(this.salary.ID);
+    this.salaryLogs.reverse();
+
   }
 
   onNavigateEmployees() {
@@ -83,6 +93,9 @@ export class EmployeeDetailsPageComponent implements OnInit {
   }
   onUpdateEmployee() {
     if (this.empForm.valid) {
+      if (+this.empForm.value.salary !== this.oldSalaryValue) {
+        this.salaryService.onEditSalary(this.salary.ID, +this.empForm.value.salary)
+      }
       this.employee.name = this.empForm.value.name;
       this.employee.gender = this.empForm.value.gender;
       this.employee.SSN = this.empForm.value.SSN;
@@ -102,5 +115,9 @@ export class EmployeeDetailsPageComponent implements OnInit {
       this.employeeService.updateEmployee(this.employee);
       this.onNavigateEmployees();
     }
+  }
+
+  onChangeSlide(newLogsToView: SalaryLog[]) {
+    this.salarLogsToShow = newLogsToView;
   }
 }

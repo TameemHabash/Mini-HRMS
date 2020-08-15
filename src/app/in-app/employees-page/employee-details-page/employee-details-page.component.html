@@ -89,7 +89,8 @@
             <th class="app-bg-secondary att">Base Pay:</th>
             <th class="val">
               <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
-                <input [disabled]="!editable" matInput type="number" [ngModel]="salary" name="salary" required>
+                <input [disabled]="!editable" matInput type="number" min="350" step="10" [ngModel]="salary.amount"
+                  name="salary" required>
               </mat-form-field>
             </th>
           </tr>
@@ -235,7 +236,7 @@
 
     <!-- beginning of the salary log section  -->
     <div class="mx-0 col-lg-6 col-md-6 col-sm-12 salary-log-container">
-      <div class="salary-log d-flex justify-content-center flex-column mx-5">
+      <div class="salary-log d-flex flex-column mx-5 justify-content-center">
         <div class="add-raise-container mr-5" align="center">
           <mat-form-field appearance="outline" class="mx-3">
             <mat-label>Raise</mat-label>
@@ -246,36 +247,14 @@
             <mat-icon class="app-main-color">add_circle</mat-icon>
           </button>
         </div>
-        <table class="main-color month-sal">
-          <tr>
-            <th class="app-bg-secondary month">July</th>
-            <th class="sal">500 JD</th>
-          </tr>
-          <tr>
-            <th class="app-bg-secondary month">August</th>
-            <th class="sal">500 JD</th>
-          </tr>
-          <tr>
-            <th class="app-bg-secondary month">September</th>
-            <th class="sal">500 JD</th>
-          </tr>
-          <tr>
-            <th class="app-bg-secondary month">October</th>
-            <th class="sal">500 JD</th>
-          </tr>
-          <tr>
-            <th class="app-bg-secondary month">November</th>
-            <th class="sal">500 JD</th>
-          </tr>
-          <tr>
-            <th class="app-bg-secondary month">December</th>
-            <th class="sal">500 JD</th>
-          </tr>
-          <tr>
-            <th class="app-bg-secondary month">January</th>
-            <th class="sal">500 JD</th>
+        <table class="app-main-color month-sal">
+          <tr *ngFor="let log of salarLogsToShow">
+            <th class="app-bg-secondary month">{{ log.logDate | date : 'yyyy / MMM'}}</th>
+            <th class="sal">{{ log.value + ' JD' }}</th>
+            <th class="sal">{{ log.bonus? (log.bonus + ' JD' ): 0 }}</th>
           </tr>
         </table>
+        <app-small-paginator [items]="salaryLogs" (changeSlide)="onChangeSlide($event)"></app-small-paginator>
       </div>
     </div>
 
