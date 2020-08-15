@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-10"></div>
+  <div class="mb-3 col-2 text-center">
+    <button mat-icon-button mat-dialog-close>
+      <mat-icon class="app-main-color">close</mat-icon>
+    </button>
+  </div>
+</div>
+
+<table class="table text-center">
+  <thead class="">
+    <tr class="text-white">
+      <th scope="col">Attendance Date</th>
+      <th scope="col">Entry Time</th>
+      <th scope="col">Leave Time</th>
+      <th scope="col">Daily Hours</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let att of attendacesToShow">
+      <th scope="row">{{ att.attendanceDate | date : 'yyyy/M/d, h:mm a'}}</th>
+      <td>{{ att.entry? ( att.entry | date : 'h:mm a'): '---'}}</td>
+      <td>{{ att.leave? ( att.leave | date : 'h:mm a'): '---'}}</td>
+      <td>{{ att.dailyHours? att.dailyHours: '---' }}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="d-flex justify-content-center w-100 mt-4">
+  <app-small-paginator [items]="attendaces" (changeSlide)="onChangeSlide($event)">
+  </app-small-paginator>
+</div>
