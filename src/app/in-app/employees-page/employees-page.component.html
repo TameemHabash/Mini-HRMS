@@ -15,8 +15,9 @@
 </app-content-header>
 <div class="employees-container row overflow-scroll ">
   <div class="col-lg-6 col-md-6 col-sm-12 px-4" *ngFor="let employee of employeesToShow">
-    <app-employee class="mx-3" (click)="showEmployee(employee)" (employeeStateChange)="employeeStateChanged($event)"
-      [employee]="employee" [departmentName]="employeeService.getDepartmentName(employee.departmentID)"
+    <app-employee class="mx-3" (click)="showEmployee(employee.ID)" (employeeStateChange)="employeeStateChanged($event)"
+      (showEmployeeDetails)="editEmployee(employee.ID)" [employee]="employee"
+      [departmentName]="employeeService.getDepartmentName(employee.departmentID)"
       [sectorName]="employeeService.getSectorNameByID(employee.sectorID)" [activePage]="active">
     </app-employee>
   </div>

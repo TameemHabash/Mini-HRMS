@@ -38,6 +38,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatTableModule } from '@angular/material/table';
 
 
 const material = [
@@ -54,7 +55,8 @@ const material = [
   MatTooltipModule,
   MatSelectModule,
   MatNativeDateModule,
-  MatDatepickerModule
+  MatDatepickerModule,
+  MatTableModule
 ];
 
 

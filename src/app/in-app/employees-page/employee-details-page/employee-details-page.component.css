@@ -1,0 +1,106 @@
+.back-btn i {
+  font-size: 2.3em;
+}
+
+.details-box {
+  font-family: 'Noto Sans SC', sans-serif;
+  background-color: #FFF;
+  width: 90%;
+  height: 514px;
+  margin: 5px 55px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.details-box .employee-pic {
+  width: 100px;
+  height: 98px;
+  margin: 15px 20px 0 65px;
+}
+
+.emp-name {
+  margin-top: 37px;
+  margin-left: 21px;
+}
+
+.emp-name input {
+  font-size: 22px;
+  width: auto;
+}
+
+.edit-btn {
+  height: 40px;
+}
+
+
+/* end of the headers  */
+
+
+/* beginning of the info section  */
+
+.details-container {
+  overflow-x: hidden !important;
+}
+
+.details-box select,
+.details-box form,
+.details-box input {
+  color: #434343;
+  font-weight: 500;
+}
+
+/* .all-personal {
+  font-size: 18px;
+} */
+.all-personal-container {
+  margin-top: 4.8rem;
+}
+
+/* .salary-log {
+  height: 58%;
+  overflow-y: scroll;
+} */
+.emp-id {
+  font-size: 16px;
+}
+
+.details-box .all-personal .att-val,
+.details-box .salary-log .month-sal {
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  /* border: 3px solid #FFF */
+}
+
+.details-box .att-val .att,
+.details-box .att-val .val,
+.details-box .salary-log .month-sal .month,
+.details-box .salary-log .month-sal .sal {
+  height: 37px;
+  border: 4px solid #FFF;
+}
+
+.details-box .att-val .val,
+.details-box .salary-log .month-sal .sal {
+  border-bottom: 1px solid #E7E7E7;
+  color: #434343
+}
+
+.details-box .all-personal .show-more {
+  width: 7rem;
+}
+
+
+.details-box .att-val .att,
+.details-box .salary-log .month-sal .month {
+  color: gray
+}
+
+.details-box .salary-log,
+.details-box .all-personal {
+  margin: 0 100px
+}
+
+.update-btn {
+  width: 7rem;
+}

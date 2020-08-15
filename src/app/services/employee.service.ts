@@ -69,7 +69,7 @@ export class EmployeeService {
     return this._activeEmployee;
   }
 
-  EditEmployee(empID: number): Employee {
+  onEditEmployee(empID: number): Employee {
     this._activeEmployee = this.allEmployees.find((emp) => emp.ID === empID);
     this._EditableForm = true;
     return this._activeEmployee;
@@ -137,5 +137,11 @@ export class EmployeeService {
 
   getEmployeesCount(): number {
     return this.activeEmployees.length;
+  }
+
+  updateEmployee(updatedEmployee: Employee) {
+    const targetEmployeeIndex = this.allEmployees.findIndex((emp) => emp.ID === updatedEmployee.ID);
+    this.allEmployees.splice(targetEmployeeIndex, 1, updatedEmployee);
+    this._separateEmployees();
   }
 }

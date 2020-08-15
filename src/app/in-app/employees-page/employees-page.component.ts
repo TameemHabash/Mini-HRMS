@@ -72,8 +72,13 @@ export class EmployeesPageComponent implements OnInit, OnDestroy {
     this.router.navigate([], { relativeTo: this.route });
   }
 
-  showEmployee(employee: Employee) {
-    //open employee component
+  showEmployee(empID: number) {
+    this.employeeService.activateEmployee(empID);
+    this.router.navigate(['HR', 'employees', `${empID}`]);
+  }
+  editEmployee(empID: number) {
+    this.employeeService.onEditEmployee(empID);
+    this.router.navigate(['HR', 'employees', `${empID}`]);
   }
   employeeStateChanged(emp: { employee: Employee, newState: boolean }) {
     emp.newState ?
