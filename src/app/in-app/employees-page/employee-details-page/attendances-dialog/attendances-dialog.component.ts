@@ -16,6 +16,7 @@ export class AttendancesDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.attendaces = this.attendaceService.getAttendancesByEmployeeID(this.employee.ID);
+    this.attendaces.reverse();
   }
 
   onChangeSlide(newattendacesToView: Attendance[]) {
