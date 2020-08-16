@@ -1,18 +1,19 @@
-<div class="small-paginator d-flex justify-content-between mt-2">
-  <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" [disabled]="currentSlide===1"
-    (click)="setSlide(1)">
-    <mat-icon class="app-main-color">first_page</mat-icon>
-  </button>
-  <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" [disabled]="currentSlide===1"
-    (click)="setSlide(currentSlide-1)">
-    <mat-icon class="app-main-color">chevron_left</mat-icon>
-  </button>
-  <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
-    [disabled]="currentSlide===slidesCount" (click)="setSlide(currentSlide+1)">
-    <mat-icon class="app-main-color">chevron_right</mat-icon>
-  </button>
-  <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
-    [disabled]="currentSlide===slidesCount" (click)="setSlide(slidesCount)">
-    <mat-icon class="app-main-color">last_page</mat-icon>
-  </button>
+<div class="small-paginator d-flex flex-column center mt-2">
+  <div class="d-flex justify-content-between">
+    <button mat-icon-button [disabled]="currentSlide===1" (click)="setSlide(1)">
+      <mat-icon class="app-main-color">first_page</mat-icon>
+    </button>
+    <button mat-icon-button [disabled]="currentSlide===1" (click)="setSlide(currentSlide-1)">
+      <mat-icon class="app-main-color">chevron_left</mat-icon>
+    </button>
+    <button mat-icon-button [disabled]="currentSlide===slidesCount" (click)="setSlide(currentSlide+1)">
+      <mat-icon class="app-main-color">chevron_right</mat-icon>
+    </button>
+    <button mat-icon-button [disabled]="currentSlide===slidesCount" (click)="setSlide(slidesCount)">
+      <mat-icon class="app-main-color">last_page</mat-icon>
+    </button>
+  </div>
+  <div class="d-flex center ml-4">
+    <small class="text-muted">{{currentSlide}}&nbsp; &nbsp; of &nbsp; &nbsp; {{slidesCount}}</small>
+  </div>
 </div>
