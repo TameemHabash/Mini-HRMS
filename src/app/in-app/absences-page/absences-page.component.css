@@ -1,3 +1,20 @@
 .page-title {
   letter-spacing: 2px;
 }
+
+.abs-page-container {
+  font-family: 'Noto Sans SC', sans-serif;
+  background-color: #FFF;
+}
+
+.edit-btn mat-icon {
+  font-size: 20px;
+}
+
+tbody:last-child {
+  border-bottom: 1px solid #EBEBEE;
+}
+
+.paginator-container {
+  height: 40px;
+}

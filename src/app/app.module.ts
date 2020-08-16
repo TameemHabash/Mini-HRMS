@@ -23,6 +23,10 @@ import { DepartmentDialogComponent } from './in-app/departments-page/department-
 import { EmployeeDialogComponent } from './in-app/employees-page/employee-dialog/employee-dialog.component';
 import { SectorsDialogComponent } from './in-app/departments-page/sectors-dialog/sectors-dialog.component';
 import { PaginatorComponent } from './in-app/paginator/paginator.component';
+import { SmallPaginatorComponent } from './in-app/small-paginator/small-paginator.component';
+import { AttendancesDialogComponent } from './in-app/employees-page/employee-details-page/attendances-dialog/attendances-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserInputComponent } from './in-app/absences-page/user-input/user-input.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -33,14 +37,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
-import { SmallPaginatorComponent } from './in-app/small-paginator/small-paginator.component';
-import { AttendancesDialogComponent } from './in-app/employees-page/employee-details-page/attendances-dialog/attendances-dialog.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 const material = [
@@ -58,7 +60,8 @@ const material = [
   MatSelectModule,
   MatNativeDateModule,
   MatDatepickerModule,
-  MatTableModule
+  MatTableModule,
+  MatCheckboxModule
 ];
 
 
@@ -84,7 +87,8 @@ const material = [
     PaginatorComponent,
     EmployeeDialogComponent,
     SmallPaginatorComponent,
-    AttendancesDialogComponent
+    AttendancesDialogComponent,
+    UserInputComponent
   ],
   entryComponents: [
     DepartmentDialogComponent,

@@ -2,4 +2,52 @@
   <h2 pageTitle class="page-title app-main-color font-weight-bold text-uppercase">Absences</h2>
   <span btn>&nbsp;</span>
 </app-content-header>
-<p>absences-page works!</p>
+<div class="abs-page-container row justify-content-center mx-5 mt-3">
+  <div class="col-auto mt-5 w-75">
+    <table class="table text-center">
+      <thead class="app-bg-main">
+        <tr class="text-white">
+          <th scope="col">Employee Name</th>
+          <th scope="col">Date</th>
+          <th scope="col">Description</th>
+          <th scope="col">Excused / Not</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let abs of absencesToShow">
+          <th scope="row" class="app-bg-secondary">{{ getemployeeNameByID(abs.empID) }}</th>
+          <td>{{ abs.absDate | date : 'yyyy/M/d'}}</td>
+          <td *ngIf="!inEditMode || selectedAbsence.ID !== abs.ID">
+            {{ abs.absenceDescription || abs.absenceDescription === ''? abs.absenceDescription : '------'}}</td>
+          <td *ngIf="inEditMode && selectedAbsence.ID === abs.ID">
+            <app-user-input [description]="selectedAbsence.absenceDescription"
+              (descriptionChanged)="changeDescription($event)"></app-user-input>
+          </td>
+          <td *ngIf=" !inEditMode || selectedAbsence.ID !==abs.ID" [class]="{'text-danger': !abs.excuse}">
+            {{abs.excuse? 'Excused': 'Not Excused'}}
+          </td>
+          <td *ngIf="inEditMode && selectedAbsence.ID === abs.ID">
+            <mat-checkbox class="example-margin" [(ngModel)]="selectedAbsence.excuse" color="primary">Excused
+            </mat-checkbox>
+          </td>
+          <td style="padding-top: 0px; padding-bottom: 0px;">
+            <button *ngIf="!inEditMode" mat-icon-button class="edit-btn" type="button" matTooltip="Edit Absence"
+              matTooltipShowDelay="200" (click)="onEditAbsence(abs)">
+              <mat-icon class="app-main-color">edit</mat-icon>
+            </button>
+            <button *ngIf="inEditMode && selectedAbsence.ID === abs.ID" mat-icon-button class="" type="button"
+              matTooltip="Update Absence Info" matTooltipShowDelay="200" (click)="onUpdateAbsence()">
+              <mat-icon class="app-main-color">check</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-12 d-flex center">
+    <div class="w-25 paginator-container">
+      <app-small-paginator [items]="absences" (changeSlide)="onChangeSlide($event)"></app-small-paginator>
+    </div>
+  </div>
+</div>
