@@ -41,9 +41,9 @@ export class AttendanceService {
       new Attendance(27, 3, new Date(2020, 7, 8), new Date(2020, 7, 8, 10), new Date(2020, 7, 8, 17), 7),
       new Attendance(28, 3, new Date(2020, 7, 9), new Date(2020, 7, 9, 8), new Date(2020, 7, 9, 17), 9),
       new Attendance(29, 3, new Date(2020, 7, 10), new Date(2020, 7, 10, 8), new Date(2020, 7, 10, 18), 10),
-      new Attendance(30, 3, new Date(2020, 7, 11)),
+      new Attendance(32, 3, new Date(2020, 7, 11), new Date(2020, 7, 11, 8), new Date(2020, 7, 11, 17), 9),
       new Attendance(31, 3, new Date(2020, 7, 12), new Date(2020, 7, 12, 8), new Date(2020, 7, 12, 17), 9),
-      new Attendance(32, 3, new Date(2020, 7, 13), new Date(2020, 7, 13, 8), new Date(2020, 7, 13, 17), 9),
+      new Attendance(30, 3, new Date(2020, 7, 13)),
       new Attendance(33, 3, new Date(2020, 7, 14), new Date(2020, 7, 14, 8), new Date(2020, 7, 14, 14), 8),
       new Attendance(34, 3, new Date(2020, 7, 15), new Date(2020, 7, 15, 8), new Date(2020, 7, 15, 17), 9),
 
@@ -56,6 +56,7 @@ export class AttendanceService {
       new Attendance(40, 4, new Date(2020, 7, 13), new Date(2020, 7, 13, 8), new Date(2020, 7, 13, 17), 9),
       new Attendance(41, 4, new Date(2020, 7, 14), new Date(2020, 7, 14, 8), new Date(2020, 7, 14, 14), 8),
       new Attendance(42, 4, new Date(2020, 7, 15), new Date(2020, 7, 15, 8), new Date(2020, 7, 15, 17), 9),
+      new Attendance(67, 4, new Date(2020, 7, 16)),
 
 
       new Attendance(43, 5, new Date(2020, 7, 8), new Date(2020, 7, 8, 10), new Date(2020, 7, 8, 17), 7),
@@ -67,7 +68,7 @@ export class AttendanceService {
       new Attendance(49, 5, new Date(2020, 7, 14), new Date(2020, 7, 14, 8), new Date(2020, 7, 14, 14), 8),
       new Attendance(50, 5, new Date(2020, 7, 15), new Date(2020, 7, 15, 8), new Date(2020, 7, 15, 17), 9),
 
-
+      new Attendance(68, 6, new Date(2020, 7, 7)),
       new Attendance(51, 6, new Date(2020, 7, 8), new Date(2020, 7, 8, 10), new Date(2020, 7, 8, 17), 7),
       new Attendance(52, 6, new Date(2020, 7, 9), new Date(2020, 7, 9, 8), new Date(2020, 7, 9, 17), 9),
       new Attendance(53, 6, new Date(2020, 7, 10), new Date(2020, 7, 10, 8), new Date(2020, 7, 10, 18), 10),
