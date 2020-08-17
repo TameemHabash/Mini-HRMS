@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Salary } from 'src/app/models/salary.model';
 import { SalaryLog } from 'src/app/models/salaryLog.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import { SalaryLog } from 'src/app/models/salaryLog.model';
 export class SalaryService {
   private _salaries: Salary[];
   private _salaryLogs: SalaryLog[];
+  salariesChanged: Subject<Salary[]> = new Subject();
   constructor() {
     this._salaries = [
       new Salary(1, 1, 800), new Salary(2, 2, 6200), new Salary(3, 3, 500),
@@ -101,12 +103,14 @@ export class SalaryService {
     if (newAmount > 350) {
       const targetSalaryIndex = this._salaries.findIndex((sal) => sal.ID === salaryID);
       this._salaries[targetSalaryIndex].amount = newAmount;
+      this.salariesChanged.next(this._salaries.slice());
     }
   }
 
   onAddEmployee(empId: number, amount: number): Salary {
     if (amount >= 350) {
       this._salaries.push(new Salary(this.newSalaryID(), empId, amount));
+      this.salariesChanged.next(this._salaries.slice());
       return this._salaries[length - 1];
     }
   }
