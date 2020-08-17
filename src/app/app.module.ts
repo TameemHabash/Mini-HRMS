@@ -43,6 +43,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 
 const material = [
@@ -101,7 +102,8 @@ const material = [
     LayoutModule,
     ...material,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    GoogleChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
