@@ -221,3 +221,7 @@ button:focus {
   outline: 0px !important;
   outline: none !important;
 }
+
+input:focus {
+  outline-color: #3b385a99;
+}
