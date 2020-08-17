@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.12.0/css/all.css" integrity="sha384-ekOryaXPbeCpWQNxMwSWVvQ0+1VrStoPJq54shlYhR8HzQgig1v5fas6YgOqLoKz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Architects+Daughter&family=Chewy&family=Noto+Sans+SC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Open+Sans:400,800'>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- beginning of the side bar -->
+
+        <div class="main-background-color sidebar">
+            <div class="sidebar-title">
+                <br>
+                <a href="#" class="upper">EmployÈra</a>
+            </div>
+            <ul class="sidebar-list">
+                <li class="sidebar-item"><i class="fas fa-home"></i><a href="#" class="sidebar-link">Home</a></li>
+                <li class="sidebar-item"><i class="fas fa-address-card"></i><a href="#" class="sidebar-link">Employees</a></li>
+                <li class="sidebar-item"><i class="fas fa-vector-square"></i><a href="#" class="sidebar-link">Departments</a></li>
+                <li class="sidebar-item"><i class="fas fa-clipboard-list"></i><a href="#" class="sidebar-link">Absences</a></li>
+                <li class="sidebar-item  active-tab"><i class="fas fa-chart-bar"></i><a href="#" class="sidebar-link">Statistics</a></li>
+            </ul>
+        </div>
+
+        <!-- end of the side bar -->
+
+        <!-- beginning of the header -->
+
+        <div class="header">
+            <div class="dropdown">
+                <img class="user-pic" src="imgs/00.PNG">
+                <div class="secondary-background-color drop-content">
+                    <div class="drop-header">
+                        <img class="user-pic" src="imgs/00.PNG">
+                        <h4 class="main-color" 2>My account</h4>
+                    </div>
+                    <h5 class="main-color">HR-name</h5>
+                    <h5 class="main-color">HR-email</h5>
+                    <a class="main-color" href="#">log out</a>
+                </div>
+            </div>
+        </div>
+        <!-- end of the header  -->
+
+        <!-- beginning of the page content  -->
+
+        <div class="secondary-background-color page-content">
+
+            <!-- beginning of the content's header  -->
+
+            <div class="page-content-header">
+                <div class="title">
+                    <h3 class="main-color">Statistics:</h3>
+                </div>
+                <div class="search-box">
+                    <input class="main-color search-field" type="search" placeholder="search for something...">
+                    <button class="search-btn"><i class="main-color fas fa-search"></i></button>
+                </div>
+            </div>
+            <!-- end of the page content's header  -->
+
+            <!-- beginning of the content box  -->
+
+            <div class="secondary-background-color stat-section">
+
+                <div class="dept-stat">
+                    <div class="dept-stat-box">
+
+                    </div>
+                    <div class="dept-stat-box">
+
+                    </div>
+                    <div class="dept-stat-box">
+
+                    </div>
+                    <div class="dept-stat-box">
+
+                    </div>
+                    <div class="dept-stat-box">
+
+                    </div>
+
+
+                </div>
+
+                <div class="stat">
+                    <div class="stat-box" id="donutchart"></div>
+                    <div class="stat-box" id="top_x_div">
+
+                    </div>
+
+
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript">
+                        google.charts.load('current', {
+                            'packages': ['bar']
+                        })
+                        google.charts.load("current", {
+                            packages: ["corechart"]
+                        });
+
+                        google.charts.setOnLoadCallback(drawStuff);
+                        google.charts.setOnLoadCallback(drawChart);
+
+                        function drawStuff() {
+                            var data = new google.visualization.arrayToDataTable([
+                                ['month', 'dept1', 'dept2', 'dept3'],
+                                ['Jan', 2, 2, 3],
+                                ['Feb', 8, 2, 4],
+                                ['Mar', 12, 4, 3],
+                                ['Apr', 10, 2, 7],
+                                ['May', 3, 1, 2],
+                                ['Jun', 5, 2, 7],
+                                ['Jul', 0, 2, 4],
+                                ['Aug', 1, 1, 2],
+                                ['Sep', 3, 4, 7],
+                                ['Oct', 4, 0, 1],
+                                ['Nov', 3, 7, 1],
+                                ['Dec', 2, 2, 0]
+
+                            ]);
+
+                            var options = {
+                                title: 'Absences',
+                                // width: 325,
+                                legend: {
+                                    position: 'top',
+                                },
+                                chart: {
+                                    title: 'Absences',
+
+                                },
+
+
+
+
+                                bars: 'vertical', // Required for Material Bar Charts.
+                                axes: {
+                                    x: {
+                                        0: {
+                                            side: 'bottom',
+                                        } // Top x-axis.
+                                    }
+                                }
+                            };
+
+                            var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+                            chart.draw(data, options);
+                        }
+
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                                ['Salary class ', 'Employees'],
+                                ['400-500', 20],
+                                ['500-600', 8],
+                                ['600-700', 5],
+                                ['1200-800', 15],
+                                ['800-900', 7],
+                                ['900-1000', 8],
+                                ['over 1000', 3]
+
+                            ]);
+
+                            var options = {
+                                title: 'Salary',
+                                pieHole: 0.3,
+                                // is3D: true,
+                            };
+
+                            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+                            chart.draw(data, options);
+                        }
+                    </script>
+
+</body>
+
+</html>
