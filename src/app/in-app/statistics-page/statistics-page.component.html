@@ -4,18 +4,18 @@
 </app-content-header>
 <div style="width: fit-content;" class="mx-auto my-4 d-flex flex-column justify-content-center">
   <div style="width: 800px;" class="my-4 row">
-    <div class="col-4">
+    <div class="col-4" *ngFor="let dept of departments">
       <mat-card class="m-3">
         <div class="w-100">
-          <h2 class="app-main-color m-0">{{'development'|titlecase}}</h2>
+          <h2 class="app-main-color m-0 font-weight-normal">{{dept.name|titlecase}}</h2>
         </div>
         <div class="row mt-2">
           <p class="col-6 text-center app-main-color">
-            {{ 12 }}<br><span class="d-block app-3rd-color">Sectors</span>
+            {{ getSectorsConut(dept.ID) }}<br><span class="d-block app-3rd-color">Sectors</span>
           </p>
           <!-- <div class="col-lg-3 col-md-2"></div> -->
           <p class="col-6 text-center app-main-color">
-            {{45 }}<br><span class="d-block app-3rd-color">Employees</span>
+            {{ getEmployeesCountByDepartment(dept.ID) }}<br><span class="d-block app-3rd-color">Employees</span>
           </p>
         </div>
       </mat-card>
