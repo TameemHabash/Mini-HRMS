@@ -139,77 +139,77 @@ export class StatisticsPageComponent implements OnInit, OnDestroy {
         case 1:
           this._employees.forEach((emp) => {
             if (emp.ID === abs.empID) {
-              febAbsences[emp.departmentID - 1]++;
+              febAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
             }
           });
           break;
         case 2:
           this._employees.forEach((emp) => {
             if (emp.ID === abs.empID) {
-              marAbsences[emp.departmentID - 1]++;
+              marAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
             }
           });
           break;
         case 3:
           this._employees.forEach((emp) => {
             if (emp.ID === abs.empID) {
-              aprAbsences[emp.departmentID - 1]++;
+              aprAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
             }
           });
           break;
         case 4:
           this._employees.forEach((emp) => {
             if (emp.ID === abs.empID) {
-              mayAbsences[emp.departmentID - 1]++;
+              mayAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
             }
           });
           break;
         case 5:
           this._employees.forEach((emp) => {
             if (emp.ID === abs.empID) {
-              junAbsences[emp.departmentID - 1]++;
+              junAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
             }
           });
           break;
         case 6:
           this._employees.forEach((emp) => {
             if (emp.ID === abs.empID) {
-              julAbsences[emp.departmentID - 1]++;
+              julAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
             }
           });
           break;
         case 7:
           this._employees.forEach((emp) => {
             if (emp.ID === abs.empID) {
-              augAbsences[emp.departmentID - 1]++;
+              augAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
             }
           });
           break;
         case 8:
           this._employees.forEach((emp) => {
             if (emp.ID === abs.empID) {
-              sepAbsences[emp.departmentID - 1]++;
+              sepAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
             }
           });
           break;
         case 9:
           this._employees.forEach((emp) => {
             if (emp.ID === abs.empID) {
-              octAbsences[emp.departmentID - 1]++;
+              octAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
             }
           });
           break;
         case 10:
           this._employees.forEach((emp) => {
             if (emp.ID === abs.empID) {
-              novAbsences[emp.departmentID - 1]++;
+              novAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
             }
           });
           break;
         case 11:
           this._employees.forEach((emp) => {
             if (emp.ID === abs.empID) {
-              decAbsences[emp.departmentID - 1]++;
+              decAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
             }
           });
           break;

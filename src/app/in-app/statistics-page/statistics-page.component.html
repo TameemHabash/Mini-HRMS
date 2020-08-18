@@ -24,7 +24,7 @@
   <google-chart class="my-4" [title]="pieChartTitle" [type]="pieChartType" [columns]="pieChartColumnNames"
     [data]="pieChartData" [options]="pieChartOptions" [width]="width" [height]="height">
   </google-chart>
-  <google-chart class="my-4" [title]="barChartTitle" [type]="barChartType" [columns]="barChartColumnNames"
-    [data]="barChartData" [options]="barChartOptions" [width]="width" [height]="height">
+  <google-chart *ngIf="departments.length>0" class="my-4" [title]="barChartTitle" [type]="barChartType"
+    [columns]="barChartColumnNames" [data]="barChartData" [options]="barChartOptions" [width]="width" [height]="height">
   </google-chart>
 </div>
