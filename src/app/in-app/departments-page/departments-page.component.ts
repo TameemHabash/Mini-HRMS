@@ -33,6 +33,7 @@ export class DepartmentsPageComponent implements OnInit, OnDestroy {
             this.dialog.open(DepartmentDialogComponent, { data: { department: targetDeapartment, manager: this.employeeService.getEmployeeByID(targetDeapartment.managerID) } });
           }
           else if (queryParams.mode === 'add') {
+            this.departmentsService.inAddMode = true;
             this.dialog.open(DepartmentDialogComponent);
           }
         }
@@ -47,12 +48,14 @@ export class DepartmentsPageComponent implements OnInit, OnDestroy {
     this.deleteDepartmentSubscription.unsubscribe();
   }
   onAddDepartment() {
+    this.departmentsService.inAddMode = true;
     this.dialogRef = this.dialog.open(DepartmentDialogComponent);
     this.router.navigate([], { relativeTo: this.route, fragment: 'department', queryParams: { mode: 'add' } });
     this.dialogRef.afterClosed()
       .pipe(finalize(() => { this.dialogRef = undefined }))
       .subscribe(
         () => {
+          this.departmentsService.inAddMode = false;
           this.router.navigate([], { relativeTo: this.route });
         }
       );

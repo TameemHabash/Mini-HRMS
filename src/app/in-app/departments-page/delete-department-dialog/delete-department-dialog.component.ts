@@ -12,7 +12,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
     </mat-dialog-actions>
   `,
   styles: [`
-  p {font-size:1.5rem;
+  p {font-size:1rem;
   line-height:1.8rem}
   `
   ]

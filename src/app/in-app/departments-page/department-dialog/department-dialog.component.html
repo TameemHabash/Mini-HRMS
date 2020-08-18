@@ -24,7 +24,7 @@
     <button mat-raised-button mat-dialog-close class="app-bg-main text-white">Cancel</button>
     <button mat-raised-button mat-dialog-close class="app-bg-main text-white"
       (click)="selectedDepartment? onUpdateDept():onAddDept()">{{ selectedDepartment?'Update' : 'Add' }}</button>
-    <button mat-dialog-close class="del-dept-btn remove-button-styling rounded position-absolute"
+    <button *ngIf="!inAddMode" mat-dialog-close class="del-dept-btn remove-button-styling rounded position-absolute"
       (click)="onDeleteDepartment()">Delete
       Department</button>
   </mat-dialog-actions>

@@ -11,6 +11,7 @@ export class DepartmentService {
   activeDepartmentID: number = -1;
   departmentsChanged: Subject<Department[]> = new Subject();
   departmentDeleted: Subject<{ deptID: number, deptName: string, sectorsCount: number }> = new Subject();
+  inAddMode: boolean = false;
   constructor(private sectorService: SectorService, private utils: UtilsService) { }
   private departments: Department[] = [
     // here i will get the deparments from the server without it's sectors

@@ -7,6 +7,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 import { Employee } from 'src/app/models/employee.model';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { Route } from '@angular/compiler/src/core';
 @Component({
   selector: 'app-department-dialog',
   templateUrl: './department-dialog.component.html',
@@ -24,10 +25,11 @@ export class DepartmentDialogComponent implements OnInit {
   @ViewChild('departmentName', { static: true }) DepartmentNameElement: ElementRef;
   @ViewChild('departmentDescription', { static: true }) DepartmentDescriptionElement: ElementRef;
   @ViewChild('manager', { static: true }) managerElement: ElementRef;
-
+  inAddMode: boolean;
   constructor(@Inject(MAT_DIALOG_DATA) public recivedData: { department: Department, manager: Employee }, private deptService: DepartmentService, private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
+    this.inAddMode = this.deptService.inAddMode;
     if (this.recivedData) {
       this.selectedDepartment = this.recivedData.department;
       this.selectedDepartmentLastName = this.selectedDepartment.name;
