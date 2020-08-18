@@ -1,7 +1,9 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar class="navbar__title">EMPLOYÈRA</mat-toolbar>
+    <mat-toolbar (mouseenter)="onMouseenterName()" (mouseleave)="onMouseleaveName()" class="navbar__title"> <img #logo
+        [src]="logoImgSrc" class="mt-1" alt="logo">
+      MPLOYÈRA</mat-toolbar>
     <mat-nav-list class="items-list">
       <a mat-list-item class="items-list__item" routerLink="./home" routerLinkActive="active-tab"><span
           class="material-icons text-center items-list__icon">

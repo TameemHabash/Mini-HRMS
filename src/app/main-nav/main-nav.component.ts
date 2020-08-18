@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -9,7 +9,9 @@ import { map, shareReplay } from 'rxjs/operators';
   styleUrls: ['./main-nav.component.css']
 })
 export class MainNavComponent {
-
+  @ViewChild('logo') logoImg: ElementRef;
+  logoImgSrc: string = '../../assets/imgs/HR_LOGO_white_noText.png';
+  //  @ViewChild('nameContainer') nameContainer:ElementRef;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -17,5 +19,10 @@ export class MainNavComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver) { }
-
+  onMouseenterName() {
+    this.logoImg.nativeElement.src = '../../assets/imgs/HR_LOGO_L_Purple-noText1.png';
+  }
+  onMouseleaveName() {
+    this.logoImg.nativeElement.src = '../../assets/imgs/HR_LOGO_white_noText.png';
+  }
 }
