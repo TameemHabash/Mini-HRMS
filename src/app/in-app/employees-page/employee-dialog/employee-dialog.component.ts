@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, OnChanges } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormControl, Validators } from '@angular/forms';
 import { DepartmentService } from 'src/app/services/department.service';
 import { SectorService } from 'src/app/services/sector.service';
 import { Department } from 'src/app/models/department.model';
@@ -29,6 +29,7 @@ export class EmployeeDialogComponent implements OnInit {
   departments: Department[];
   sectors: Sector[];
   @ViewChild('employeeForm') empForm: NgForm;
+  rateControl = new FormControl("", [Validators.max(20000), Validators.min(350)])
   constructor(private departmentService: DepartmentService,
     private sectorService: SectorService,
     private employeeService: EmployeeService,
@@ -49,7 +50,7 @@ export class EmployeeDialogComponent implements OnInit {
   }
 
   onAddEmployee() {
-    if (this.empForm.valid) {
+    if (this.empForm.valid && this.empForm.value.salary >= 350) {
       const newEmp = new Employee(
         this.employeeService.newEmployeeID(),
         this.empForm.value.name,

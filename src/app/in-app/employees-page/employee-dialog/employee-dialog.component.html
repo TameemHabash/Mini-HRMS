@@ -132,10 +132,13 @@
 
 
 
-    <mat-dialog-actions class="d-flex justify-content-around mt-3">
+    <mat-dialog-actions class="d-flex justify-content-around mt-3 position-relative">
       <button mat-raised-button mat-dialog-close class="app-bg-main text-white" type="button">Cancel</button>
       <button mat-raised-button mat-dialog-close class="app-bg-main text-white" type="submit"
-        [disabled]="!employeeForm.valid">Add</button>
+        [disabled]="!employeeForm.valid || employeeForm.value.salary < 350">Add</button>
+      <span *ngIf="employeeForm.controls.salary?.dirty && employeeForm.value.salary<350"
+        class="sal-error text-danger position-absolute">salary must be
+        above 349 JD<span class="text-dark font-weight-bold"></span></span>
     </mat-dialog-actions>
 
   </form>

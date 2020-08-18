@@ -1,3 +1,8 @@
 button {
   width: 6rem;
 }
+
+.sal-error {
+  bottom: 79px;
+  left: 17px;
+}

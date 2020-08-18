@@ -37,7 +37,7 @@
     <!-- beginning of the all personal section  -->
     <div class="mx-0  col-lg-6 col-md-6 col-sm-12 all-personal-container">
       <div class="all-personal d-flex justify-content-center flex-column mx-5">
-        <table class="main-color att-val">
+        <table class="main-color att-val my-3">
           <tr class="">
             <th class="app-bg-secondary att">ID:</th>
             <th class="val">
@@ -223,6 +223,15 @@
             Less</button>
         </div>
       </div>
+      <div *ngIf="editable" class="d-flex center rounded py-2 flex-column update-btn-container">
+        <button mat-raised-button class="app-bg-main update-btn text-white" type="submit"
+          [disabled]="!(employeeForm.valid && employeeForm.dirty && employeeForm.value.sectorID!==undefined) ">Update</button>
+        <p *ngIf="employeeForm.value.sectorID === undefined" class="text-danger">Choose a
+          sector</p>
+        <p *ngIf="employeeForm.controls.salary.dirty && employeeForm.value.salary<350" class="text-danger">salary
+          must be
+          above <span class="text-white font-weight-bold"> 349 JD</span></p>
+      </div>
     </div>
     <!-- end of the all personal section  -->
 
@@ -257,11 +266,5 @@
 
     <!-- end of the salary log section  -->
 
-  </div>
-  <div *ngIf="editable" class="d-flex center w-100 py-2 flex-column update-btn-container">
-    <button mat-raised-button class="app-bg-main update-btn text-white" type="submit"
-      [disabled]="!(employeeForm.valid && employeeForm.dirty && employeeForm.value.sectorID!==undefined) ">Update</button>
-    <p *ngIf="employeeForm.value.sectorID === undefined" class="text-danger">Choose a
-      sector</p>
   </div>
 </form>

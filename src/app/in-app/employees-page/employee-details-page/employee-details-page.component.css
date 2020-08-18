@@ -55,9 +55,7 @@
 
 /* beginning of the info section  */
 
-.details-container {
-  overflow-x: hidden !important;
-}
+.details-container {}
 
 .details-box select,
 .details-box form,
@@ -71,6 +69,9 @@
 } */
 .all-personal-container {
   margin-top: 3.3rem;
+  overflow-y: scroll;
+  height: 355px;
+  overflow-x: hidden;
 }
 
 /* .salary-log {
@@ -131,5 +132,8 @@
 }
 
 .update-btn-container {
-  background-color: #61506d5e;
+  background-color: #61506de8;
+  position: sticky;
+  width: 103%;
+  bottom: 7px;
 }
