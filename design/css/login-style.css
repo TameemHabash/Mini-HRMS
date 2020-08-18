@@ -1,0 +1,186 @@
+/* beginning the framework */
+
+body {
+    font-family: 'Noto Sans SC', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.container {
+    overflow: auto;
+    width: 100%;
+    height: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.upper {
+    text-transform: uppercase;
+}
+
+.main-color {
+    color: #43425D;
+}
+
+.main-background-color {
+    background-color: #43425D;
+}
+
+.secondary-background-color {
+    /* background-color: #f4f4f7; */
+    background-color: #ededf0;
+}
+
+.secondary-color {
+    color: #c2c2c7;
+}
+
+::-webkit-input-placeholder {
+    font-size: 14px;
+    text-align: left;
+    color: gray;
+    font-size: 11px;
+}
+
+
+/* end of framework */
+
+
+/* baginning of login page  */
+
+.login-page {
+    display: flex;
+    flex-direction: row;
+}
+
+.login-page .left-section {
+    width: 30%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-page .left-section .login-logo {
+    height: 60%;
+    width: 80%;
+    margin: auto
+}
+
+.login-page .right-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+.login-page .login-box {
+    overflow: hidden;
+    margin: 150px 100px 150px 100px;
+}
+
+.login-box .login-box-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.login-box .login-box-header .login-box-header-logo {
+    width: 50px;
+    height: 50px;
+    padding-top: 10px;
+}
+
+.login-box h2 {
+    letter-spacing: 8px;
+    font-weight: bolder;
+    /* font-family: 'Chewy', cursive; */
+}
+
+.login-box .msg {
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.login-page .login-box input[type="text"],
+.login-page .login-box input[type="password"] {
+    overflow: hidden;
+    width: 350px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #bdbec2;
+    background: transparent;
+    outline: none;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.login-box input[type="text"] {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.login-box input[type="password"] {
+    margin-bottom: 10px;
+}
+
+.login-box .check {
+    cursor: pointer;
+    border: #43425D;
+}
+
+.login-box .remember-me {
+    font-size: 13px;
+}
+
+.login-box .login-btn {
+    margin: 50px 0 20px 0;
+    background-color: #43425D;
+    border: 1px solid #43425D;
+    color: #FFF;
+    text-align: center;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    transition: all ease-in-out .3s;
+    -webkit-transition: all ease-in-out .3s;
+    -moz-transition: all ease-in-out .3s;
+    -ms-transition: all ease-in-out .3s;
+    -o-transition: all ease-in-out .3s;
+    padding: 5px 30px;
+}
+
+.login-box .login-btn:hover {
+    background-color: #FFF;
+    color: #43425D;
+    cursor: pointer
+}
+
+.login-box .link {
+    font-size: 12px;
+    text-align: center;
+    display: block;
+}
+
+.login-box .link:hover {
+    color: #BDBEC2;
+}
+
+
+/* end of login page  */
