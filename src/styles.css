@@ -4,6 +4,7 @@ html,
 body {
   height: 100%;
   background-color: #ededf0 !important;
+  font-family: 'Noto Sans SC', sans-serif !important;
 }
 
 body {

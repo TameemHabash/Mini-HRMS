@@ -56,6 +56,13 @@ export class SectorService {
     return deletedSector;
   }
 
+  deleteAllSectorForDepartment(deptID: number): void {
+    const deletedSectors: Sector[] = [];
+    this.sectors = this.sectors.filter((sect) => sect.departmentID !== deptID);
+    // here i will send the delete request
+    this.sectorsChanged.next(this.sectors.slice());
+  }
+
   getSectorNameByID(sectorID: number): string {
     return this.sectors.find((sector) => sector.ID === sectorID)?.name;
   }

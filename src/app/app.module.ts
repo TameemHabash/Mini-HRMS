@@ -25,6 +25,7 @@ import { SectorsDialogComponent } from './in-app/departments-page/sectors-dialog
 import { PaginatorComponent } from './in-app/paginator/paginator.component';
 import { SmallPaginatorComponent } from './in-app/small-paginator/small-paginator.component';
 import { AttendancesDialogComponent } from './in-app/employees-page/employee-details-page/attendances-dialog/attendances-dialog.component';
+import { DeleteDepartmentDialogComponent } from './in-app/departments-page/delete-department-dialog/delete-department-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserInputComponent } from './in-app/absences-page/user-input/user-input.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -89,7 +90,8 @@ const material = [
     EmployeeDialogComponent,
     SmallPaginatorComponent,
     AttendancesDialogComponent,
-    UserInputComponent
+    UserInputComponent,
+    DeleteDepartmentDialogComponent
   ],
   entryComponents: [
     DepartmentDialogComponent,

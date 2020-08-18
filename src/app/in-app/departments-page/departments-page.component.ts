@@ -9,6 +9,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 import { Sector } from 'src/app/models/sector.model';
 import { Employee } from 'src/app/models/employee.model';
 import { Subscription } from 'rxjs';
+import { DeleteDepartmentDialogComponent } from './delete-department-dialog/delete-department-dialog.component';
 @Component({
   selector: 'app-departments-page',
   templateUrl: './departments-page.component.html',
@@ -16,8 +17,10 @@ import { Subscription } from 'rxjs';
 })
 export class DepartmentsPageComponent implements OnInit, OnDestroy {
   departments: Department[];
+  // deletedDialog: MatDialogRef<DeleteDepartmentDialogComponent>;
   dialogRef: MatDialogRef<DepartmentDialogComponent>;
   private departmentSubscription: Subscription = new Subscription();
+  private deleteDepartmentSubscription: Subscription = new Subscription();
   constructor(private departmentsService: DepartmentService, private employeeService: EmployeeService, private dialog: MatDialog, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
@@ -35,9 +38,13 @@ export class DepartmentsPageComponent implements OnInit, OnDestroy {
         }
       });
     this.departmentSubscription = this.departmentsService.departmentsChanged.subscribe((newDepartments: Department[]) => { this.departments = newDepartments });
+    this.deleteDepartmentSubscription = this.departmentsService.departmentDeleted.subscribe((deletedDeptDetails: { deptID: number, deptName: string, sectorsCount: number }) => {
+      this.dialog.open(DeleteDepartmentDialogComponent, { data: deletedDeptDetails });
+    });
   }
   ngOnDestroy() {
     this.departmentSubscription.unsubscribe();
+    this.deleteDepartmentSubscription.unsubscribe();
   }
   onAddDepartment() {
     this.dialogRef = this.dialog.open(DepartmentDialogComponent);

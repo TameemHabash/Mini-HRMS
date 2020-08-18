@@ -2,3 +2,22 @@
   width: 400px;
   height: fit-content;
 }
+
+.del-dept-btn {
+  width: 150px;
+  height: 26px;
+  color: rgb(187, 33, 36);
+  letter-spacing: 1px;
+  bottom: -37px;
+  /* left: 120px; */
+  margin-left: auto;
+  margin-right: auto;
+  transition: all ease-in-out .2s;
+}
+
+.del-dept-btn:hover {
+  color: #FFF;
+  background-color: rgb(187, 33, 36);
+  /* font-weight: bold; */
+  width: 180px;
+}

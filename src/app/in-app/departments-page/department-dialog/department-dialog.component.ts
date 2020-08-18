@@ -74,4 +74,7 @@ export class DepartmentDialogComponent implements OnInit {
       this.deptService.createDepartment(this.DepartmentNameElement.nativeElement.value, this.DepartmentDescriptionElement.nativeElement.value);
     }
   }
+  onDeleteDepartment() {
+    this.deptService.deleteDepartment(this.selectedDepartment.ID);
+  }
 }

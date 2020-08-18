@@ -10,6 +10,7 @@ import { Subject } from 'rxjs';
 export class DepartmentService {
   activeDepartmentID: number = -1;
   departmentsChanged: Subject<Department[]> = new Subject();
+  departmentDeleted: Subject<{ deptID: number, deptName: string, sectorsCount: number }> = new Subject();
   constructor(private sectorService: SectorService, private utils: UtilsService) { }
   private departments: Department[] = [
     // here i will get the deparments from the server without it's sectors
@@ -52,6 +53,14 @@ export class DepartmentService {
     return this.getDepartments();
   }
 
+  deleteDepartment(deptID: number) {
+    const targetDeptIndex = this.departments.findIndex((dept) => dept.ID === deptID);
+    const deletedDept: Department = this.departments.splice(targetDeptIndex, 1)[0];
+    const deletedDeptSectorCont: number = this.sectorService.getSectorsOfDepartment(deptID).length;
+    this.sectorService.deleteAllSectorForDepartment(deptID);
+    this.departmentsChanged.next(this.departments.slice());
+    this.departmentDeleted.next({ deptID: deletedDept.ID, deptName: deletedDept.name, sectorsCount: deletedDeptSectorCont });
+  }
   setDepartmentAttributes(deptID: number, newName: string, newDescription: string, newManagerID?: number) {
     const targetDepartmentIndex = this.departments.findIndex((dept) => dept.ID === deptID);
     if (targetDepartmentIndex === -1) {
