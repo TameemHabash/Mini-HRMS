@@ -1,22 +1,19 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DepartmentService } from 'src/app/services/department.service';
-import { SectorService } from 'src/app/services/sector.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { SalaryService } from 'src/app/services/salary.service';
 import { AbsenceService } from 'src/app/services/absence.service';
 import { Department } from 'src/app/models/department.model';
-import { Subscription } from 'rxjs';
 import { Salary } from 'src/app/models/salary.model';
 import { Absence } from 'src/app/models/absence.model';
 import { Employee } from 'src/app/models/employee.model';
-import { AppModule } from 'src/app/app.module';
 
 @Component({
   selector: 'app-statistics-page',
   templateUrl: './statistics-page.component.html',
   styleUrls: ['./statistics-page.component.css']
 })
-export class StatisticsPageComponent implements OnInit, OnDestroy {
+export class StatisticsPageComponent implements OnInit {
   pieChartTitle = 'Salary';
   pieChartType = 'PieChart';
   pieChartColumnNames = ['Salary class ', 'Employees'];
@@ -44,11 +41,6 @@ export class StatisticsPageComponent implements OnInit, OnDestroy {
   private _salaries: Salary[];
   private _absences: Absence[];
   private _employees: Employee[];
-  private _deptID_empID
-  absencesCount: number = 0;
-  // private _departmentsSubscription: Subscription;
-  // private _salariesSubscription: Subscription;
-  // private _absencesSubscription: Subscription;
   constructor(private _departmentService: DepartmentService, private _employeeService: EmployeeService, private _salaryService: SalaryService, private _absenceService: AbsenceService) { }
 
   ngOnInit(): void {
@@ -59,22 +51,6 @@ export class StatisticsPageComponent implements OnInit, OnDestroy {
     this.departments.forEach((dept) => { this.barChartColumnNames.push(dept.name) });
     this._absences = this._absenceService.getAbsences();
     this._setAbsences();
-    // this._departmentsSubscription = this._departmentService.departmentsChanged.subscribe((newDepartmentsList: Department[]) => {
-    //   this.departments = newDepartmentsList;
-    // });
-    // this._salariesSubscription = this._salaryService.salariesChanged.subscribe((newSalariesList: Salary[]) => {
-    //   this._salaries = newSalariesList;
-    //   this._setSalaries();
-    // });
-    // this._absenceService.absencesChanged.subscribe((newAbsences: Absence[]) => {
-    //   this._absences = newAbsences;
-    //   this._setAbsences();
-    // });
-  }
-  ngOnDestroy() {
-    // this._departmentsSubscription.unsubscribe();
-    // this._salariesSubscription.unsubscribe();
-    // this._absencesSubscription.unsubscribe();
   }
 
   getSectorsConut(deptID: number): number {

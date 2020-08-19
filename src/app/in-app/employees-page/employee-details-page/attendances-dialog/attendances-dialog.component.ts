@@ -12,10 +12,10 @@ import { Employee } from 'src/app/models/employee.model';
 export class AttendancesDialogComponent implements OnInit {
   attendaces: Attendance[];
   attendacesToShow: Attendance[];
-  constructor(@Inject(MAT_DIALOG_DATA) public employee: Employee, private attendaceService: AttendanceService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public employee: Employee, private _attendaceService: AttendanceService) { }
 
   ngOnInit(): void {
-    this.attendaces = this.attendaceService.getAttendancesByEmployeeID(this.employee.ID);
+    this.attendaces = this._attendaceService.getAttendancesByEmployeeID(this.employee.ID);
     this.attendaces.reverse();
   }
 

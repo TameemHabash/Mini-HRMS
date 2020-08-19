@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ViewChild, ElementRef, AfterViewInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
 import { Department } from 'src/app/models/department.model';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DepartmentService } from 'src/app/services/department.service';
@@ -7,7 +7,6 @@ import { EmployeeService } from 'src/app/services/employee.service';
 import { Employee } from 'src/app/models/employee.model';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { Route } from '@angular/compiler/src/core';
 @Component({
   selector: 'app-department-dialog',
   templateUrl: './department-dialog.component.html',
@@ -26,15 +25,15 @@ export class DepartmentDialogComponent implements OnInit {
   @ViewChild('departmentDescription', { static: true }) DepartmentDescriptionElement: ElementRef;
   @ViewChild('manager', { static: true }) managerElement: ElementRef;
   inAddMode: boolean;
-  constructor(@Inject(MAT_DIALOG_DATA) public recivedData: { department: Department, manager: Employee }, private deptService: DepartmentService, private employeeService: EmployeeService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public recivedData: { department: Department, manager: Employee }, private _departmentService: DepartmentService, private _employeeService: EmployeeService) { }
 
   ngOnInit(): void {
-    this.inAddMode = this.deptService.inAddMode;
+    this.inAddMode = this._departmentService.inAddMode;
     if (this.recivedData) {
       this.selectedDepartment = this.recivedData.department;
       this.selectedDepartmentLastName = this.selectedDepartment.name;
       this.selectedDepartmentLastDescription = this.selectedDepartment.description;
-      this.depertmentEmployees = this.employeeService.getEmployeesByDepartmentID(this.selectedDepartment.ID);
+      this.depertmentEmployees = this._employeeService.getEmployeesByDepartmentID(this.selectedDepartment.ID);
       if (this.recivedData.manager) {
         this.selectedManager = this.recivedData.manager;
       }
@@ -68,15 +67,15 @@ export class DepartmentDialogComponent implements OnInit {
   }
   onUpdateDept(): void {
     if (this.selectedDepartmentLastName !== this.DepartmentNameElement.nativeElement.value || this.selectedDepartmentLastDescription !== this.DepartmentDescriptionElement.nativeElement.value || this.managerFormConrol?.value?.ID !== this.selectedDepartmentLastManager?.ID) {
-      this.deptService.setDepartmentAttributes(this.selectedDepartment.ID, this.DepartmentNameElement.nativeElement.value, this.DepartmentDescriptionElement.nativeElement.value, this.managerFormConrol?.value?.ID);
+      this._departmentService.setDepartmentAttributes(this.selectedDepartment.ID, this.DepartmentNameElement.nativeElement.value, this.DepartmentDescriptionElement.nativeElement.value, this.managerFormConrol?.value?.ID);
     }
   }
   onAddDept() {
     if (this.DepartmentNameElement.nativeElement.value !== '' && this.DepartmentDescriptionElement.nativeElement.value !== '') {
-      this.deptService.createDepartment(this.DepartmentNameElement.nativeElement.value, this.DepartmentDescriptionElement.nativeElement.value);
+      this._departmentService.createDepartment(this.DepartmentNameElement.nativeElement.value, this.DepartmentDescriptionElement.nativeElement.value);
     }
   }
   onDeleteDepartment() {
-    this.deptService.deleteDepartment(this.selectedDepartment.ID);
+    this._departmentService.deleteDepartment(this.selectedDepartment.ID);
   }
 }

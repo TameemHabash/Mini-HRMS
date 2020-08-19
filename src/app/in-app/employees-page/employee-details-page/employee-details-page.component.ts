@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnChanges, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DepartmentService } from 'src/app/services/department.service';
 import { SectorService } from 'src/app/services/sector.service';
 import { EmployeeService } from 'src/app/services/employee.service';
@@ -30,7 +30,7 @@ export class EmployeeDetailsPageComponent implements OnInit {
     { name: 'active', active: true },
     { name: 'archived', active: false }
   ];
-  HRs: HRUser[] = this.utilsService.getHRs();
+  HRs: HRUser[] = this._utilsService.getHRs();
   ActiveHR: HRUser = this.HRs[0];
   selectedActives = true;
   departments: Department[];
@@ -43,68 +43,74 @@ export class EmployeeDetailsPageComponent implements OnInit {
   salarLogsToShow: SalaryLog[];
   @ViewChild('employeeForm') empForm: NgForm;
   constructor(
-    private departmentService: DepartmentService,
-    private sectorService: SectorService,
-    private employeeService: EmployeeService,
-    private salaryService: SalaryService,
-    private utilsService: UtilsService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private dialog: MatDialog) { }
+    private _departmentService: DepartmentService,
+    private _sectorService: SectorService,
+    private _employeeService: EmployeeService,
+    private _salaryService: SalaryService,
+    private _utilsService: UtilsService,
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.departments = this.departmentService.getDepartments();
-    this.route.params.subscribe((params: Params) => {
+    this.departments = this._departmentService.getDepartments();
+    this._route.params.subscribe((params: Params) => {
       if (+params['id'] === NaN) {
         throw new Error(`'${params['id']}': is not a valid employee id`);
       }
       this.employeeID = +params['id'];
-      this.employee = this.employeeService.activateEmployee(+params['id']);
+      this.employee = this._employeeService.activateEmployee(+params['id']);
     });
     this.employeeID = this.employee.ID;
-    this.sectors = this.sectorService.getSectorsOfDepartment(this.employee.departmentID);
-    this.showMore = this.employeeService.EditableForm;
-    this.editable = this.employeeService.EditableForm;
-    this.salary = this.salaryService.getSalaryByEmployeeID(this.employee.ID);
+    this.sectors = this._sectorService.getSectorsOfDepartment(this.employee.departmentID);
+    this.showMore = this._employeeService.EditableForm;
+    this.editable = this._employeeService.EditableForm;
+    this.salary = this._salaryService.getSalaryByEmployeeID(this.employee.ID);
     this.oldSalaryValue = this.salary.amount;
-    this.salaryLogs = this.salaryService.getLogsBySalaryID(this.salary.ID);
+    this.salaryLogs = this._salaryService.getLogsBySalaryID(this.salary.ID);
     this.salaryLogs.reverse();
-
   }
 
   onNavigateEmployees() {
-    this.employeeService.deactivateActiveEmployee();
-    this.router.navigate(['HR', 'employees']);
+    this._employeeService.deactivateActiveEmployee();
+    this._router.navigate(['HR', 'employees']);
   }
 
   onEditEmployee() {
     this.showMore = true;
     this.editable = true;
   }
+
   onDepartmentChange() {
-    this.sectors = this.sectorService.getSectorsOfDepartment(this.empForm.value.departmentID);
+    this.sectors = this._sectorService.getSectorsOfDepartment(this.empForm.value.departmentID);
     this.empForm.form.value.sectorID = undefined;
   }
+
   startDateFilter(date) {
     const day = date.getDay();
     return day !== 5;
   }
+
   onShowMore() {
     this.showMore = true;
   }
+
   onShowLess() {
     this.showMore = false;
   }
+
   onViewAttendances() {
-    this.dialog.open(AttendancesDialogComponent, { data: this.employee, width: '650px' });
+    this._dialog.open(AttendancesDialogComponent, { data: this.employee, width: '650px' });
   }
+
   addRaise() {
 
   }
+
   onUpdateEmployee() {
     if (this.empForm.valid) {
       if (+this.empForm.value.salary !== this.oldSalaryValue) {
-        this.salaryService.onEditSalary(this.salary.ID, +this.empForm.value.salary)
+        this._salaryService.onEditSalary(this.salary.ID, +this.empForm.value.salary)
       }
       this.employee.name = this.empForm.value.name;
       this.employee.gender = this.empForm.value.gender;
@@ -122,7 +128,7 @@ export class EmployeeDetailsPageComponent implements OnInit {
       this.employee.departmentID = +this.empForm.value.departmentID;
       this.employee.sectorID = +this.empForm.value.sectorID;
       this.employee.HRID = +this.empForm.value.HRID;
-      this.employeeService.updateEmployee(this.employee);
+      this._employeeService.updateEmployee(this.employee);
       setTimeout(() => {
         this.onNavigateEmployees();
       }, 200)

@@ -1,5 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
-import { EmployeeService } from 'src/app/services/employee.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AbsenceService } from 'src/app/services/absence.service';
 import { Absence } from 'src/app/models/absence.model';
 import { Subscription } from 'rxjs';
@@ -17,13 +16,13 @@ export class AbsencesPageComponent implements OnInit, OnDestroy {
   supscription: Subscription;
   inEditMode: boolean;
   employees: Employee[];
-  constructor(private absenceService: AbsenceService) { }
+  constructor(private _absenceService: AbsenceService) { }
 
 
   ngOnInit(): void {
-    this.employees = this.absenceService.getEmployees();
-    this.absences = this.absenceService.getAbsences();
-    this.supscription = this.absenceService.absencesChanged.subscribe((newAbsences: Absence[]) => {
+    this.employees = this._absenceService.getEmployees();
+    this.absences = this._absenceService.getAbsences();
+    this.supscription = this._absenceService.absencesChanged.subscribe((newAbsences: Absence[]) => {
       this.absences = newAbsences;
     });
   }
@@ -42,7 +41,7 @@ export class AbsencesPageComponent implements OnInit, OnDestroy {
   }
 
   onUpdateAbsence() {
-    this.absenceService.editAbsence(this.selectedAbsence.ID, this.selectedAbsence.excuse, this.selectedAbsence.absenceDescription);
+    this._absenceService.editAbsence(this.selectedAbsence.ID, this.selectedAbsence.excuse, this.selectedAbsence.absenceDescription);
     this.inEditMode = false;
     this.selectedAbsence = null;
   }

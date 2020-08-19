@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { Employee } from 'src/app/models/employee.model';
 
 @Component({
   selector: 'app-paginator',
@@ -19,12 +18,15 @@ export class PaginatorComponent implements OnInit, OnChanges {
   get numberOfPages() {
     return this._numberOfPages;
   }
+
   get arrayOfnumbers() {
     return this._arrayOfnumbers;
   }
+
   get currentPage() {
     return this._currentPage;
   }
+
   ngOnInit(): void {
     // set page if items array isn't empty
     if (this.items && this.items.length) {

@@ -11,14 +11,14 @@ export class HomePageComponent implements OnInit {
 
   employeesCount: number = 0;
   departmentCount: number = 0;
-  constructor(private router: Router, private statisticsService: StatisticsService) { }
+  constructor(private _router: Router, private _statisticsService: StatisticsService) { }
 
   ngOnInit(): void {
-    this.employeesCount = this.statisticsService.getEmployeesCount();
-    this.departmentCount = this.statisticsService.getDepartmentsCount();
+    this.employeesCount = this._statisticsService.getEmployeesCount();
+    this.departmentCount = this._statisticsService.getDepartmentsCount();
   }
 
   goTo(path: string) {
-    this.router.navigate(['HR', path]);
+    this._router.navigate(['HR', path]);
   }
 }

@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { SectorsDialogComponent } from '../sectors-dialog/sectors-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
-import { EmployeeService } from 'src/app/services/employee.service';
 import { Sector } from 'src/app/models/sector.model';
 import { Employee } from 'src/app/models/employee.model';
 
@@ -19,7 +18,7 @@ export class DepartmentComponent implements OnInit {
   @Input() employeesNumber: number;
   @Input() manager: Employee;
   sectorHover: boolean = false;
-  constructor(private dialog: MatDialog, private router: Router, private route: ActivatedRoute) { }
+  constructor(private _dialog: MatDialog, private _router: Router, private _route: ActivatedRoute) { }
 
 
   ngOnInit(): void {
@@ -27,13 +26,13 @@ export class DepartmentComponent implements OnInit {
   }
   onShowSectors($event, deptID: number) {
     $event.stopPropagation();
-    let dialog = this.dialog.open(SectorsDialogComponent, { data: deptID, width: '400px' });
-    this.router.navigate([], { relativeTo: this.route, fragment: 'sectors' });
+    let dialog = this._dialog.open(SectorsDialogComponent, { data: deptID, width: '400px' });
+    this._router.navigate([], { relativeTo: this._route, fragment: 'sectors' });
     dialog.afterClosed()
       .pipe(finalize(() => console.log("completed")))
       .subscribe(
         () => {
-          this.router.navigate([], { relativeTo: this.route });
+          this._router.navigate([], { relativeTo: this._route });
         }
       );
   }

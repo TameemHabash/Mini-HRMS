@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnChanges } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm, FormControl, Validators } from '@angular/forms';
 import { DepartmentService } from 'src/app/services/department.service';
 import { SectorService } from 'src/app/services/sector.service';
@@ -23,25 +23,25 @@ export class EmployeeDialogComponent implements OnInit {
     { name: 'active', active: true },
     { name: 'archived', active: false }
   ];
-  HRs: HRUser[] = this.utilsService.getHRs();
+  HRs: HRUser[] = this._utilsService.getHRs();
   ActiveHR: HRUser = this.HRs[0];
   selectedActives = true;
   departments: Department[];
   sectors: Sector[];
   @ViewChild('employeeForm') empForm: NgForm;
   rateControl = new FormControl("", [Validators.max(20000), Validators.min(350)])
-  constructor(private departmentService: DepartmentService,
-    private sectorService: SectorService,
-    private employeeService: EmployeeService,
-    private utilsService: UtilsService,
-    private salaryService: SalaryService) { }
+  constructor(private _departmentService: DepartmentService,
+    private _sectorService: SectorService,
+    private _employeeService: EmployeeService,
+    private _utilsService: UtilsService,
+    private _salaryService: SalaryService) { }
 
   ngOnInit(): void {
-    this.departments = this.departmentService.getDepartments();
+    this.departments = this._departmentService.getDepartments();
   }
 
   onDepartmentChange() {
-    this.sectors = this.sectorService.getSectorsOfDepartment(this.empForm.value.departmentID);
+    this.sectors = this._sectorService.getSectorsOfDepartment(this.empForm.value.departmentID);
   }
 
   startDateFilter(date) {
@@ -52,7 +52,7 @@ export class EmployeeDialogComponent implements OnInit {
   onAddEmployee() {
     if (this.empForm.valid && this.empForm.value.salary >= 350) {
       const newEmp = new Employee(
-        this.employeeService.newEmployeeID(),
+        this._employeeService.newEmployeeID(),
         this.empForm.value.name,
         this.empForm.value.gender,
         this.empForm.value.SSN,
@@ -69,8 +69,8 @@ export class EmployeeDialogComponent implements OnInit {
         +this.empForm.value.departmentID,
         +this.empForm.value.sectorID,
         +this.empForm.value.HRID);
-      this.employeeService.addEmployee(newEmp);
-      this.salaryService.onAddEmployee(newEmp.ID, +this.empForm.value.salary);
+      this._employeeService.addEmployee(newEmp);
+      this._salaryService.onAddEmployee(newEmp.ID, +this.empForm.value.salary);
     }
   }
 }

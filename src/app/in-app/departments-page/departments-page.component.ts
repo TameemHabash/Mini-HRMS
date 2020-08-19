@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DepartmentService } from 'src/app/services/department.service';
 import { Department } from 'src/app/models/department.model';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -18,70 +18,70 @@ import { DeleteDepartmentDialogComponent } from './delete-department-dialog/dele
 export class DepartmentsPageComponent implements OnInit, OnDestroy {
   departments: Department[];
   // deletedDialog: MatDialogRef<DeleteDepartmentDialogComponent>;
-  dialogRef: MatDialogRef<DepartmentDialogComponent>;
-  private departmentSubscription: Subscription = new Subscription();
-  private deleteDepartmentSubscription: Subscription = new Subscription();
-  constructor(private departmentsService: DepartmentService, private employeeService: EmployeeService, private dialog: MatDialog, private route: ActivatedRoute, private router: Router) { }
+  private _dialogRef: MatDialogRef<DepartmentDialogComponent>;
+  private _departmentSubscription: Subscription = new Subscription();
+  private _deleteDepartmentSubscription: Subscription = new Subscription();
+  constructor(private _departmentsService: DepartmentService, private _employeeService: EmployeeService, private _dialog: MatDialog, private _route: ActivatedRoute, private _router: Router) { }
 
   ngOnInit(): void {
-    this.departments = this.departmentsService.getDepartments();
-    this.route.queryParams
+    this.departments = this._departmentsService.getDepartments();
+    this._route.queryParams
       .subscribe((queryParams) => {
-        if (!this.dialogRef) {
+        if (!this._dialogRef) {
           if (queryParams.mode === 'show-and-edit') {
-            const targetDeapartment = this.departmentsService.getDepartmentByID(+queryParams.id);
-            this.dialog.open(DepartmentDialogComponent, { data: { department: targetDeapartment, manager: this.employeeService.getEmployeeByID(targetDeapartment.managerID) } });
+            const targetDeapartment = this._departmentsService.getDepartmentByID(+queryParams.id);
+            this._dialog.open(DepartmentDialogComponent, { data: { department: targetDeapartment, manager: this._employeeService.getEmployeeByID(targetDeapartment.managerID) } });
           }
           else if (queryParams.mode === 'add') {
-            this.departmentsService.inAddMode = true;
-            this.dialog.open(DepartmentDialogComponent);
+            this._departmentsService.inAddMode = true;
+            this._dialog.open(DepartmentDialogComponent);
           }
         }
       });
-    this.departmentSubscription = this.departmentsService.departmentsChanged.subscribe((newDepartments: Department[]) => { this.departments = newDepartments });
-    this.deleteDepartmentSubscription = this.departmentsService.departmentDeleted.subscribe((deletedDeptDetails: { deptID: number, deptName: string, sectorsCount: number }) => {
-      this.dialog.open(DeleteDepartmentDialogComponent, { data: deletedDeptDetails });
+    this._departmentSubscription = this._departmentsService.departmentsChanged.subscribe((newDepartments: Department[]) => { this.departments = newDepartments });
+    this._deleteDepartmentSubscription = this._departmentsService.departmentDeleted.subscribe((deletedDeptDetails: { deptID: number, deptName: string, sectorsCount: number }) => {
+      this._dialog.open(DeleteDepartmentDialogComponent, { data: deletedDeptDetails });
     });
   }
   ngOnDestroy() {
-    this.departmentSubscription.unsubscribe();
-    this.deleteDepartmentSubscription.unsubscribe();
+    this._departmentSubscription.unsubscribe();
+    this._deleteDepartmentSubscription.unsubscribe();
   }
   onAddDepartment() {
-    this.departmentsService.inAddMode = true;
-    this.dialogRef = this.dialog.open(DepartmentDialogComponent);
-    this.router.navigate([], { relativeTo: this.route, fragment: 'department', queryParams: { mode: 'add' } });
-    this.dialogRef.afterClosed()
-      .pipe(finalize(() => { this.dialogRef = undefined }))
+    this._departmentsService.inAddMode = true;
+    this._dialogRef = this._dialog.open(DepartmentDialogComponent);
+    this._router.navigate([], { relativeTo: this._route, fragment: 'department', queryParams: { mode: 'add' } });
+    this._dialogRef.afterClosed()
+      .pipe(finalize(() => { this._dialogRef = undefined }))
       .subscribe(
         () => {
-          this.departmentsService.inAddMode = false;
-          this.router.navigate([], { relativeTo: this.route });
+          this._departmentsService.inAddMode = false;
+          this._router.navigate([], { relativeTo: this._route });
         }
       );
     //need to subscribe to employees observable to change number of employees and the manager if changes too
   }
   onShowDepartmentDetails(department: Department, manager: Employee) {
-    this.dialogRef = this.dialog.open(DepartmentDialogComponent, { data: { department: department, manager: manager } });
-    this.router.navigate([], { relativeTo: this.route, fragment: 'department', queryParams: { mode: 'show-and-edit', id: department.ID } });
-    this.dialogRef.afterClosed()
-      .pipe(finalize(() => { this.dialogRef = undefined }))
+    this._dialogRef = this._dialog.open(DepartmentDialogComponent, { data: { department: department, manager: manager } });
+    this._router.navigate([], { relativeTo: this._route, fragment: 'department', queryParams: { mode: 'show-and-edit', id: department.ID } });
+    this._dialogRef.afterClosed()
+      .pipe(finalize(() => { this._dialogRef = undefined }))
       .subscribe(
         () => {
-          this.router.navigate([], { relativeTo: this.route });
+          this._router.navigate([], { relativeTo: this._route });
         }
       );
   }
 
   getEmployeesNumberForDepartment(deptID: number): number {
-    return this.employeeService.getEmployeesNumberByDepartmentID(deptID);
+    return this._employeeService.getEmployeesNumberByDepartmentID(deptID);
   }
 
   getSectorsForDepartment(deptID: number): Sector[] {
-    return this.departmentsService.getSectorsByDepartmentID(deptID);
+    return this._departmentsService.getSectorsByDepartmentID(deptID);
   }
 
   getManagerForDepartment(managerID: number): Employee {
-    return this.employeeService.getEmployeeByID(managerID);
+    return this._employeeService.getEmployeeByID(managerID);
   }
 }

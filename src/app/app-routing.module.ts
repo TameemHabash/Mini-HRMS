@@ -6,7 +6,6 @@ import { EmployeesPageComponent } from './in-app/employees-page/employees-page.c
 import { EmployeeDetailsPageComponent } from './in-app/employees-page/employee-details-page/employee-details-page.component';
 import { AbsencesPageComponent } from './in-app/absences-page/absences-page.component';
 import { DepartmentsPageComponent } from './in-app/departments-page/departments-page.component';
-import { CreateDepartmentComponent } from './in-app/departments-page/create-department/create-department.component';
 import { StatisticsPageComponent } from './in-app/statistics-page/statistics-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginPageComponent } from './login-page/login-page.component';
