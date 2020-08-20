@@ -1,6 +1,6 @@
 <app-content-header>
   <h2 pageTitle class="page-title app-main-color font-weight-bold text-uppercase mt-1">
-    {{active?'employees':'archived &nbsp; employees'}}</h2>
+    {{active?'employees':'archived employees'}}</h2>
   <div btn class="mt-2 mr-3">
     <button *ngIf="active" mat-icon-button class="add-emp-btn app-main-color" matTooltip="Add Employee"
       matTooltipShowDelay="350" (click)="addEmployee()">

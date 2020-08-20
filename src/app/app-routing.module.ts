@@ -29,7 +29,7 @@ const routes: Routes = [
     ]
   },
   { path: 'not-found', component: PageNotFoundComponent },
-  { path: '', redirectTo: '/HR', pathMatch: 'full' },
+  { path: '', redirectTo: '/HR/not-found', pathMatch: 'full' },
   { path: '**', redirectTo: '/not-found' }
 
 ];
