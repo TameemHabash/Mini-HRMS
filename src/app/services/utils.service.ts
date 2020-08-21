@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HRUser } from '../models/HRUser.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
-  HRs: HRUser[] = [
+  private _HRs: HRUser[] = [
     // here will get the HRs from the HR service
-    new HRUser(1, 'rahaf malas', 'rahaf.malas', 'rahaf.malas@gmail.com', 'emptyURL'),
-    new HRUser(2, 'tameem habash', 'rahaf.malas', 'rahaf.malas@gmail.com', 'emptyURL'),
-    new HRUser(3, 'abdelrahaman al-tamimi', 'rahaf.malas', 'rahaf.malas@gmail.com', 'emptyURL'),
-    new HRUser(4, 'jehad adwan', 'rahaf.malas', 'rahaf.malas@gmail.com', 'emptyURL')
+    new HRUser(1, 'rahaf malas', 'a1', 'rahaf.malas@gmail.com', 'src/assets/imgs/HRImgs/rahaf.jpg'),
+    new HRUser(2, 'tameem habash', 'a12', 'tameem.habash@gmail.com', 'src/assets/imgs/HRImgs/tameem.jpg'),
+    new HRUser(3, 'abdelrahaman al-tamimi', 'a123', 'abdelrahaman.altamimi@gmail.com', 'src/assets/imgs/HRImgs/abd.jpg'),
+    new HRUser(4, 'jehad adwan', 'a1234', 'jehad.adwan@gmail.com', 'src/assets/imgs/HRImgs/jehad.jpg')
   ];
   //set ActiveHR when login and reset it when logout
-  ActiveHR: HRUser = this.HRs[0];
+  private _activeHR: HRUser = this._HRs[1];
 
-  constructor() { }
+  constructor(private _router: Router) { }
   generateAlphabeticString(stringLength: number = 5): string {
     if (stringLength < 2) throw new Error(`the random string 'of lenght: ${stringLength}'    must be at least a long of 2 charachters`);
     let randomString = '';
@@ -36,6 +37,28 @@ export class UtilsService {
   }
 
   getHRs(): HRUser[] {
-    return this.HRs.slice();
+    return this._HRs.slice();
+  }
+  getActiveHR(): HRUser {
+    return this._activeHR;
+  }
+
+  setActiveHR(activeHR: HRUser) {
+    this._activeHR = activeHR;
+  }
+
+  login(username: string, password: string): boolean {
+    const HR = this._HRs.find((hr) => hr.userName === username);
+    if (HR?.userName === username && HR?.password === password) {
+      this.setActiveHR(HR);
+      this._router.navigate(['HR', 'home']);
+      return true;
+    } else {
+      return false;
+    }
+  }
+  logout() {
+    this._activeHR = this._HRs[1];
+    this._router.navigate(['login']);
   }
 }

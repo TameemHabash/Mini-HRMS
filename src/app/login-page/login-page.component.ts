@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilsService } from '../services/utils.service';
 
 @Component({
   selector: 'app-login-page',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
-
-  constructor() { }
+  hide: boolean = true;
+  validLogin: boolean = true;
+  constructor(private _utilsService: UtilsService) { }
 
   ngOnInit(): void {
+  }
+  onLogin(username: string, password: string) {
+    this.validLogin = this._utilsService.login(username, password);
   }
 
 }

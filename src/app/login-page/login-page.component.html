@@ -1,1 +1,44 @@
-<p>login-page works!</p>
+<div class="d-flex h-100">
+  <!-- begginig of the left-section  -->
+  <div class="app-bg-main left-section">
+    <img class="login-logo" src="../../assets/imgs/HR_LOGO.png" alt="white logo">
+  </div>
+  <!-- begginig of the right-section  -->
+  <div class="right-section">
+    <div class="text-center login-box d-flex flex-column">
+      <div class="login-box-header d-flex justify-content-center">
+        <img class="login-box-header-logo" src="../../assets/imgs/HR_LOGO_Title.png" alt="logo without text">
+        <h2 class="upper text-center main-color m-0 font-weight-bold">mployèra</h2>
+      </div>
+      <p class="app-3rd-color msg mt-4 mb-2">Welcome back ! Please login to your account.</p>
+      <form (ngSubmit)="onLogin(loginForm.value.username, loginForm.value.password)" #loginForm="ngForm">
+        <div class="inputs-container d-flex flex-column mx-auto w-75">
+          <mat-form-field appearance="outline" class="" hideRequiredMarker>
+            <mat-label>Username</mat-label>
+            <input matInput #username ngModel name="username" required>
+            <mat-error>Please enter a valid name</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" hideRequiredMarker>
+            <mat-label>Password</mat-label>
+            <input #password matInput [type]="hide ? 'password' : 'text'" ngModel name="password" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide" type="button">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error>Please enter a valid password</mat-error>
+          </mat-form-field>
+          <mat-checkbox color="primary">
+            Remember me
+          </mat-checkbox>
+        </div>
+        <p *ngIf="!validLogin" class="text-danger">Not valid username or password</p>
+        <button mat-raised-button class="app-main-color login-btn my-0 mx-auto" type="submit"
+          [disabled]="!loginForm.valid && loginForm.dirty">Login</button>
+      </form>
+      <br>
+      <a class="link app-main-color mb-1 cursor-pointer">Forgot your password?</a>
+      <a class="link app-main-color cursor-pointer">Don't have an account?</a>
+    </div>
+  </div>
+</div>
