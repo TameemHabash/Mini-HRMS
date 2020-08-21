@@ -16,7 +16,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let abs of absencesToShow">
-        <th scope="row" class="app-bg-secondary">{{ getemployeeNameByID(abs.empID) }}</th>
+        <th scope="row" class="app-bg-secondary font-weight-normal">{{ getemployeeNameByID(abs.empID) }}</th>
         <td>{{ abs.absDate | date : 'yyyy/M/d'}}</td>
         <td *ngIf="!inEditMode || selectedAbsence.ID !== abs.ID">
           {{ abs.absenceDescription || abs.absenceDescription === ''? abs.absenceDescription : '------'}}</td>

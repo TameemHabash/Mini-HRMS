@@ -104,10 +104,15 @@
   color: #434343
 }
 
-.details-box .all-personal .show-more {
-  width: 7rem;
+.show-more {
+  width: 26px;
+  height: 26px;
+  background-color: #43425D !important;
 }
 
+.show-more mat-icon {
+  margin-top: -11px;
+}
 
 .details-box .att-val .att,
 .details-box .salary-log .month-sal .month {
