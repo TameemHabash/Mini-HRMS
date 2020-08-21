@@ -1,4 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { UtilsService } from 'src/app/services/utils.service';
+import { HRUser } from 'src/app/models/HRUser.model';
 
 @Component({
   selector: 'app-hr-details',
@@ -7,9 +9,11 @@ import { Component, OnInit, HostListener } from '@angular/core';
 })
 export class HrDetailsComponent implements OnInit {
   show: boolean = false;
-  constructor() { }
+  activeHR: HRUser;
+  constructor(private _utilsService: UtilsService) { }
 
   ngOnInit(): void {
+    this.activeHR = this._utilsService.getActiveHR()
   }
   onShow($event) {
     this.show = !this.show
@@ -17,5 +21,11 @@ export class HrDetailsComponent implements OnInit {
   }
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
     this.show = false;
+  }
+
+  onLogout() {
+    setTimeout(() => {
+      this._utilsService.logout()
+    }, 400);
   }
 }
