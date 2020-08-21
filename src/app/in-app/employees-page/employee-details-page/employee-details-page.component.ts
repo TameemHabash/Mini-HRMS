@@ -31,7 +31,6 @@ export class EmployeeDetailsPageComponent implements OnInit {
     { name: 'archived', active: false }
   ];
   HRs: HRUser[] = this._utilsService.getHRs();
-  ActiveHR: HRUser = this.HRs[0];
   selectedActives = true;
   departments: Department[];
   sectors: Sector[];

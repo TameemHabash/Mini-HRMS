@@ -24,7 +24,7 @@ export class EmployeeDialogComponent implements OnInit {
     { name: 'archived', active: false }
   ];
   HRs: HRUser[] = this._utilsService.getHRs();
-  ActiveHR: HRUser = this.HRs[0];
+  ActiveHR: HRUser = this._utilsService.getActiveHR();
   selectedActives = true;
   departments: Department[];
   sectors: Sector[];
