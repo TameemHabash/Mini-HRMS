@@ -55,11 +55,14 @@ export class EmployeeDetailsPageComponent implements OnInit {
     this.departments = this._departmentService.getDepartments();
     this._route.params.subscribe((params: Params) => {
       if (+params['id'] === NaN) {
-        throw new Error(`'${params['id']}': is not a valid employee id`);
+        this._router.navigate(['HR', 'not-found']);
       }
       this.employeeID = +params['id'];
       this.employee = this._employeeService.activateEmployee(+params['id']);
     });
+    if (!this.employee) {
+      this._router.navigate(['HR', 'not-found']);
+    }
     this.employeeID = this.employee.ID;
     this.sectors = this._sectorService.getSectorsOfDepartment(this.employee.departmentID);
     this.showMore = this._employeeService.EditableForm;
