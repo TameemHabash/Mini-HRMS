@@ -48,8 +48,8 @@ export class UtilsService {
   }
 
   login(username: string, password: string): boolean {
-    const HR = this._HRs.find((hr) => hr.userName === username);
-    if (HR?.userName === username && HR?.password === password) {
+    const HR = this._HRs.find((hr) => hr.userName.toLowerCase() === username.toLowerCase());
+    if (HR?.userName.toLowerCase() === username.toLowerCase() && HR?.password === password) {
       this.setActiveHR(HR);
       this._router.navigate(['HR', 'home']);
       return true;
