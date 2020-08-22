@@ -121,7 +121,7 @@
     <div class="my-3 d-flex justify-content-between align-content-center">
       <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
         <mat-label>Salary</mat-label>
-        <input matInput type="number" min="350" step="10" ngModel name="salary" required>
+        <input matInput type="number" min="250" step="10" ngModel name="salary" required>
       </mat-form-field>
 
       <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
@@ -135,10 +135,10 @@
     <mat-dialog-actions class="d-flex justify-content-around mt-3 position-relative">
       <button mat-raised-button mat-dialog-close class="app-bg-main text-white" type="button">Cancel</button>
       <button mat-raised-button mat-dialog-close class="app-bg-main text-white" type="submit"
-        [disabled]="!employeeForm.valid || employeeForm.value.salary < 350">Add</button>
-      <span *ngIf="employeeForm.controls.salary?.dirty && employeeForm.value.salary<350"
+        [disabled]="!employeeForm.valid || employeeForm.value.salary < 250">Add</button>
+      <span *ngIf="employeeForm.controls.salary?.dirty && employeeForm.value.salary<250"
         class="sal-error text-danger position-absolute">salary must be
-        above 349 JD<span class="text-dark font-weight-bold"></span></span>
+        above 249 JD<span class="text-dark font-weight-bold"></span></span>
     </mat-dialog-actions>
 
   </form>

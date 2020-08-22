@@ -100,7 +100,7 @@ export class SalaryService {
   }
 
   onEditSalary(salaryID: number, newAmount: number): void {
-    if (newAmount > 350) {
+    if (newAmount >= 250) {
       const targetSalaryIndex = this._salaries.findIndex((sal) => sal.ID === salaryID);
       this._salaries[targetSalaryIndex].amount = newAmount;
       this.salariesChanged.next(this._salaries.slice());
@@ -108,7 +108,7 @@ export class SalaryService {
   }
 
   onAddEmployee(empId: number, amount: number): Salary {
-    if (amount >= 350) {
+    if (amount >= 250) {
       this._salaries.push(new Salary(this.newSalaryID(), empId, amount));
       this.salariesChanged.next(this._salaries.slice());
       return this._salaries[length - 1];

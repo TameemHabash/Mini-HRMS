@@ -50,7 +50,7 @@ export class EmployeeDialogComponent implements OnInit {
   }
 
   onAddEmployee() {
-    if (this.empForm.valid && this.empForm.value.salary >= 350) {
+    if (this.empForm.valid && this.empForm.value.salary >= 250) {
       const newEmp = new Employee(
         this._employeeService.newEmployeeID(),
         this.empForm.value.name,

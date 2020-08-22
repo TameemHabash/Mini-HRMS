@@ -82,7 +82,7 @@
             <th class="app-bg-secondary att">Base Pay:</th>
             <th class="val">
               <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
-                <input [disabled]="!editable" matInput type="number" min="350" step="10" [ngModel]="salary.amount"
+                <input [disabled]="!editable" matInput type="number" min="250" step="10" [ngModel]="salary.amount"
                   name="salary" required>
               </mat-form-field>
             </th>
@@ -236,9 +236,9 @@
           [disabled]="!(employeeForm.valid && employeeForm.dirty && employeeForm.value.sectorID!==undefined) ">Update</button>
         <p *ngIf="employeeForm.value.sectorID === undefined" class="text-danger">Choose a
           sector</p>
-        <p *ngIf="employeeForm.controls.salary.dirty && employeeForm.value.salary<350" class="text-danger">salary
+        <p *ngIf="employeeForm.controls.salary.dirty && employeeForm.value.salary<250" class="text-danger">salary
           must be
-          above <span class="text-white font-weight-bold"> 349 JD</span></p>
+          above <span class="text-white font-weight-bold"> 249 JD</span></p>
       </div>
     </div>
     <!-- end of the all personal section  -->
