@@ -57,8 +57,25 @@ export class UtilsService {
       return false;
     }
   }
+
   logout() {
     this._activeHR = this._HRs[1];
     this._router.navigate(['login']);
+  }
+
+  fetchData(key: string): any[] {
+    const data = JSON.parse(localStorage.getItem(key));
+    if (this._isArrayHasItems(data)) {
+      return data;
+    }
+    return [];
+  }
+
+  saveData(key: string, data: any[]): void {
+    localStorage.setItem(key, JSON.stringify(data));
+  }
+
+  private _isArrayHasItems(array: any) {
+    return Array.isArray(array) && array.length > 0;
   }
 }

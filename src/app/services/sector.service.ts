@@ -11,59 +11,71 @@ export class SectorService {
   activeDepartmentID: number = -1;
   activeSectorID: number = -1;
   sectorsChanged: Subject<Sector[]> = new Subject();
-  private sectors: Sector[] = [
-    // this will be getted from the server  
-    new Sector(1, 'Backend', 1),
-    new Sector(2, 'Frontend', 1),
-    new Sector(3, 'DevOps', 1),
+  private readonly _storeSectorsKey: string = 'sectorsKey';
+  private _sectors: Sector[];
 
-    new Sector(4, 'standards', 2),
-    new Sector(5, 'security testing', 2),
-    new Sector(6, 'online sales', 3)
-  ];
+  constructor(private _utilsService: UtilsService) {
+    // this._sectors = [
+    //   // this will be getted from the server  
+    //   new Sector(1, 'Backend', 1),
+    //   new Sector(2, 'Frontend', 1),
+    //   new Sector(3, 'DevOps', 1),
 
-  constructor(private utils: UtilsService) { }
-  // getTargetSectorsAndSrctor() {
-  //   if (this.activeDepartmentID===-1 || this.activeSectorID===-1) {
-  //     return {targetSectorsIndex:-1,targetSectorIndex:-1};
-  //   }
-  //   const targetSectorsIndex = this.outSectors.findIndex((dept) => dept.departmentID === this.activeDepartmentID);
-  //   const targetSectorIndex = this.outSectors[targetSectorsIndex].sectors.findIndex((sect) => sect.ID === this.activeSectorID);
-  //   return {targetSectorsIndex:targetSectorsIndex,targetSectorIndex:targetSectorIndex};
-  // }
+    //   new Sector(4, 'standards', 2),
+    //   new Sector(5, 'security testing', 2),
+    //   new Sector(6, 'online sales', 3)
+    // ];
+    // this._saveSectorsToStore();
+    this._sectors = this._getSectorsFromStore();
+  }
+
+  private _getSectorsFromStore(): Sector[] {
+    const parsedSectorsList: any[] = this._utilsService.fetchData(this._storeSectorsKey);
+    const sectorsList: Sector[] = parsedSectorsList.map((sect) => {
+      const sector = new Sector(sect._ID, sect._name, sect._departmentID, sect._description);
+      return sector;
+    });
+    return sectorsList;
+  }
+
+  private _saveSectorsToStore(): void {
+    this._utilsService.saveData(this._storeSectorsKey, this._sectors);
+  }
 
   getSectorsOfDepartment(departmentID: number): Sector[] {
-    return this.sectors.filter((sector) => sector.departmentID === departmentID);
+    return this._sectors.filter((sector) => sector.departmentID === departmentID);
   }
   createSectorsInDepartmen(name: string, departmentID: number, description?: string): void {
     if (description) {
-      this.sectors.push(new Sector(this.utils.generateRandomNumber(), name, departmentID, description));
+      this._sectors.push(new Sector(this._utilsService.generateRandomNumber(), name, departmentID, description));
     } else {
-      this.sectors.push(new Sector(this.utils.generateRandomNumber(), name, departmentID));
+      this._sectors.push(new Sector(this._utilsService.generateRandomNumber(), name, departmentID));
     }
     // here i will send the post request
-    this.sectorsChanged.next(this.sectors.slice());
+    this._saveSectorsToStore();
+    this.sectorsChanged.next(this._sectors.slice());
   }
 
   deleteSector(sectorID: number): Sector {
-    const targetSectorIndex = this.sectors.findIndex((sector) => sector.ID === sectorID);
+    const targetSectorIndex = this._sectors.findIndex((sector) => sector.ID === sectorID);
     if (targetSectorIndex === -1) {
       throw new Error(`Sector of ID: '${sectorID}' is not exist`);
     }
-    const deletedSector = this.sectors.splice(targetSectorIndex, 1)[0];
+    const deletedSector = this._sectors.splice(targetSectorIndex, 1)[0];
     // here i will send the delete request
-    this.sectorsChanged.next(this.sectors.slice());
+    this._saveSectorsToStore();
+    this.sectorsChanged.next(this._sectors.slice());
     return deletedSector;
   }
 
   deleteAllSectorForDepartment(deptID: number): void {
-    const deletedSectors: Sector[] = [];
-    this.sectors = this.sectors.filter((sect) => sect.departmentID !== deptID);
+    this._sectors = this._sectors.filter((sect) => sect.departmentID !== deptID);
     // here i will send the delete request
-    this.sectorsChanged.next(this.sectors.slice());
+    this._saveSectorsToStore();
+    this.sectorsChanged.next(this._sectors.slice());
   }
 
   getSectorNameByID(sectorID: number): string {
-    return this.sectors.find((sector) => sector.ID === sectorID)?.name;
+    return this._sectors.find((sector) => sector.ID === sectorID)?.name;
   }
 }
