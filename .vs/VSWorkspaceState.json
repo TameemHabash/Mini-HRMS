@@ -1,12 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\HR_Alpha_v0.1",
-    "\\HR_Alpha_v0.1\\HR_Alpha_v0.1",
-    "\\HR_Alpha_v0.1\\HR_Alpha_v0.1\\Controllers",
-    "\\HR_Alpha_v0.1\\HR_Alpha_v0.1\\Views",
-    "\\HR_Alpha_v0.1\\HR_Alpha_v0.1\\Views\\Test"
+    "\\API_HRMS\\API_HRMS"
   ],
-  "SelectedNode": "\\HR_Alpha_v0.1\\HR_Alpha_v0.1.sln",
+  "SelectedNode": "\\API_HRMS",
   "PreviewInSolutionExplorer": false
 }
