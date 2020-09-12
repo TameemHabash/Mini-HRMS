@@ -1,22 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HRUser } from '../../models/HRUser.model';
 import { Router } from '@angular/router';
+import { SeedService } from '../seed/seed.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
-  private _HRs: HRUser[] = [
-    // here will get the HRs from the HR service
-    new HRUser(1, 'rahaf malas', 'a1', 'rahaf.malas@gmail.com', '../../assets/imgs/HRImgs/rahaf.jpg'),
-    new HRUser(2, 'tameem habash', 'a12', 'tameem.habash@gmail.com', '../../assets/imgs/HRImgs/tameem.jpg'),
-    new HRUser(3, 'abdelrahaman tamimi', 'a123', 'abdelrahaman.altamimi@gmail.com', '../../assets/imgs/HRImgs/abd.jpg'),
-    new HRUser(4, 'jehad adwan', 'a1234', 'jehad.adwan@gmail.com', '../../assets/imgs/HRImgs/jehad.jpg')
-  ];
+  private _HRs: HRUser[];
   //set ActiveHR when login and reset it when logout
-  private _activeHR: HRUser = this._HRs[1];
+  private _activeHR: HRUser;
 
-  constructor(private _router: Router) { }
+  constructor(private seedService: SeedService, private _router: Router) {
+    this._HRs = this.seedService.getHRs();
+    this._activeHR = this._HRs[1];
+  }
   generateAlphabeticString(stringLength: number = 5): string {
     if (stringLength < 2) throw new Error(`the random string 'of lenght: ${stringLength}'    must be at least a long of 2 charachters`);
     let randomString = '';

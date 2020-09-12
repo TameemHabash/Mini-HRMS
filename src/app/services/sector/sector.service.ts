@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Sector } from '../../models/sector.model';
 import { UtilsService } from '../utils/utils.service';
 import { Subject } from 'rxjs';
-
+import { SeedService } from '../seed/seed.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +14,8 @@ export class SectorService {
   private readonly _storeSectorsKey: string = 'sectorsKey';
   private _sectors: Sector[];
 
-  constructor(private _utilsService: UtilsService) {
-    // this._sectors = [
-    //   // this will be getted from the server  
-    //   new Sector(1, 'Backend', 1),
-    //   new Sector(2, 'Frontend', 1),
-    //   new Sector(3, 'DevOps', 1),
-
-    //   new Sector(4, 'standards', 2),
-    //   new Sector(5, 'security testing', 2),
-    //   new Sector(6, 'online sales', 3)
-    // ];
+  constructor(private seedService: SeedService, private _utilsService: UtilsService) {
+    // this._sectors = this.seedService.getSectors();
     // this._saveSectorsToStore();
     this._sectors = this._getSectorsFromStore();
   }

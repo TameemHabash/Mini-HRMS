@@ -3,6 +3,7 @@ import { Department } from '../../models/department.model';
 import { SectorService } from '../sector/sector.service';
 import { Sector } from '../../models/sector.model';
 import { UtilsService } from '../utils/utils.service';
+import { SeedService } from '../seed/seed.service';
 import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -14,25 +15,8 @@ export class DepartmentService {
   inAddMode: boolean = false;
   private readonly _storeDepartmentsKey: string = 'departmentsKey';
   private _departments: Department[];
-  constructor(private sectorService: SectorService, private _utilsService: UtilsService) {
-    // this._departments = [
-
-    //   new Department(
-    //     1,
-    //     'development',
-    //     'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis consectetur deserunt fuga aperiam sequi rem molestias provident obcaecati doloribus',
-    //     17),
-    //   new Department(
-    //     2,
-    //     'quality assurance',
-    //     'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis consectetur deserunt fuga aperiam sequi rem molestias provident obcaecati doloribus',
-    //     5),
-    //   new Department(
-    //     3,
-    //     'sales',
-    //     'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis consectetur deserunt fuga aperiam sequi rem molestias provident obcaecati doloribus',
-    //   )
-    // ];
+  constructor(private seedService: SeedService, private sectorService: SectorService, private _utilsService: UtilsService) {
+    // this._departments = this.seedService.getDepartments();
     // this._saveDepartmentsToStore();
     this._departments = this._getDepartmentsFromStore();
   }
