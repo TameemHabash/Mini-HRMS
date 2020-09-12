@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { DepartmentService } from './department.service';
-import { SectorService } from './sector.service';
-import { Employee } from '../models/employee.model';
+import { DepartmentService } from '../department/department.service';
+import { SectorService } from '../sector/sector.service';
+import { Employee } from '../../models/employee.model';
 import { Subject } from 'rxjs';
-import { UtilsService } from './utils.service';
+import { UtilsService } from '../utils/utils.service';
 @Injectable({
   providedIn: 'root'
 })

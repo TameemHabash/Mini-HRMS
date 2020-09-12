@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { AttendanceService } from 'src/app/services/attendance.service';
+import { AttendanceService } from 'src/app/services/attendance/attendance.service';
 import { Attendance } from 'src/app/models/attendance.model';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Employee } from 'src/app/models/employee.model';

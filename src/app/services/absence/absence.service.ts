@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Absence } from 'src/app/models/absence.model';
 import { Subject } from 'rxjs';
-import { EmployeeService } from './employee.service';
-import { Employee } from '../models/employee.model';
-import { UtilsService } from './utils.service';
+import { EmployeeService } from '../employee/employee.service';
+import { Employee } from '../../models/employee.model';
+import { UtilsService } from '../utils/utils.service';
 @Injectable({
   providedIn: 'root'
 })

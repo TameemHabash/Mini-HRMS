@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DepartmentService } from 'src/app/services/department.service';
+import { DepartmentService } from 'src/app/services/department/department.service';
 import { Department } from 'src/app/models/department.model';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DepartmentDialogComponent } from './department-dialog/department-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
-import { EmployeeService } from 'src/app/services/employee.service';
+import { EmployeeService } from 'src/app/services/employee/employee.service';
 import { Sector } from 'src/app/models/sector.model';
 import { Employee } from 'src/app/models/employee.model';
 import { Subscription } from 'rxjs';

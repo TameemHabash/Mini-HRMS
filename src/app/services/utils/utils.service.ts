@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HRUser } from '../models/HRUser.model';
+import { HRUser } from '../../models/HRUser.model';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -29,7 +29,7 @@ export class UtilsService {
     }
     return randomString;
   }
-  isArrayHasItems(array: Array<any>): boolean {
+  isArrayHasItems(array: any): boolean {
     return Array.isArray(array) && array.length > 0;
   }
   generateRandomNumber(numberLenght = 3): number {

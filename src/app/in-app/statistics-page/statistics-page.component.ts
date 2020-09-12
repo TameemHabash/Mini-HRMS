@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DepartmentService } from 'src/app/services/department.service';
-import { EmployeeService } from 'src/app/services/employee.service';
-import { SalaryService } from 'src/app/services/salary.service';
-import { AbsenceService } from 'src/app/services/absence.service';
+import { DepartmentService } from 'src/app/services/department/department.service';
+import { EmployeeService } from 'src/app/services/employee/employee.service';
+import { SalaryService } from 'src/app/services/salary/salary.service';
+import { AbsenceService } from 'src/app/services/absence/absence.service';
 import { Department } from 'src/app/models/department.model';
 import { Salary } from 'src/app/models/salary.model';
 import { Absence } from 'src/app/models/absence.model';

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Attendance } from 'src/app/models/attendance.model';
-import { UtilsService } from './utils.service';
+import { UtilsService } from '../utils/utils.service';
 @Injectable({
   providedIn: 'root'
 })

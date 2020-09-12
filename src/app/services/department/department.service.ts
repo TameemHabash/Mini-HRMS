@@ -1,8 +1,8 @@
 import { Injectable, } from '@angular/core';
-import { Department } from '../models/department.model';
-import { SectorService } from './sector.service';
-import { Sector } from '../models/sector.model';
-import { UtilsService } from './utils.service';
+import { Department } from '../../models/department.model';
+import { SectorService } from '../sector/sector.service';
+import { Sector } from '../../models/sector.model';
+import { UtilsService } from '../utils/utils.service';
 import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'

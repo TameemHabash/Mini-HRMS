@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Salary } from 'src/app/models/salary.model';
 import { SalaryLog } from 'src/app/models/salaryLog.model';
 import { Subject } from 'rxjs';
-import { UtilsService } from './utils.service';
+import { UtilsService } from '../utils/utils.service';
 
 @Injectable({
   providedIn: 'root'

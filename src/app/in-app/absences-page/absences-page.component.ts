@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AbsenceService } from 'src/app/services/absence.service';
+import { AbsenceService } from 'src/app/services/absence/absence.service';
 import { Absence } from 'src/app/models/absence.model';
 import { Subscription } from 'rxjs';
 import { Employee } from 'src/app/models/employee.model';
