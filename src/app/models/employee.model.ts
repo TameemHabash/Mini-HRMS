@@ -1,4 +1,4 @@
-class IEmployee {
+class EmployeeObject {
     public _ID: number;
     public name: string;
     public gender: string;
@@ -35,7 +35,7 @@ export class Employee {
     public departmentID: number;
     public sectorID: number;
     public HRID: number;
-    constructor(employee: IEmployee);
+    constructor(employee: EmployeeObject);
     constructor(
         _ID: number,
         name: string,
@@ -56,7 +56,7 @@ export class Employee {
         HRID: number
     );
     constructor(
-        empOrID: IEmployee | number, name?: string, gender?: string, SSN?: string, telNumber?: string, nationality?: string, nationalID?: string, birthDate?: Date, startDate?: Date, rating?: number, address?: string, status?: string, email?: string, active?: boolean, departmentID?: number, sectorID?: number, HRID?: number) {
+        empOrID: EmployeeObject | number, name?: string, gender?: string, SSN?: string, telNumber?: string, nationality?: string, nationalID?: string, birthDate?: Date, startDate?: Date, rating?: number, address?: string, status?: string, email?: string, active?: boolean, departmentID?: number, sectorID?: number, HRID?: number) {
         if (typeof empOrID === 'number') {
             this._ID = empOrID;
             this.name = name;
