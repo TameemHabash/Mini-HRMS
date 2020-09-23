@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
 import { Department } from 'src/app/models/department.model';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DepartmentService } from 'src/app/services/department.service';
+import { DepartmentService } from 'src/app/services/department/department.service';
 import { FormControl } from '@angular/forms';
-import { EmployeeService } from 'src/app/services/employee.service';
+import { EmployeeService } from 'src/app/services/employee/employee.service';
 import { Employee } from 'src/app/models/employee.model';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -67,7 +67,7 @@ export class DepartmentDialogComponent implements OnInit {
   }
   onUpdateDept(): void {
     if (this.selectedDepartmentLastName !== this.DepartmentNameElement.nativeElement.value || this.selectedDepartmentLastDescription !== this.DepartmentDescriptionElement.nativeElement.value || this.managerFormConrol?.value?.ID !== this.selectedDepartmentLastManager?.ID) {
-      this._departmentService.setDepartmentAttributes(this.selectedDepartment.ID, this.DepartmentNameElement.nativeElement.value, this.DepartmentDescriptionElement.nativeElement.value, this.managerFormConrol?.value?.ID);
+      this._departmentService.updateDepartment(this.selectedDepartment.ID, this.DepartmentNameElement.nativeElement.value, this.DepartmentDescriptionElement.nativeElement.value, this.managerFormConrol?.value?.ID);
     }
   }
   onAddDept() {

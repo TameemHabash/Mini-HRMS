@@ -1,12 +1,14 @@
 <app-content-header>
   <h2 pageTitle class="page-title app-main-color font-weight-bold text-uppercase">
-    {{(employee.name)+" 's &nbsp; Details"}}</h2>
-  <button btn mat-icon-button class="back-btn app-main-color mr-3" (click)="onNavigateEmployees()"
-    matTooltip="Back to Employees" matTooltipShowDelay="350">
+    {{employee?((employee?.name)+" 's &nbsp; Details"):"Loading"}}</h2>
+    <button btn mat-icon-button class="back-btn app-main-color mr-3"
+      (click)="onNavigateToActiveOrAchivedEmployeesPage()"
+      matTooltip="{{employee.active?'Back to Employees':'Back to archived Employees'}}" matTooltipShowDelay="350">
     <i class="material-icons">arrow_back</i>
   </button>
 </app-content-header>
-<form (ngSubmit)="onUpdateEmployee()" #employeeForm="ngForm" class="details-box d-flex flex-column rounded">
+<form *ngIf="employee" (ngSubmit)="onUpdateEmployee()" #employeeForm="ngForm"
+  class="details-box d-flex flex-column rounded">
 
   <div class="row">
     <div class="d-flex align-content-center col-6">
@@ -82,7 +84,8 @@
             <th class="app-bg-secondary att">Base Pay:</th>
             <th class="val">
               <mat-form-field appearance="legacy" class="mx-3" hideRequiredMarker>
-                <input [disabled]="!editable" matInput type="number" min="250" step="10" [ngModel]="salary.amount"
+                <input [disabled]="!editable" matInput type="number" min="250" step="10"
+                  [ngModel]="salary?.amount?salary.amount:null"
                   name="salary" required>
               </mat-form-field>
             </th>
@@ -256,7 +259,7 @@
             <mat-icon class="app-main-color">add_circle</mat-icon>
           </button>
         </div>
-        <table class="app-main-color month-sal">
+        <table *ngIf="salaryLogs.length !== 0" class="app-main-color month-sal">
           <tr *ngFor="let log of salarLogsToShow">
             <th class="app-bg-secondary month">{{ log.logDate | date : 'yyyy / MMM'}}</th>
             <th class="sal">{{ log.value + ' JD' }}</th>

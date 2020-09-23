@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { UtilsService } from 'src/app/services/utils.service';
+import { UtilsService } from 'src/app/services/utils/utils.service';
 import { HRUser } from 'src/app/models/HRUser.model';
 
 @Component({

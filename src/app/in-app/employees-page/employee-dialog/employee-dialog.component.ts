@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm, FormControl, Validators } from '@angular/forms';
-import { DepartmentService } from 'src/app/services/department.service';
-import { SectorService } from 'src/app/services/sector.service';
+import { DepartmentService } from 'src/app/services/department/department.service';
+import { SectorService } from 'src/app/services/sector/sector.service';
 import { Department } from 'src/app/models/department.model';
 import { Sector } from 'src/app/models/sector.model';
 import { HRUser } from 'src/app/models/HRUser.model';
-import { EmployeeService } from 'src/app/services/employee.service';
+import { EmployeeService } from 'src/app/services/employee/employee.service';
 import { Employee } from 'src/app/models/employee.model';
-import { UtilsService } from 'src/app/services/utils.service';
-import { SalaryService } from 'src/app/services/salary.service';
+import { UtilsService } from 'src/app/services/utils/utils.service';
+import { SalaryService } from 'src/app/services/salary/salary.service';
 
 @Component({
   selector: 'app-employee-dialog',

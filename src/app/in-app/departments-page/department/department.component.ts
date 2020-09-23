@@ -3,7 +3,7 @@ import { Department } from 'src/app/models/department.model';
 import { MatDialog } from '@angular/material/dialog';
 import { SectorsDialogComponent } from '../sectors-dialog/sectors-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { finalize } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { Sector } from 'src/app/models/sector.model';
 import { Employee } from 'src/app/models/employee.model';
 
@@ -29,7 +29,7 @@ export class DepartmentComponent implements OnInit {
     let dialog = this._dialog.open(SectorsDialogComponent, { data: deptID, width: '400px' });
     this._router.navigate([], { relativeTo: this._route, fragment: 'sectors' });
     dialog.afterClosed()
-      .pipe(finalize(() => console.log("completed")))
+      .pipe(take(1))
       .subscribe(
         () => {
           this._router.navigate([], { relativeTo: this._route });

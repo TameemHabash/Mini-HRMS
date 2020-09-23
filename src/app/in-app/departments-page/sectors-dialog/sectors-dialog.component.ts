@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { SectorService } from 'src/app/services/sector.service';
+import { SectorService } from 'src/app/services/sector/sector.service';
 import { Sector } from 'src/app/models/sector.model';
 import { Subscription } from 'rxjs';
 @Component({

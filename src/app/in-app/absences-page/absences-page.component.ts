@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AbsenceService } from 'src/app/services/absence.service';
+import { AbsenceService } from 'src/app/services/absence/absence.service';
 import { Absence } from 'src/app/models/absence.model';
 import { Subscription } from 'rxjs';
 import { Employee } from 'src/app/models/employee.model';
@@ -10,25 +10,30 @@ import { Employee } from 'src/app/models/employee.model';
   styleUrls: ['./absences-page.component.css']
 })
 export class AbsencesPageComponent implements OnInit, OnDestroy {
-  absences: Absence[];
+  absences: Absence[] = [];
   absencesToShow: Absence[];
   selectedAbsence: Absence;
-  supscription: Subscription;
+  private _supscriptions: Subscription[] = [];
   inEditMode: boolean;
-  employees: Employee[];
+  employees: Employee[] = [];
   constructor(private _absenceService: AbsenceService) { }
 
 
   ngOnInit(): void {
     this.employees = this._absenceService.getEmployees();
     this.absences = this._absenceService.getAbsences();
-    this.supscription = this._absenceService.absencesChanged.subscribe((newAbsences: Absence[]) => {
+    const absSubscription = this._absenceService.absencesChanged.subscribe((newAbsences: Absence[]) => {
       this.absences = newAbsences;
     });
+    this._supscriptions.push(absSubscription);
+    const empSubscription = this._absenceService.employeesChanged().subscribe((newEmpList: Employee[]) => {
+      this.employees = newEmpList;
+    });
+    this._supscriptions.push(empSubscription);
   }
 
   ngOnDestroy() {
-    this.supscription.unsubscribe();
+    this._supscriptions.forEach((sub) => { sub.unsubscribe() });
   }
 
   getemployeeNameByID(empID: number): string {

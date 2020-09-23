@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { EmployeeService } from 'src/app/services/employee.service';
+import { EmployeeService } from 'src/app/services/employee/employee.service';
 import { Employee } from 'src/app/models/employee.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -13,7 +13,7 @@ import { finalize } from 'rxjs/operators';
   styleUrls: ['./employees-page.component.css']
 })
 export class EmployeesPageComponent implements OnInit, OnDestroy {
-  employees: Employee[];
+  employees: Employee[] = [];
   employeesToShow: Employee[];
   active: boolean = true;
   private _employeesSubscription: Subscription = new Subscription();
@@ -56,7 +56,6 @@ export class EmployeesPageComponent implements OnInit, OnDestroy {
       .pipe(finalize(() => { this.dialogRef = undefined }))
       .subscribe(
         (form) => {
-          console.log(form);
           this._router.navigate([], { relativeTo: this._route });
         }
       );
