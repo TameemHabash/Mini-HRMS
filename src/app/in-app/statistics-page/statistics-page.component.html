@@ -2,8 +2,11 @@
   <h2 pageTitle class="page-title app-main-color font-weight-bold text-uppercase">statistics</h2>
   <span btn>&nbsp;</span>
 </app-content-header>
+<div *ngIf="!dataReady.dept && !dataReady.pieChar && !dataReady.barChart" class="m-auto text-danger">
+  <h2 class="text-capitalize">no statistics to show</h2>
+</div>
 <div style="width: fit-content;" class="mx-auto my-4 d-flex flex-column justify-content-center">
-  <div style="width: 800px;" class="my-4 row">
+  <div *ngIf="dataReady.dept" style="width: 800px;" class="my-4 row">
     <div class="col-4" *ngFor="let dept of departments">
       <mat-card class="m-3">
         <div class="w-100">
@@ -21,10 +24,11 @@
       </mat-card>
     </div>
   </div>
-  <google-chart class="my-4" [title]="pieChartTitle" [type]="pieChartType" [columns]="pieChartColumnNames"
+  <google-chart *ngIf="dataReady.pieChar" class="my-4" [title]="pieChartTitle" [type]="pieChartType"
+    [columns]="pieChartColumnNames"
     [data]="pieChartData" [options]="pieChartOptions" [width]="width" [height]="height">
   </google-chart>
-  <google-chart *ngIf="departments.length>0" class="my-4" [title]="barChartTitle" [type]="barChartType"
+  <google-chart *ngIf="dataReady.barChart" class="my-4" [title]="barChartTitle" [type]="barChartType"
     [columns]="barChartColumnNames" [data]="barChartData" [options]="barChartOptions" [width]="width" [height]="height">
   </google-chart>
 </div>

@@ -13,4 +13,7 @@
     </app-department>
   </div>
 </div>
+<div *ngIf="departments.length<1" class="m-auto text-danger">
+  <h2 class="text-capitalize">No Departments To Show</h2>
+</div>
 <router-outlet></router-outlet>

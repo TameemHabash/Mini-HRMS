@@ -1,30 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DepartmentService } from 'src/app/services/department/department.service';
 import { EmployeeService } from 'src/app/services/employee/employee.service';
 import { SalaryService } from 'src/app/services/salary/salary.service';
 import { AbsenceService } from 'src/app/services/absence/absence.service';
 import { Department } from 'src/app/models/department.model';
-import { Salary } from 'src/app/models/salary.model';
-import { Absence } from 'src/app/models/absence.model';
-import { Employee } from 'src/app/models/employee.model';
+import { StatisticsService } from 'src/app/services/statistics/statistics.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-statistics-page',
   templateUrl: './statistics-page.component.html',
   styleUrls: ['./statistics-page.component.css']
 })
-export class StatisticsPageComponent implements OnInit {
+export class StatisticsPageComponent implements OnInit, OnDestroy {
   pieChartTitle = 'Salary';
   pieChartType = 'PieChart';
   pieChartColumnNames = ['Salary class ', 'Employees'];
-  pieChartData: [string, number][];
+  pieChartData: [string, number][] = [];
   pieChartOptions = {
     pieHole: 0.35
   };
   barChartTitle = 'Absences';
   barChartType = 'ColumnChart';
   barChartColumnNames: Array<string> = ['month'];
-  barChartData: Array<any>;
+  barChartData: Array<any> = [];
   barChartOptions = {
     legend: { position: 'bottom' },
     axes: {
@@ -33,177 +32,61 @@ export class StatisticsPageComponent implements OnInit {
       }
     },
     bar: { groupWidth: "60%" },
-
   };
   width = 800;
   height = 250;
-  departments: Department[];
-  private _salaries: Salary[];
-  private _absences: Absence[];
-  private _employees: Employee[];
-  constructor(private _departmentService: DepartmentService, private _employeeService: EmployeeService, private _salaryService: SalaryService, private _absenceService: AbsenceService) { }
+  private _lastDeptsListLength: number = 0;
+  departments: Department[] = [];
+  private _subscriptions: Subscription[] = [];
+  dataReady: { dept: boolean, barChart: boolean, pieChar: boolean } = { dept: false, barChart: false, pieChar: false };
+  constructor(private _statisticsService: StatisticsService) { }
 
   ngOnInit(): void {
-    this._employees = this._employeeService.getEmployees();
-    this.departments = this._departmentService.getDepartments();
-    this._salaries = this._salaryService.getSalaries();
-    this._setSalaries();
+    const stisSubscription = this._statisticsService.statisticsChanged.subscribe((statistics) => {
+      this.departments = statistics.departments;
+      this._checkReady();
+
+    });
+    const dataSubscription = this._statisticsService.chartsDataChanged.subscribe((data => {
+      this.barChartData = data.barChartData;
+      this.pieChartData = data.pieChartData;
+      this._checkReady();
+    }));
+    this._subscriptions.push(stisSubscription);
+    this._subscriptions.push(dataSubscription);
+    this.departments = this._statisticsService.getDepartments();
+    this.pieChartData = this._statisticsService.getPieChartData();
+    this.barChartData = this._statisticsService.getBarChartData();
+    this._lastDeptsListLength = this.departments.length;
     this.departments.forEach((dept) => { this.barChartColumnNames.push(dept.name) });
-    this._absences = this._absenceService.getAbsences();
-    this._setAbsences();
+    this._checkReady();
   }
 
+  ngOnDestroy() {
+    this._subscriptions.forEach((sub) => {
+      sub.unsubscribe();
+    });
+  }
   getSectorsConut(deptID: number): number {
-    return this._departmentService.getSectorsByDepartmentID(deptID).length;
+    return this._statisticsService.getSectorsConut(deptID);
   }
 
   getEmployeesCountByDepartment(deptID: number): number {
-    return this._employeeService.getEmployeesNumberByDepartmentID(deptID);
+    return this._statisticsService.getEmployeesCountByDepartment(deptID);
   }
-
-  private _setSalaries(): void {
-    let firstIntervalCount = 0;
-    let secondIntervalCount = 0;
-    let thirdIntervalCount = 0;
-    let fourthIntervalCount = 0;
-    let fifthIntervalCount = 0;
-    this._salaries.forEach((sal) => {
-      if (sal.amount < 400) {
-        firstIntervalCount++;
-      } else if (sal.amount >= 400 && sal.amount < 600) {
-        secondIntervalCount++;
-      } else if (sal.amount >= 600 && sal.amount < 800) {
-        thirdIntervalCount++;
-      } else if (sal.amount >= 800 && sal.amount < 1000) {
-        fourthIntervalCount++;
-      } else if (sal.amount > 1000) {
-        fifthIntervalCount++;
+  private _checkReady() {
+    if (this.barChartData.length > 0) {
+      this.dataReady.barChart = true;
+    }
+    if (this.pieChartData.length > 0) {
+      this.dataReady.pieChar = true;
+    }
+    if (this.departments.length > 0) {
+      if (this._lastDeptsListLength === 0 && this.departments.length > 0) {
+        this._lastDeptsListLength = this.departments.length;
+        this.departments.forEach((dept) => { this.barChartColumnNames.push(dept.name) });
       }
-    });
-    this.pieChartData = [
-      ['below 400', firstIntervalCount],
-      ['400-600', secondIntervalCount],
-      ['600-800', thirdIntervalCount],
-      ['800-1000', fourthIntervalCount],
-      ['over 1000', fifthIntervalCount]
-    ];
-  }
-
-  _setAbsences() {
-    const janAbsences: number[] = Array(this.departments.length).fill(0);
-    const febAbsences: number[] = Array(this.departments.length).fill(0);
-    const marAbsences: number[] = Array(this.departments.length).fill(0);
-    const aprAbsences: number[] = Array(this.departments.length).fill(0);
-    const mayAbsences: number[] = Array(this.departments.length).fill(0);
-    const junAbsences: number[] = Array(this.departments.length).fill(0);
-    const julAbsences: number[] = Array(this.departments.length).fill(0);
-    const augAbsences: number[] = Array(this.departments.length).fill(0);
-    const sepAbsences: number[] = Array(this.departments.length).fill(0);
-    const octAbsences: number[] = Array(this.departments.length).fill(0);
-    const novAbsences: number[] = Array(this.departments.length).fill(0);
-    const decAbsences: number[] = Array(this.departments.length).fill(0);
-    this._absences.forEach((abs) => {
-      switch (abs.absDate.getMonth()) {
-        case 0:
-          this._employees.forEach((emp) => {
-            if (emp.ID === abs.empID) {
-              janAbsences[emp.departmentID - 1]++;
-            }
-          });
-          break;
-
-        case 1:
-          this._employees.forEach((emp) => {
-            if (emp.ID === abs.empID) {
-              febAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
-            }
-          });
-          break;
-        case 2:
-          this._employees.forEach((emp) => {
-            if (emp.ID === abs.empID) {
-              marAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
-            }
-          });
-          break;
-        case 3:
-          this._employees.forEach((emp) => {
-            if (emp.ID === abs.empID) {
-              aprAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
-            }
-          });
-          break;
-        case 4:
-          this._employees.forEach((emp) => {
-            if (emp.ID === abs.empID) {
-              mayAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
-            }
-          });
-          break;
-        case 5:
-          this._employees.forEach((emp) => {
-            if (emp.ID === abs.empID) {
-              junAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
-            }
-          });
-          break;
-        case 6:
-          this._employees.forEach((emp) => {
-            if (emp.ID === abs.empID) {
-              julAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
-            }
-          });
-          break;
-        case 7:
-          this._employees.forEach((emp) => {
-            if (emp.ID === abs.empID) {
-              augAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
-            }
-          });
-          break;
-        case 8:
-          this._employees.forEach((emp) => {
-            if (emp.ID === abs.empID) {
-              sepAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
-            }
-          });
-          break;
-        case 9:
-          this._employees.forEach((emp) => {
-            if (emp.ID === abs.empID) {
-              octAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
-            }
-          });
-          break;
-        case 10:
-          this._employees.forEach((emp) => {
-            if (emp.ID === abs.empID) {
-              novAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
-            }
-          });
-          break;
-        case 11:
-          this._employees.forEach((emp) => {
-            if (emp.ID === abs.empID) {
-              decAbsences[this.departments.findIndex((dept) => dept.ID === emp.departmentID)]++;
-            }
-          });
-          break;
-      }
-    });
-    this.barChartData = [
-      ['Jan', ...janAbsences],
-      ['Feb', ...febAbsences],
-      ['Mar', ...marAbsences],
-      ['Apr', ...aprAbsences],
-      ['May', ...mayAbsences],
-      ['Jun', ...junAbsences],
-      ['Jul', ...julAbsences],
-      ['Aug', ...augAbsences],
-      ['Sep', ...sepAbsences],
-      ['Oct', ...octAbsences],
-      ['Nov', ...novAbsences],
-      ['Dec', ...decAbsences]
-    ];
+      this.dataReady.dept = true;
+    }
   }
 }

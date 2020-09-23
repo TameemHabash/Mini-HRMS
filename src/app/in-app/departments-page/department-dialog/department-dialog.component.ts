@@ -67,7 +67,7 @@ export class DepartmentDialogComponent implements OnInit {
   }
   onUpdateDept(): void {
     if (this.selectedDepartmentLastName !== this.DepartmentNameElement.nativeElement.value || this.selectedDepartmentLastDescription !== this.DepartmentDescriptionElement.nativeElement.value || this.managerFormConrol?.value?.ID !== this.selectedDepartmentLastManager?.ID) {
-      this._departmentService.setDepartmentAttributes(this.selectedDepartment.ID, this.DepartmentNameElement.nativeElement.value, this.DepartmentDescriptionElement.nativeElement.value, this.managerFormConrol?.value?.ID);
+      this._departmentService.updateDepartment(this.selectedDepartment.ID, this.DepartmentNameElement.nativeElement.value, this.DepartmentDescriptionElement.nativeElement.value, this.managerFormConrol?.value?.ID);
     }
   }
   onAddDept() {

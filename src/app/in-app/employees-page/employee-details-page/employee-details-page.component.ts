@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DepartmentService } from 'src/app/services/department/department.service';
 import { SectorService } from 'src/app/services/sector/sector.service';
 import { EmployeeService } from 'src/app/services/employee/employee.service';
@@ -14,13 +14,15 @@ import { Salary } from 'src/app/models/salary.model';
 import { SalaryLog } from 'src/app/models/salaryLog.model';
 import { MatDialog } from '@angular/material/dialog';
 import { AttendancesDialogComponent } from './attendances-dialog/attendances-dialog.component';
+import { take } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-employee-details-page',
   templateUrl: './employee-details-page.component.html',
   styleUrls: ['./employee-details-page.component.css']
 })
-export class EmployeeDetailsPageComponent implements OnInit {
+export class EmployeeDetailsPageComponent implements OnInit, OnDestroy {
   employee: Employee;
   employeeID: number;
   genders: string[] = ['male', 'female'];
@@ -38,9 +40,10 @@ export class EmployeeDetailsPageComponent implements OnInit {
   editable: boolean;
   oldSalaryValue: number;
   salary: Salary;
-  salaryLogs: SalaryLog[];
+  salaryLogs: SalaryLog[] = [];
   salarLogsToShow: SalaryLog[];
   @ViewChild('employeeForm') empForm: NgForm;
+  private _subsriptions: Subscription[] = [];
   constructor(
     private _departmentService: DepartmentService,
     private _sectorService: SectorService,
@@ -53,29 +56,58 @@ export class EmployeeDetailsPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.departments = this._departmentService.getDepartments();
+    const deptSubscription = this._departmentService.departmentsChanged.subscribe((newDepts) => { this.departments = newDepts });
+    this._subsriptions.push(deptSubscription);
     this._route.params.subscribe((params: Params) => {
       if (+params['id'] === NaN) {
-        this._router.navigate(['HR', 'not-found']);
+        this._navigateToNotFound();
       }
       this.employeeID = +params['id'];
-      this.employee = this._employeeService.activateEmployee(+params['id']);
+      if (this._employeeService.getEmployees().length === 0) {
+        const empSubsrition = this._employeeService.employeesChanged
+          .pipe(take(1))
+          .subscribe(() => {
+            this._loadEmployeeDetails();
+          });
+        this._subsriptions.push(empSubsrition);
+      } else {
+        this._loadEmployeeDetails();
+      }
     });
+  }
+  ngOnDestroy() {
+    this._subsriptions.forEach((sub) => { sub.unsubscribe() });
+  }
+
+  private _loadEmployeeDetails(): void {
+    this.employee = this._employeeService.activateEmployee(this.employeeID);
     if (!this.employee) {
-      this._router.navigate(['HR', 'not-found']);
+      this._navigateToNotFound();
     }
     this.employeeID = this.employee.ID;
     this.sectors = this._sectorService.getSectorsOfDepartment(this.employee.departmentID);
     this.showMore = this._employeeService.EditableForm;
     this.editable = this._employeeService.EditableForm;
+    const salSubscription = this._salaryService.salaryAddedOrEditedOrRequested.subscribe((sal) => {
+      this.salary = sal;
+      this.oldSalaryValue = this.salary.amount;
+      this.salaryLogs = this._salaryService.getLogsBySalaryID(this.salary.ID);
+      this.salaryLogs.reverse();
+    });
+    this._subsriptions.push(salSubscription);
     this.salary = this._salaryService.getSalaryByEmployeeID(this.employee.ID);
-    this.oldSalaryValue = this.salary.amount;
-    this.salaryLogs = this._salaryService.getLogsBySalaryID(this.salary.ID);
-    this.salaryLogs.reverse();
   }
 
-  onNavigateEmployees() {
+  private _navigateToNotFound(): void {
+    this._router.navigate(['HR', 'not-found']);
+  }
+
+  onNavigateToActiveOrAchivedEmployeesPage() {
+    this.employee.active
+      ? this._router.navigate(['HR', 'employees'])
+      : this._router.navigate(['HR', 'employees'], { fragment: 'archived' });
     this._employeeService.deactivateActiveEmployee();
-    this._router.navigate(['HR', 'employees']);
+
   }
 
   onEditEmployee() {
@@ -132,7 +164,7 @@ export class EmployeeDetailsPageComponent implements OnInit {
       this.employee.HRID = +this.empForm.value.HRID;
       this._employeeService.updateEmployee(this.employee);
       setTimeout(() => {
-        this.onNavigateEmployees();
+        this.onNavigateToActiveOrAchivedEmployeesPage();
       }, 200)
     }
   }

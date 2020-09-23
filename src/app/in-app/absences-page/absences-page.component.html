@@ -2,8 +2,11 @@
   <h2 pageTitle class="page-title app-main-color font-weight-bold text-uppercase">Absences</h2>
   <span btn>&nbsp;</span>
 </app-content-header>
-<div class="d-flex flex-column justify-content-center bg-white rounded mx-5 mt-2 p-5">
-
+<div *ngIf="absences.length<1 ||employees.length<1" class="m-auto text-danger">
+  <h2 class="text-capitalize">no absences to show</h2>
+</div>
+<div *ngIf="absences.length>=1 && employees.length>=1"
+  class="d-flex flex-column justify-content-center bg-white rounded mx-5 mt-2 p-5">
   <table class="table text-center mx-auto w-75">
     <thead class="app-bg-main">
       <tr class="text-white">

@@ -13,7 +13,7 @@ import { finalize } from 'rxjs/operators';
   styleUrls: ['./employees-page.component.css']
 })
 export class EmployeesPageComponent implements OnInit, OnDestroy {
-  employees: Employee[];
+  employees: Employee[] = [];
   employeesToShow: Employee[];
   active: boolean = true;
   private _employeesSubscription: Subscription = new Subscription();
@@ -56,7 +56,6 @@ export class EmployeesPageComponent implements OnInit, OnDestroy {
       .pipe(finalize(() => { this.dialogRef = undefined }))
       .subscribe(
         (form) => {
-          console.log(form);
           this._router.navigate([], { relativeTo: this._route });
         }
       );

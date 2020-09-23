@@ -21,6 +21,9 @@
       [sectorName]="employeeService.getSectorNameByID(employee.sectorID)" [activePage]="active">
     </app-employee>
   </div>
+  <div *ngIf="employees.length<1" class="m-auto text-danger">
+    <h2 class="text-capitalize">no employees to show</h2>
+  </div>
 </div>
 <div class="w-100 d-flex justify-content-center mt-3">
   <app-paginator #paginator [items]="employees" (changePage)="pageChanged($event)"></app-paginator>
